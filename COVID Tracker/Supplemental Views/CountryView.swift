@@ -130,7 +130,7 @@ struct DetailView: View {
 
 struct CountryView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject var fetch = getData()
+	@ObservedObject var fetch = getCountries()
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -164,3 +164,99 @@ struct CountryView_Previews: PreviewProvider {
         CountryView()
     }
 }
+
+class getCountries: ObservableObject {
+	@Published var countries : [Country]!
+	
+	init() {
+		loadCountries()
+		countries = countries.sorted(by: {
+			$0.cases > $1.cases
+		})
+	}
+	
+	func loadCountries() {
+		let urlString = "https://corona.lmao.ninja/v2/countries"
+		if let url = URL(string: urlString) {
+			if let d = try? Data(contentsOf: url) {
+				// we're OK to parse!
+				let decoder = JSONDecoder()
+				if let data = try? decoder.decode([Country].self, from: d) {
+					countries = data
+				}
+			}
+		}
+	}
+}
+
+struct Country : Codable, Identifiable {
+	let id = UUID()
+	let updated : Int!
+	let country : String!
+	//let countryInfo : CountryInfo!
+	let cases : Int!
+	let todayCases : Int!
+	let deaths : Int!
+	let todayDeaths : Int!
+	let recovered : Int!
+	let active : Int!
+	let critical : Int!
+	let casesPerOneMillion : Int!
+	let deathsPerOneMillion : Int!
+	let tests : Int!
+	let testsPerOneMillion : Int!
+	let continent : String!
+
+	enum CodingKeys: String, CodingKey {
+		case updated = "updated"
+		case country = "country"
+		//case countryInfo = "countryInfo"
+		case cases = "cases"
+		case todayCases = "todayCases"
+		case deaths = "deaths"
+		case todayDeaths = "todayDeaths"
+		case recovered = "recovered"
+		case active = "active"
+		case critical = "critical"
+		case casesPerOneMillion = "casesPerOneMillion"
+		case deathsPerOneMillion = "deathsPerOneMillion"
+		case tests = "tests"
+		case testsPerOneMillion = "testsPerOneMillion"
+		case continent = "continent"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		updated = try values.decodeIfPresent(Int.self, forKey: .updated)
+		country = try values.decodeIfPresent(String.self, forKey: .country)
+		//countryInfo = try values.decodeIfPresent(CountryInfo.self, forKey: .countryInfo)
+		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
+		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
+		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
+		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered)
+		active = try values.decodeIfPresent(Int.self, forKey: .active)
+		critical = try values.decodeIfPresent(Int.self, forKey: .critical)
+		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion)
+		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion)
+		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
+		testsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .testsPerOneMillion)
+		continent = try values.decodeIfPresent(String.self, forKey: .continent)
+	}
+}
+
+/*struct CountryInfo : Codable {
+	let lat : String!
+	let long : String!
+
+	enum CodingKeys: String, CodingKey {
+		case lat = "lat"
+		case long = "long"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		lat = try values.decodeIfPresent(String.self, forKey: .lat)
+		long = try values.decodeIfPresent(String.self, forKey: .long)
+	}
+}*/

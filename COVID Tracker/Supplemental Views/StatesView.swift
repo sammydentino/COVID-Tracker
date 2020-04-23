@@ -106,7 +106,7 @@ struct DetailView2: View {
 
 struct StatesView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject var fetch = getData()
+	@ObservedObject var fetch = getStates()
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -141,4 +141,61 @@ struct StatesView_Previews: PreviewProvider {
     static var previews: some View {
         StatesView()
     }
+}
+
+class getStates : ObservableObject {
+	@Published var states : [States]!
+	
+	init() {
+		loadStates()
+	}
+	
+	func loadStates() {
+		let statesString = "https://corona.lmao.ninja/v2/states"
+		
+		if let url = URL(string: statesString) {
+			if let d = try? Data(contentsOf: url) {
+				// we're OK to parse!
+				let decoder = JSONDecoder()
+				if let data = try? decoder.decode([States].self, from: d) {
+					states = data
+				}
+			}
+		}
+	}
+}
+
+struct States : Codable, Identifiable {
+	let id = UUID()
+	let state : String!
+	let cases : Int!
+	let todayCases : Int!
+	let deaths : Int!
+	let todayDeaths : Int!
+	let active : Int!
+	let tests : Int!
+	let testsPerOneMillion : Int!
+
+	enum CodingKeys: String, CodingKey {
+		case state = "state"
+		case cases = "cases"
+		case todayCases = "todayCases"
+		case deaths = "deaths"
+		case todayDeaths = "todayDeaths"
+		case active = "active"
+		case tests = "tests"
+		case testsPerOneMillion = "testsPerOneMillion"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		state = try values.decodeIfPresent(String.self, forKey: .state)
+		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
+		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
+		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
+		active = try values.decodeIfPresent(Int.self, forKey: .active)
+		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
+		testsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .testsPerOneMillion)
+	}
 }
