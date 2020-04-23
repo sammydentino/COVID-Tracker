@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 	
-	@State var selectedView = 1
+	@State var selectedView = 2
 	@State public var searchQuery : String = ""
 	
 	init() {
@@ -19,43 +19,7 @@ struct ContentView: View {
     
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
-		TabView {
-			NavigationView {
-				VStack(alignment: .center, spacing: 0) {
-					TotalView()
-						.navigationBarTitle(Text("COVID-19 Tracker"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "globe")
-				Text("Global")
-			}
-			NavigationView {
-				VStack {
-					CountryView()
-						.navigationBarTitle(Text("All Countries"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "map")
-				Text("Countries")
-			}
-			NavigationView {
-				VStack {
-					StatesView()
-						.navigationBarTitle(Text("All States"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "house")
-				Text("States")
-			}
+		TabView(selection: $selectedView) {
 			NavigationView {
 				VStack {
 					SourcesView()
@@ -67,7 +31,55 @@ struct ContentView: View {
 				.tabItem {
 				Image(systemName: "info.circle")
 				Text("Sources")
+			}.tag(0)
+			NavigationView {
+				VStack {
+					StatesView()
+						.navigationBarTitle(Text("All States"))
+					Banner()
+				}
 			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "house")
+				Text("States")
+			}.tag(1)
+			NavigationView {
+				VStack(alignment: .center, spacing: 0) {
+					TotalView()
+						.navigationBarTitle(Text("COVID-19 Tracker"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "globe")
+				Text("Global")
+			}.tag(2)
+			NavigationView {
+				VStack {
+					CountryView()
+						.navigationBarTitle(Text("All Countries"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "map")
+				Text("Countries")
+			}.tag(3)
+			NavigationView {
+				VStack {
+					NewsView()
+						.navigationBarTitle(Text("News"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "tray.2")
+				Text("News")
+			}.tag(4)
 		}
     }
 }

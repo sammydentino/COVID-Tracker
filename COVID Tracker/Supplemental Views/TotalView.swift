@@ -265,14 +265,29 @@ struct Welcome : Codable {
 }
 
 struct GlobalExtras : Codable {
+	let newConfirmed : Int?
+	let totalConfirmed : Int?
+	let newDeaths : Int?
+	let totalDeaths : Int?
 	let newRecovered : Int!
+	let totalRecovered : Int?
 
 	enum CodingKeys: String, CodingKey {
+		case newConfirmed = "NewConfirmed"
+		case totalConfirmed = "TotalConfirmed"
+		case newDeaths = "NewDeaths"
+		case totalDeaths = "TotalDeaths"
 		case newRecovered = "NewRecovered"
+		case totalRecovered = "TotalRecovered"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
+		newConfirmed = try values.decodeIfPresent(Int.self, forKey: .newConfirmed)
+		totalConfirmed = try values.decodeIfPresent(Int.self, forKey: .totalConfirmed)
+		newDeaths = try values.decodeIfPresent(Int.self, forKey: .newDeaths)
+		totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths)
 		newRecovered = try values.decodeIfPresent(Int.self, forKey: .newRecovered)
+		totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered)
 	}
 }
