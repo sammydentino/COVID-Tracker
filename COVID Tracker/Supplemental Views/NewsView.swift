@@ -30,7 +30,7 @@ struct NewsView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
+				//.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }
