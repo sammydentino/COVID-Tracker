@@ -16,7 +16,7 @@ struct TotalView: View {
 			List {
 				Section(header: Text("\nCases")
 					.font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)),
-						footer: Text("Data is sourced from JHU CSSE. For more detailed information, please view the sources tab.")
+						footer: Text("Data is sourced from the JHU CSSE repository:\ngithub.com/CSSEGISandData/COVID-19")
 							.font(.system(size: 12))
 							.foregroundColor(.gray).bold()) {
 					VStack {

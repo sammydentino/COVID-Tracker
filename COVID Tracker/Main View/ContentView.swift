@@ -22,15 +22,15 @@ struct ContentView: View {
 		TabView(selection: $selectedView) {
 			NavigationView {
 				VStack {
-					NewsView()
-						.navigationBarTitle(Text("News"))
+					TestingView()
+						.navigationBarTitle(Text("Testing Centers"))
 					Banner()
 				}
 			}
 			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
-				Image(systemName: "tray.2")
-				Text("News")
+				Image(systemName: "info.circle")
+				Text("Testing")
 			}.tag(0)
 			NavigationView {
 				VStack {
@@ -70,15 +70,15 @@ struct ContentView: View {
 			}.tag(3)
 			NavigationView {
 				VStack {
-					TestingView()
-						.navigationBarTitle(Text("Testing Centers"))
+					NewsView()
+						.navigationBarTitle(Text("News"))
 					Banner()
 				}
 			}
 			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "tray.2")
-				Text("Testing")
+				Text("News")
 			}.tag(4)
 			/*NavigationView {
 				VStack {
