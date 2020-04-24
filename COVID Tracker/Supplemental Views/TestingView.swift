@@ -10,383 +10,296 @@ import SwiftUI
 
 struct TestingView: View {
     @State private var searchQuery: String = ""
+	@ObservedObject var fetch = getTesting()
 	let locStates = ["Arizona", "California", "Delaware", "Florida", "Massachusetts", "Nevada", "New Jersey", "New York", "Pennsylvania", "Texas", "Utah", "Washington"]
 	
 	var body: some View {
 		VStack {
 			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(8)
-			List(self.locStates, id: \.self) { item in
-				NavigationLink(destination: DetailView4(loc: item).navigationBarTitle(item))
-				{
-					Text(item)
-					.font(.subheadline)
-					.bold()
-					.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+			List {
+				Section(header: Text("\nArizona").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.arizona.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
 				}
+				Section(header: Text("California").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.california.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Delaware").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.delaware.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Florida").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.florida.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Massachusetts").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.massachusetts.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Nevada").font(.subheadline)
+				.bold()) {
+					ForEach(fetch.nevada.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.font(.subheadline)
+									.bold()
+									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Spacer()
+							}
+						}
+					}
+				}
+				/*Section(header: Text("New Jersey")) {
+					ForEach(fetch.newJersey.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("New York")) {
+					ForEach(fetch.newYork.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Pennsylvania")) {
+					ForEach(fetch.pennsylvania.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Texas")) {
+					ForEach(fetch.texas.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}*/
+				/*Section(header: Text("Utah")) {
+					ForEach(fetch.utah.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}
+				Section(header: Text("Washington")) {
+					ForEach(fetch.washington.filter {
+						self.searchQuery.isEmpty ?
+							true :
+							"\($0)".contains(self.searchQuery)
+					}, id: \.name) { item in
+						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
+							VStack(alignment:.leading){
+								Spacer()
+								Text(item.name)
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+									.font(.subheadline)
+									.bold()
+								Spacer()
+							}
+						}
+					}
+				}*/
 			}.listStyle(GroupedListStyle())
 			.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }
 
-struct DetailView4: View {
-	let loc : String
-	@ObservedObject var fetch = getTesting()
+struct TestDetail: View {
+	let item: Testing!
 	
 	var body: some View {
-			VStack {
-				if(loc == "Arizona") {
-					List(fetch.arizona.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
+		List {
+			Section(header: Text("\nName")
+				.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+				.font(.subheadline)
+				.bold()) {
+				VStack (alignment:.leading){
+					Spacer()
+					Text(item.name)
+						.font(.subheadline)
+						.bold()
+					Spacer()
 				}
-				else if(loc == "California") {
-					List(fetch.california.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
+			}
+			Section(header: Text("Transportation")
+				.foregroundColor(.red)
+				.font(.subheadline)
+				.bold()) {
+				VStack (alignment:.leading){
+					Spacer()
+					Text(item.transportation)
+						.font(.subheadline)
+						.bold()
+					Spacer()
 				}
-				else if(loc == "Delaware") {
-					List(fetch.delaware.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
+			}
+			Section(header: Text("Updated")
+				.foregroundColor(.orange)
+				.font(.subheadline)
+				.bold()) {
+				VStack (alignment:.leading){
+					Spacer()
+					Text(item.updated)
+						.font(.subheadline)
+						.bold()
+					Spacer()
 				}
-				else if(loc == "Florida") {
-					List(fetch.florida.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
+			}
+			Section(header: Text("Description")
+				.foregroundColor(.green)
+				.font(.subheadline)
+				.bold()) {
+				VStack (alignment:.leading){
+					Spacer()
+					Text(item.description)
+						.font(.subheadline)
+						.bold()
+					Spacer()
 				}
-				else if(loc == "Massachusetts") {
-					List(fetch.massachusetts.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Nevada") {
-					List(fetch.nevada.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "New Jersey") {
-					List(fetch.delaware.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "New York") {
-					List(fetch.delaware.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Delaware") {
-					List(fetch.delaware.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Pennsylvania") {
-					List(fetch.delaware.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Texas") {
-					List(fetch.texas.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Utah") {
-					List(fetch.utah.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-				else if(loc == "Washington") {
-					List(fetch.washington.self) { item in
-						VStack(alignment:.leading){
-							Spacer()
-							Text("Name")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.name)
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("Transportation")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(item.transportation)
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-							Spacer()
-						}
-					}.listStyle(GroupedListStyle())
-						.environment(\.horizontalSizeClass, .regular)
-					//Banner()
-				}
-		}
+			}
+		}.listStyle(GroupedListStyle())
+			.environment(\.horizontalSizeClass, .regular)
 	}
 }
 
@@ -611,7 +524,6 @@ struct Testing : Codable, Identifiable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		//id = try values.decodeIfPresent(Int.self, forKey: .id)
 		organization_id = try values.decodeIfPresent(String.self, forKey: .organization_id)
 		name = try values.decodeIfPresent(String.self, forKey: .name) ?? "N/A"
 		alternate_name = try values.decodeIfPresent(String.self, forKey: .alternate_name) ?? "N/A"
@@ -625,8 +537,8 @@ struct Testing : Codable, Identifiable {
 	}
 }
 
-struct Physical_address : Codable {
-	let id : String!
+struct Physical_address : Codable, Identifiable {
+	let id = UUID()
 	let location_id : String!
 	let address_1 : String!
 	let city : String!
@@ -636,7 +548,7 @@ struct Physical_address : Codable {
 	let country : String!
 
 	enum CodingKeys: String, CodingKey {
-		case id = "id"
+		//case id = "id"
 		case location_id = "location_id"
 		case address_1 = "address_1"
 		case city = "city"
@@ -648,7 +560,7 @@ struct Physical_address : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
+		//id = try values.decodeIfPresent(String.self, forKey: .id)
 		location_id = try values.decodeIfPresent(String.self, forKey: .location_id)
 		address_1 = try values.decodeIfPresent(String.self, forKey: .address_1)
 		city = try values.decodeIfPresent(String.self, forKey: .city)
@@ -659,15 +571,15 @@ struct Physical_address : Codable {
 	}
 }
 
-struct Regular_schedule : Codable {
-	let id : String!
+struct Regular_schedule : Codable, Identifiable {
+	let id = UUID()
 	let location_id : String!
 	let weekday : String!
 	let opens_at : String!
 	let closes_at : String!
 
 	enum CodingKeys: String, CodingKey {
-		case id = "id"
+		//case id = "id"
 		case location_id = "location_id"
 		case weekday = "weekday"
 		case opens_at = "opens_at"
@@ -676,7 +588,7 @@ struct Regular_schedule : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
+		//id = try values.decodeIfPresent(String.self, forKey: .id)
 		location_id = try values.decodeIfPresent(String.self, forKey: .location_id)
 		weekday = try values.decodeIfPresent(String.self, forKey: .weekday)
 		opens_at = try values.decodeIfPresent(String.self, forKey: .opens_at)
@@ -684,8 +596,8 @@ struct Regular_schedule : Codable {
 	}
 }
 
-struct Phones : Codable {
-	let id : String!
+struct Phones : Codable, Identifiable {
+	let id = UUID()
 	let location_id : String!
 	let number : String!
 	let ext : String!
@@ -694,7 +606,7 @@ struct Phones : Codable {
 	let description : String!
 
 	enum CodingKeys: String, CodingKey {
-		case id = "id"
+		//case id = "id"
 		case location_id = "location_id"
 		case number = "number"
 		case ext = "extension"
@@ -705,7 +617,7 @@ struct Phones : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
+		//id = try values.decodeIfPresent(String.self, forKey: .id)
 		location_id = try values.decodeIfPresent(String.self, forKey: .location_id)
 		number = try values.decodeIfPresent(String.self, forKey: .number)
 		ext = try values.decodeIfPresent(String.self, forKey: .ext)
