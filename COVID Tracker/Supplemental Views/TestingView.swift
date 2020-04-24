@@ -11,7 +11,6 @@ import SwiftUI
 struct TestingView: View {
     @State private var searchQuery: String = ""
 	@ObservedObject var fetch = getTesting()
-	let locStates = ["Arizona", "California", "Delaware", "Florida", "Massachusetts", "Nevada", "New Jersey", "New York", "Pennsylvania", "Texas", "Utah", "Washington"]
 	
 	var body: some View {
 		VStack {
@@ -249,57 +248,60 @@ struct TestDetail: View {
 	let item: Testing!
 	
 	var body: some View {
-		List {
-			Section(header: Text("\nName")
-				.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-				.font(.subheadline)
-				.bold()) {
-				VStack (alignment:.leading){
-					Spacer()
-					Text(item.name)
-						.font(.subheadline)
-						.bold()
-					Spacer()
+		VStack {
+			List {
+				Section(header: Text("\nName")
+					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+					.font(.subheadline)
+					.bold()) {
+					VStack (alignment:.leading){
+						Spacer()
+						Text(item.name)
+							.font(.subheadline)
+							.bold()
+						Spacer()
+					}
 				}
-			}
-			Section(header: Text("Transportation")
-				.foregroundColor(.red)
-				.font(.subheadline)
-				.bold()) {
-				VStack (alignment:.leading){
-					Spacer()
-					Text(item.transportation)
-						.font(.subheadline)
-						.bold()
-					Spacer()
+				Section(header: Text("Transportation")
+					.foregroundColor(.red)
+					.font(.subheadline)
+					.bold()) {
+					VStack (alignment:.leading){
+						Spacer()
+						Text(item.transportation)
+							.font(.subheadline)
+							.bold()
+						Spacer()
+					}
 				}
-			}
-			Section(header: Text("Updated")
-				.foregroundColor(.orange)
-				.font(.subheadline)
-				.bold()) {
-				VStack (alignment:.leading){
-					Spacer()
-					Text(item.updated)
-						.font(.subheadline)
-						.bold()
-					Spacer()
+				Section(header: Text("Updated")
+					.foregroundColor(.orange)
+					.font(.subheadline)
+					.bold()) {
+					VStack (alignment:.leading){
+						Spacer()
+						Text(item.updated)
+							.font(.subheadline)
+							.bold()
+						Spacer()
+					}
 				}
-			}
-			Section(header: Text("Description")
-				.foregroundColor(.green)
-				.font(.subheadline)
-				.bold()) {
-				VStack (alignment:.leading){
-					Spacer()
-					Text(item.description)
-						.font(.subheadline)
-						.bold()
-					Spacer()
+				Section(header: Text("Description")
+					.foregroundColor(.green)
+					.font(.subheadline)
+					.bold()) {
+					VStack (alignment:.leading){
+						Spacer()
+						Text(item.description)
+							.font(.subheadline)
+							.bold()
+						Spacer()
+					}
 				}
-			}
-		}.listStyle(GroupedListStyle())
-			.environment(\.horizontalSizeClass, .regular)
+			}.listStyle(GroupedListStyle())
+				.environment(\.horizontalSizeClass, .regular)
+			Banner()
+		}
 	}
 }
 
