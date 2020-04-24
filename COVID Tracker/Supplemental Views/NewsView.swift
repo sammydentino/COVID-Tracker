@@ -16,7 +16,7 @@ struct NewsView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading) {
-			List (fetch.news2.articles) { item in
+			List (fetch.news.articles) { item in
 				NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.title), displayMode: .inline)) {
 					VStack (alignment: .leading){
 						HStack {
@@ -48,16 +48,6 @@ struct NewsView: View {
 	}
 }
 
-struct DetailView3: View {
-	let news : News
-	
-	var body: some View {
-		VStack {
-			Text("Hello!")
-		}
-	}
-}
-
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {
         NewsView()
@@ -77,65 +67,27 @@ struct WebView : UIViewRepresentable {
 }
 
 class getNews : ObservableObject {
-	@Published var news : [News]!
-	@Published var news2 : News2!
+	@Published var news : News!
 	
 	init() {
-		//loadNews()
-		loadNews2()
+		loadNews()
 	}
 	func loadNews() {
-		let urlString = "https://covidtracking.com/api/press"
-		
-		if let url = URL(string: urlString) {
-			if let d = try? Data(contentsOf: url) {
-				// we're OK to parse!
-				let decoder = JSONDecoder()
-				if let data = try? decoder.decode([News].self, from: d) {
-					news = data
-				}
-			}
-		}
-	}
-	func loadNews2() {
 		let urlString = "https://newsapi.org/v2/everything?q=COVID-19&sortBy=publishedAt&language=en&apiKey=d892aab794d64e4899eb9f61129167ed&pageSize=100&page=1"
 		
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
 				// we're OK to parse!
 				let decoder = JSONDecoder()
-				if let data = try? decoder.decode(News2.self, from: d) {
-					news2 = data
+				if let data = try? decoder.decode(News.self, from: d) {
+					news = data
 				}
 			}
 		}
 	}
 }
 
-struct News : Codable, Identifiable {
-	let id = UUID()
-	let title : String!
-	let url : String!
-	let publication : String!
-	//let publishDate : String!
-
-	enum CodingKeys: String, CodingKey {
-		case title = "title"
-		case url = "url"
-		case publication = "publication"
-		//case publishDate = "publishDate"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		title = try values.decodeIfPresent(String.self, forKey: .title) ?? "Not Available"
-		url = try values.decodeIfPresent(String.self, forKey: .url) ?? "www.google.com"
-		publication = try values.decodeIfPresent(String.self, forKey: .publication) ?? "N/A"
-		//publishDate = try values.decodeIfPresent(String.self, forKey: .publishDate) ?? "N/A"
-	}
-}
-
-struct News2 : Codable {
+struct News : Codable {
 	let status : String!
 	let totalResults : Int!
 	let articles : [Articles]!
