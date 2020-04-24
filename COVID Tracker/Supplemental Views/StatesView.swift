@@ -111,7 +111,7 @@ struct StatesView: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
 			SearchBar(text: self.$searchQuery,
-					  placeholder: "Search for a State").padding(8)
+					  placeholder: "Case Sensitive").padding(8)
 			List {
 				Section(header: Text("\nSorted by Most Cases")
 					.font(.system(size: 12))

@@ -16,6 +16,7 @@ struct NewsView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading) {
+			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(8)
 			List (fetch.news.articles) { item in
 				NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.title), displayMode: .inline)) {
 					VStack (alignment: .leading){
