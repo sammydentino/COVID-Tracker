@@ -8,20 +8,6 @@
 
 import SwiftUI
 
-/*
-let id = UUID()
-let organization_id : String!
-let name : String!
-let alternate_name : String!
-let description : String!
-let transportation : String!
-let updated : String!
-let featured : String!
-let physical_address : [Physical_address]!
-let phones : [Phones]!
-let regular_schedule : [Regular_schedule]!
-*/
-
 struct TestingView: View {
     @State private var searchQuery: String = ""
 	let locStates = ["Arizona", "California", "Delaware", "Florida", "Massachusetts", "Nevada", "New Jersey", "New York", "Pennsylvania", "Texas", "Utah", "Washington"]
