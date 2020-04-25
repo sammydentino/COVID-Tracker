@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB116B752453BDEB00A07629 /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B742453BDEB00A07629 /* SlidingTabView */; };
 		EB116B772453BE6A00A07629 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB116B762453BE6A00A07629 /* TempView.swift */; };
 		EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B792453C1A300A07629 /* BottomBar-SwiftUI */; };
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
@@ -63,7 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */,
-				EB116B752453BDEB00A07629 /* SlidingTabView in Frameworks */,
 				EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,7 +209,6 @@
 			);
 			name = "COVID Tracker";
 			packageProductDependencies = (
-				EB116B742453BDEB00A07629 /* SlidingTabView */,
 				EB116B792453C1A300A07629 /* BottomBar-SwiftUI */,
 			);
 			productName = "COVID-19 Data";
@@ -243,7 +240,6 @@
 			);
 			mainGroup = EB85049E2448196C00BA0CF0;
 			packageReferences = (
-				EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */,
 				EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
@@ -533,14 +529,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 		EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
@@ -552,11 +540,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EB116B742453BDEB00A07629 /* SlidingTabView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */;
-			productName = SlidingTabView;
-		};
 		EB116B792453C1A300A07629 /* BottomBar-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
