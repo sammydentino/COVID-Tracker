@@ -7,11 +7,12 @@
 //
 
 import SwiftUI
+import BottomBar_SwiftUI
 
 struct TotalView: View {
 	@ObservedObject var fetch = getAll()
-
-    var body: some View {
+	
+	var body: some View {
 		VStack (alignment: .center, spacing: 0) {
 			List {
 				Section(header: Text("\nCases")
@@ -161,7 +162,7 @@ struct TotalView: View {
 
 struct TotalView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalView()
+		TotalView()
     }
 }
 

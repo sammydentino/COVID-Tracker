@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB116B752453BDEB00A07629 /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B742453BDEB00A07629 /* SlidingTabView */; };
+		EB116B772453BE6A00A07629 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB116B762453BE6A00A07629 /* TempView.swift */; };
+		EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B792453C1A300A07629 /* BottomBar-SwiftUI */; };
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
 		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
@@ -30,6 +33,7 @@
 		87BCE72B6541974AA7D562D4 /* Pods_COVID_19_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE65796B52CB6E9C0133995E /* Pods-COVID Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.debug.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB116B762453BE6A00A07629 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
 		EB132011244F9CEA0092B927 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		EB390AFA24529985003657D4 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */,
+				EB116B752453BDEB00A07629 /* SlidingTabView in Frameworks */,
 				EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +151,7 @@
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB390AFA24529985003657D4 /* TestingView.swift */,
+				EB116B762453BE6A00A07629 /* TempView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -203,6 +210,10 @@
 			dependencies = (
 			);
 			name = "COVID Tracker";
+			packageProductDependencies = (
+				EB116B742453BDEB00A07629 /* SlidingTabView */,
+				EB116B792453C1A300A07629 /* BottomBar-SwiftUI */,
+			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -231,6 +242,10 @@
 				Base,
 			);
 			mainGroup = EB85049E2448196C00BA0CF0;
+			packageReferences = (
+				EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */,
+				EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -306,6 +321,7 @@
 				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
+				EB116B772453BE6A00A07629 /* TempView.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
 				EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */,
@@ -460,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2b1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -485,7 +501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2b1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -515,6 +531,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB116B742453BDEB00A07629 /* SlidingTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB116B732453BDEB00A07629 /* XCRemoteSwiftPackageReference "SlidingTabView" */;
+			productName = SlidingTabView;
+		};
+		EB116B792453C1A300A07629 /* BottomBar-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
+			productName = "BottomBar-SwiftUI";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB85049F2448196C00BA0CF0 /* Project object */;
 }
