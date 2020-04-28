@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB116B772453BE6A00A07629 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB116B762453BE6A00A07629 /* TempView.swift */; };
 		EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B792453C1A300A07629 /* BottomBar-SwiftUI */; };
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
 		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
@@ -19,9 +18,22 @@
 		EB8504B42448196D00BA0CF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B32448196D00BA0CF0 /* Preview Assets.xcassets */; };
 		EB8504B72448196D00BA0CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */; };
 		EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
+		EB8A2636245528A600C03C53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A2635245528A600C03C53 /* AppDelegate.swift */; };
+		EB8A2638245528A600C03C53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A2637245528A600C03C53 /* ContentView.swift */; };
+		EB8A263A245528A700C03C53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8A2639245528A700C03C53 /* Assets.xcassets */; };
+		EB8A263D245528A700C03C53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8A263C245528A700C03C53 /* Preview Assets.xcassets */; };
+		EB8A2640245528A700C03C53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB8A263E245528A700C03C53 /* Main.storyboard */; };
+		EB8A265524552CAD00C03C53 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A265424552CAD00C03C53 /* TotalView.swift */; };
+		EB8A265824552D3700C03C53 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
+		EB8A265A24552D5000C03C53 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A265924552D5000C03C53 /* CountryView.swift */; };
+		EB8A265C24552E0300C03C53 /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A265B24552E0300C03C53 /* StatesView.swift */; };
+		EB8A265E24552E2E00C03C53 /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A265D24552E2E00C03C53 /* SourcesView.swift */; };
+		EB8A266024552E4500C03C53 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A265F24552E4500C03C53 /* TestingView.swift */; };
 		EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
 		EBB9D9462450095300620ACE /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9D9452450095200620ACE /* SourcesView.swift */; };
 		EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE9F42244A724F00EA286F /* StatesView.swift */; };
+		EBD9426F2457BA0000AAD774 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */; };
+		EBD942712457BA5400AAD774 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD942702457BA5400AAD774 /* TabBarController.swift */; };
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +44,6 @@
 		87BCE72B6541974AA7D562D4 /* Pods_COVID_19_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_19_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE65796B52CB6E9C0133995E /* Pods-COVID Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.debug.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVID_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB116B762453BE6A00A07629 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
 		EB132011244F9CEA0092B927 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		EB390AFA24529985003657D4 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -45,8 +56,23 @@
 		EB8504B62448196D00BA0CF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB8504B82448196D00BA0CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8504C0244828EE00BA0CF0 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		EB8A2633245528A600C03C53 /* COVID Tracker macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8A2635245528A600C03C53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EB8A2637245528A600C03C53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB8A2639245528A700C03C53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB8A263C245528A700C03C53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB8A263F245528A700C03C53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EB8A2641245528A700C03C53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB8A2642245528A700C03C53 /* COVID_Tracker_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = COVID_Tracker_macOS.entitlements; sourceTree = "<group>"; };
+		EB8A265424552CAD00C03C53 /* TotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		EB8A265924552D5000C03C53 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		EB8A265B24552E0300C03C53 /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
+		EB8A265D24552E2E00C03C53 /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
+		EB8A265F24552E4500C03C53 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EBB9D9452450095200620ACE /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
 		EBBE9F42244A724F00EA286F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
+		EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
+		EBD942702457BA5400AAD774 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EBDD6F0E244933BD00372189 /* COVID Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID Tracker.entitlements"; sourceTree = "<group>"; };
 		EBDD6F10244933BD00372189 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EBDD6F12244933C700372189 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -63,6 +89,13 @@
 			files = (
 				EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */,
 				EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8A2630245528A600C03C53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8504A92448196C00BA0CF0 /* COVID Tracker */,
+				EB8A2634245528A600C03C53 /* COVID Tracker macOS */,
 				EB8504A82448196C00BA0CF0 /* Products */,
 				EBDD6F0F244933BD00372189 /* Frameworks */,
 				298BA46E99FD23E1372AE821 /* Pods */,
@@ -103,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8504A72448196C00BA0CF0 /* COVID Tracker.app */,
+				EB8A2633245528A600C03C53 /* COVID Tracker macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +167,33 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EB8A2634245528A600C03C53 /* COVID Tracker macOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB8A2635245528A600C03C53 /* AppDelegate.swift */,
+				EB8A2637245528A600C03C53 /* ContentView.swift */,
+				EB8A2639245528A700C03C53 /* Assets.xcassets */,
+				EB8A263E245528A700C03C53 /* Main.storyboard */,
+				EB8A2641245528A700C03C53 /* Info.plist */,
+				EB8A2642245528A700C03C53 /* COVID_Tracker_macOS.entitlements */,
+				EB8A263B245528A700C03C53 /* Preview Content */,
+				EB8A265424552CAD00C03C53 /* TotalView.swift */,
+				EB8A265924552D5000C03C53 /* CountryView.swift */,
+				EB8A265B24552E0300C03C53 /* StatesView.swift */,
+				EB8A265D24552E2E00C03C53 /* SourcesView.swift */,
+				EB8A265F24552E4500C03C53 /* TestingView.swift */,
+			);
+			path = "COVID Tracker macOS";
+			sourceTree = "<group>";
+		};
+		EB8A263B245528A700C03C53 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EB8A263C245528A700C03C53 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		EB8F12052451186E00845269 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +211,6 @@
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB390AFA24529985003657D4 /* TestingView.swift */,
-				EB116B762453BE6A00A07629 /* TempView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -175,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				EB8504C0244828EE00BA0CF0 /* Int.swift */,
+				EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */,
+				EBD942702457BA5400AAD774 /* TabBarController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +278,23 @@
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EB8A2632245528A600C03C53 /* COVID Tracker macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB8A2645245528A700C03C53 /* Build configuration list for PBXNativeTarget "COVID Tracker macOS" */;
+			buildPhases = (
+				EB8A262F245528A600C03C53 /* Sources */,
+				EB8A2630245528A600C03C53 /* Frameworks */,
+				EB8A2631245528A600C03C53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "COVID Tracker macOS";
+			productName = "COVID Tracker macOS";
+			productReference = EB8A2633245528A600C03C53 /* COVID Tracker macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -226,6 +306,9 @@
 				ORGANIZATIONNAME = "Sammy Dentino";
 				TargetAttributes = {
 					EB8504A62448196C00BA0CF0 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					EB8A2632245528A600C03C53 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
@@ -247,6 +330,7 @@
 			projectRoot = "";
 			targets = (
 				EB8504A62448196C00BA0CF0 /* COVID Tracker */,
+				EB8A2632245528A600C03C53 /* COVID Tracker macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -259,6 +343,16 @@
 				EB8504B72448196D00BA0CF0 /* LaunchScreen.storyboard in Resources */,
 				EB8504B42448196D00BA0CF0 /* Preview Assets.xcassets in Resources */,
 				EB8504B12448196D00BA0CF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8A2631245528A600C03C53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8A2640245528A700C03C53 /* Main.storyboard in Resources */,
+				EB8A263D245528A700C03C53 /* Preview Assets.xcassets in Resources */,
+				EB8A263A245528A700C03C53 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,12 +411,28 @@
 				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
-				EB116B772453BE6A00A07629 /* TempView.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
 				EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
+				EBD942712457BA5400AAD774 /* TabBarController.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* ContentView.swift in Sources */,
+				EBD9426F2457BA0000AAD774 /* UIKitTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB8A262F245528A600C03C53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB8A265A24552D5000C03C53 /* CountryView.swift in Sources */,
+				EB8A265524552CAD00C03C53 /* TotalView.swift in Sources */,
+				EB8A265C24552E0300C03C53 /* StatesView.swift in Sources */,
+				EB8A2638245528A600C03C53 /* ContentView.swift in Sources */,
+				EB8A265E24552E2E00C03C53 /* SourcesView.swift in Sources */,
+				EB8A266024552E4500C03C53 /* TestingView.swift in Sources */,
+				EB8A2636245528A600C03C53 /* AppDelegate.swift in Sources */,
+				EB8A265824552D3700C03C53 /* Int.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +445,14 @@
 				EB8504B62448196D00BA0CF0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB8A263E245528A700C03C53 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB8A263F245528A700C03C53 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -391,6 +509,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -445,6 +564,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,6 +625,54 @@
 			};
 			name = Release;
 		};
+		EB8A2643245528A700C03C53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "COVID Tracker macOS/COVID_Tracker_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = G9X97N3XGU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "COVID Tracker macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EB8A2644245528A700C03C53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "COVID Tracker macOS/COVID_Tracker_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = G9X97N3XGU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "COVID Tracker macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -522,6 +690,15 @@
 			buildConfigurations = (
 				EB8504BC2448196D00BA0CF0 /* Debug */,
 				EB8504BD2448196D00BA0CF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB8A2645245528A700C03C53 /* Build configuration list for PBXNativeTarget "COVID Tracker macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB8A2643245528A700C03C53 /* Debug */,
+				EB8A2644245528A700C03C53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

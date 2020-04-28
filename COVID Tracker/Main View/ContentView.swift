@@ -7,8 +7,104 @@
 //
 
 import SwiftUI
-import BottomBar_SwiftUI
+//import BottomBar_SwiftUI
 
+struct ContentView: View {
+	
+	@State var selectedView = 2
+	@State public var searchQuery : String = ""
+	
+	init() {
+		UINavigationBar.appearance().backgroundColor = .systemBackground
+	}
+    
+	//tab controller -> navigation controller -> each tab's views
+	var body: some View {
+		/*UIKitTabView([
+            UIKitTabView.Tab(view: TestingView(), title: "Testing", image: "info.circle"),
+            UIKitTabView.Tab(view: CountryView(), title: "Countries", image: "map"),
+			UIKitTabView.Tab(view: TotalView(), title: "Global", image: "globe"),
+			UIKitTabView.Tab(view: StatesView(), title: "States", image: "house"),
+			UIKitTabView.Tab(view: NewsView(), title: "News", image: "tray.2")
+        ])*/
+		TabView(selection: $selectedView) {
+			NavigationView {
+				VStack {
+					TestingView()
+						.navigationBarTitle(Text("Testing Centers"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "info.circle")
+				Text("Testing")
+			}.tag(0)
+			NavigationView {
+				VStack {
+					StatesView()
+						.navigationBarTitle(Text("All States"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "house")
+				Text("States")
+			}.tag(1)
+			NavigationView {
+				VStack(alignment: .center, spacing: 0) {
+					TotalView()
+						.navigationBarTitle(Text("COVID-19 Tracker"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "globe")
+				Text("Global")
+			}.tag(2)
+			NavigationView {
+				VStack {
+					CountryView()
+						.navigationBarTitle(Text("All Countries"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "map")
+				Text("Countries")
+			}.tag(3)
+			NavigationView {
+				VStack {
+					NewsView()
+						.navigationBarTitle(Text("News"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "tray.2")
+				Text("News")
+			}.tag(4)
+			/*NavigationView {
+				VStack {
+					SourcesView()
+						.navigationBarTitle(Text("Sources"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "info.circle")
+				Text("Sources")
+			}.tag(5)*/
+		}.animation(.default)
+    }
+}
+
+/*
 let items: [BottomBarItem] = [
     BottomBarItem(icon: "globe", title: "Global", color: .purple),
     BottomBarItem(icon: "map", title: "Countries", color: .pink),
@@ -29,7 +125,14 @@ struct ContentView: View {
 		
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
-		VStack {
+		UIKitTabView([
+            UIKitTabView.Tab(view: TestingView(), title: "Testing", image: "info.circle"),
+            UIKitTabView.Tab(view: CountryView(), title: "Countries", image: "map"),
+			UIKitTabView.Tab(view: TotalView(), title: "Global", image: "globe"),
+			UIKitTabView.Tab(view: StatesView(), title: "States", image: "house"),
+			UIKitTabView.Tab(view: NewsView(), title: "News", image: "tray.2")
+        ])
+		/*VStack {
 			TabView(selection: $selectedIndex) {
 				NavigationView {
 					VStack(alignment: .center, spacing: 0) {
@@ -64,9 +167,9 @@ struct ContentView: View {
 					}
 				}.tag(3)
 			}
-		}.edgesIgnoringSafeArea(.all).padding(EdgeInsets(top: 2.5, leading: 0, bottom: 0, trailing: 0)).animation(.default)
+		}.edgesIgnoringSafeArea(.all).padding(EdgeInsets(top: 2.5, leading: 0, bottom: 0, trailing: 0)).animation(.default)*/
 	}
-}
+}*/
 
 struct ContentView_Previews: PreviewProvider {
     

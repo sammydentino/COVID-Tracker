@@ -1,171 +1,172 @@
 //
 //  TotalView.swift
-//  COVIDradar
+//  COVID Tracker macOS
 //
-//  Created by Sammy Dentino on 4/15/20.
+//  Created by Sammy Dentino on 4/25/20.
 //  Copyright © 2020 Sammy Dentino. All rights reserved.
 //
 
 import SwiftUI
 
 struct TotalView: View {
-	@ObservedObject var fetch = getAll()
+	var fetch = getAll()
 	
 	var body: some View {
-		VStack (alignment: .center, spacing: 0) {
+		VStack (alignment: .leading, spacing: 0) {
 			List {
-				Section(header: Text("\nCases")
-					.font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)),
-						footer: Text("github.com/CSSEGISandData/COVID-19")
-							.font(.system(size: 12))
-							.foregroundColor(.gray).bold()) {
-					VStack {
+				Spacer()
+				VStack {
+					Text("\nCases")
+					.font(.headline).bold().foregroundColor(.blue)
+					Spacer()
+					HStack {
+						Group {
+						Text("Total")
+							.font(.subheadline)
+							.bold()
 						Spacer()
-						HStack {
-							Text("Total")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.cases.withCommas())
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
+						Text(fetch.global.cases.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.blue)
 						}
-						Spacer()
-						HStack {
-							Text("Active")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.active.withCommas())
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()
-						HStack{
-							Text("Critical")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.critical.withCommas())
-								.font(.subheadline)
-								.bold()
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-						}
-						Spacer()
-						HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.todayCases.withCommas())
-								.font(.subheadline)
-								.bold()
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-						}
-						Spacer()
 					}
-				}
-				Section(header: Text("Deaths")
-					.font(.headline)
-					.foregroundColor(.red)) {
-					VStack {
+					Spacer()
+					HStack {
+						Group {
+						Text("Active")
+							.font(.subheadline)
+							.bold()
 						Spacer()
-						HStack {
-							Text("Total")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.deaths.withCommas())
-								.foregroundColor(.red)
-								.font(.subheadline)
-								.bold()
+						Text(fetch.global.active.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.blue)
 						}
-						Spacer()
-						HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.todayDeaths.withCommas())
-								.foregroundColor(.red)
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()
 					}
-				}
-				Section(header: Text("Recovered")
-					.font(.headline)
-					.foregroundColor(.orange)) {
-					VStack {
+					Spacer()
+					/*HStack{
+						Text("Critical")
+							.font(.subheadline)
+							.bold()
 						Spacer()
-						HStack {
-							Text("Total")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.global.recovered.withCommas())
-								.foregroundColor(.orange)
-								.font(.subheadline)
-								.bold()
-						}
+						Text(fetch.global.critical.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.blue)
+					}*/
+					Spacer()
+					HStack {
+						Text("New Today")
+							.font(.subheadline)
+							.bold()
 						Spacer()
-						HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.extras.global.newRecovered.withCommas())
-								.foregroundColor(.orange)
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()
+						Text(fetch.global.todayCases.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.blue)
 					}
+					Spacer()
+					Text("github.com/CSSEGISandData/COVID-19")
+					.font(.system(size: 12)).bold()
+					.foregroundColor(.gray)
 				}
-				Section(header: Text("Tests")
+				Spacer()
+				VStack {
+					Text("Deaths")
 					.font(.headline)
-					.foregroundColor(.green)) {
+					.foregroundColor(.red)
 					HStack {
 						Text("Total")
 							.font(.subheadline)
 							.bold()
 						Spacer()
-						Text(fetch.global.tests.withCommas())
-							.foregroundColor(.green)
+						Text(fetch.global.deaths.withCommas())
 							.font(.subheadline)
 							.bold()
+							.foregroundColor(.red)
+					}
+					Spacer()
+					HStack {
+						Text("New Today")
+							.font(.subheadline)
+							.bold()
+						Spacer()
+						Text(fetch.global.todayDeaths.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.red)
+					}
+					Spacer()
+				}
+				Spacer()
+				VStack {
+					Text("Recovered")
+					.font(.headline)
+					.foregroundColor(.orange)
+					Spacer()
+					HStack {
+						Text("Total")
+							.font(.subheadline)
+							.bold()
+						Spacer()
+						Text(fetch.global.recovered.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.orange)
+					}
+					Spacer()
+					HStack {
+						Text("New Today")
+							.font(.subheadline)
+							.bold()
+						Spacer()
+						Text(fetch.extras.global.newRecovered.withCommas())
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(.orange)
+					}
+					Spacer()
+				}
+				Spacer()
+				VStack {
+					Text("Tests")
+					.font(.headline)
+					.foregroundColor(.green)
+					HStack {
+					Text("Total")
+						.font(.subheadline)
+						.bold()
+					Spacer()
+					Text(fetch.global.tests.withCommas())
+						.font(.subheadline)
+						.bold()
+						.foregroundColor(.green)
 					}
 				}
-				Section(header: Text("Affected Areas")
+				Spacer()
+				VStack {
+					Text("Affected Areas")
 					.font(.headline)
-					.foregroundColor(.purple)) {
+					.foregroundColor(.purple)
 					HStack {
 						Text("Total")
 							.font(.subheadline)
 							.bold()
 						Spacer()
 						Text(fetch.global.affectedCountries.withCommas())
-							.foregroundColor(.purple)
 							.font(.subheadline)
 							.bold()
+							.foregroundColor(.purple)
 					}
 				}
-			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
+				//Spacer()
+			}
 		}
     }
 }
 
-struct TotalView_Previews: PreviewProvider {
-    static var previews: some View {
-		TotalView()
-    }
-}
-
-class getAll : ObservableObject {
+class getAll {
 	@Published var global : Global!
 	@Published var extras : Welcome!
 	

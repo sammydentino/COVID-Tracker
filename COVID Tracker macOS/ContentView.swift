@@ -1,47 +1,34 @@
 //
-//  TempView.swift
-//  COVID Tracker
+//  ContentView.swift
+//  COVID Tracker macOS
 //
-//  Created by Sammy Dentino on 4/24/20.
+//  Created by Sammy Dentino on 4/25/20.
 //  Copyright © 2020 Sammy Dentino. All rights reserved.
 //
 
 import SwiftUI
 
-struct TempView: View {
-	var body: some View {
-		Text("")
-	}
-}
-
-struct TempView_Previews: PreviewProvider {
-    static var previews: some View {
-        TempView()
-    }
-}
-
-//Old Style Content View
-/*
 struct ContentView: View {
-	
 	@State var selectedView = 2
 	@State public var searchQuery : String = ""
-	
-	init() {
-		UINavigationBar.appearance().backgroundColor = .systemBackground
-	}
     
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
-		TabView(selection: $selectedView) {
+		HStack {
+			SourcesView()
+			//CountryView()
+			TotalView()
+			//StatesView()
+			TestingView()
+		}
+		/*TabView {
 			NavigationView {
 				VStack {
 					TestingView()
 						.navigationBarTitle(Text("Testing Centers"))
-					Banner()
+					//Banner()
 				}
 			}
-			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "info.circle")
 				Text("Testing")
@@ -50,22 +37,20 @@ struct ContentView: View {
 				VStack {
 					StatesView()
 						.navigationBarTitle(Text("All States"))
-					Banner()
+					//Banner()
 				}
 			}
-			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "house")
 				Text("States")
 			}.tag(1)
 			NavigationView {
 				VStack(alignment: .center, spacing: 0) {
-					TempView()
-						.navigationBarTitle(Text("COVID-19 Tracker"))
-					Banner()
+					TotalView()
+						.navigationBarTitle(Text("Global"))
+					//Banner()
 				}
 			}
-			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "globe")
 				Text("Global")
@@ -74,39 +59,31 @@ struct ContentView: View {
 				VStack {
 					CountryView()
 						.navigationBarTitle(Text("All Countries"))
-					Banner()
+					//Banner()
 				}
 			}
-			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "map")
 				Text("Countries")
 			}.tag(3)
 			NavigationView {
 				VStack {
-					NewsView()
-						.navigationBarTitle(Text("News"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "tray.2")
-				Text("News")
-			}.tag(4)
-			/*NavigationView {
-				VStack {
 					SourcesView()
 						.navigationBarTitle(Text("Sources"))
-					Banner()
+					//Banner()
 				}
 			}
-			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
 				Image(systemName: "info.circle")
 				Text("Sources")
-			}.tag(5)*/
-		}.animation(.default)
+			}.tag(4)
+		}*/
     }
 }
-*/
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
