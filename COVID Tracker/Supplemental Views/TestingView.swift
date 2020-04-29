@@ -11,6 +11,7 @@ import SwiftUI
 struct TestingView: View {
     @State private var searchQuery: String = ""
 	@ObservedObject var fetch = getTesting()
+	@State var showingDetail = false
 	
 	var body: some View {
 		VStack {
@@ -23,14 +24,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -42,14 +45,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -61,14 +66,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -80,14 +87,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -99,14 +108,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -118,14 +129,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.font(.subheadline)
-									.bold()
-									.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
+							Text(item.name)
+								.font(.subheadline)
+								.bold()
+								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
 						}
 					}
@@ -243,6 +256,24 @@ struct TestingView: View {
 		}
 	}
 }
+/*
+let id = UUID()
+let location_id : String!
+let address_1 : String!
+let city : String!
+let region : String!
+let state_province : String!
+let postal_code : String!
+let country : String!
+
+let id = UUID()
+let location_id : String!
+let number : String!
+let ext : String!
+let type : String!
+let language : String!
+let description : String!
+*/
 
 struct TestDetail: View {
 	let item: Testing!
@@ -262,32 +293,67 @@ struct TestDetail: View {
 						Spacer()
 					}
 				}
-				Section(header: Text("Transportation")
+				Section(header: Text("Address")
 					.foregroundColor(.red)
 					.font(.subheadline)
 					.bold()) {
 					VStack (alignment:.leading){
 						Spacer()
-						Text(item.transportation)
+						ForEach(item.physical_address) { item in
+							Text(item.address_1 + ",")
+								.font(.subheadline)
+								.bold()
+							Text(item.city + " " + item.postal_code)
+								.font(.subheadline)
+								.bold()
+							/*Text(item.postal_code)
 							.font(.subheadline)
-							.bold()
+							.bold()*/
+						}
 						Spacer()
 					}
 				}
-				Section(header: Text("Updated")
+				Section(header: Text("Phone Number")
 					.foregroundColor(.orange)
 					.font(.subheadline)
 					.bold()) {
 					VStack (alignment:.leading){
 						Spacer()
-						Text(item.updated)
-							.font(.subheadline)
-							.bold()
+						ForEach(item.phones) { item in
+							Text(item.number)
+								.font(.subheadline)
+								.bold()
+						}
 						Spacer()
 					}
 				}
-				Section(header: Text("Description")
+				Section(header: Text("Location Hours\nSunday: 1, Monday: 2, Tuesday: 3, etc.")
 					.foregroundColor(.green)
+					.font(.subheadline)
+					.bold()) {
+					VStack (alignment:.leading){
+						Spacer()
+						ForEach(item.regular_schedule) { item in
+							HStack {
+								Text("Day: " + item.weekday)
+									.font(.subheadline)
+									.bold()
+								Spacer()
+								VStack (alignment: .trailing) {
+									Text("Opens: " + item.opens_at)
+										.font(.subheadline)
+										.bold()
+									Text("Closes: " + item.closes_at)
+										.font(.subheadline)
+										.bold()
+								}
+							}
+							Spacer()
+						}
+					}
+				}
+				Section(header: Text("Description")
+					.foregroundColor(.purple)
 					.font(.subheadline)
 					.bold()) {
 					VStack (alignment:.leading){

@@ -131,6 +131,7 @@ struct DetailView: View {
 struct CountryView: View {
 	@State private var searchQuery: String = ""
 	@ObservedObject var fetch = getCountries()
+	@State var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -145,11 +146,17 @@ struct CountryView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.country) { item in
-						NavigationLink(destination: DetailView(country: item).navigationBarTitle(item.country)) {
+						Button(action: {
+							self.showingDetail.toggle()
+						}) {
 							Text(item.country)
 								.font(.subheadline)
 								.bold()
 								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+						}.sheet(isPresented: self.$showingDetail) {
+							NavigationView {
+								DetailView(country: item).navigationBarTitle(item.country)
+							}
 						}
 					}
 				}

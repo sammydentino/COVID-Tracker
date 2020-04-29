@@ -10,15 +10,13 @@ import SwiftUI
 
 struct TotalView: View {
 	@ObservedObject var fetch = getAll()
+	@State var showingDetail = false
 	
 	var body: some View {
 		VStack (alignment: .center, spacing: 0) {
 			List {
 				Section(header: Text("\nCases")
-					.font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)),
-						footer: Text("github.com/CSSEGISandData/COVID-19")
-							.font(.system(size: 12))
-							.foregroundColor(.gray).bold()) {
+					.font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
 						Spacer()
 						HStack {
@@ -65,6 +63,18 @@ struct TotalView: View {
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 						}
 						Spacer()
+					}
+					Button(action: {
+						self.showingDetail.toggle()
+					}) {
+						Text("View Source Information")
+							.font(.subheadline)
+							.bold()
+							.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+					}.sheet(isPresented: $showingDetail) {
+						NavigationView {
+							SourcesView().navigationBarTitle("Sources")
+						}
 					}
 				}
 				Section(header: Text("Deaths")
@@ -287,7 +297,7 @@ struct GlobalExtras : Codable {
 		totalConfirmed = try values.decodeIfPresent(Int.self, forKey: .totalConfirmed)
 		newDeaths = try values.decodeIfPresent(Int.self, forKey: .newDeaths)
 		totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths)
-		newRecovered = try values.decodeIfPresent(Int.self, forKey: .newRecovered)
+		newRecovered = try values.decodeIfPresent(Int.self, forKey: .newRecovered) ?? 0
 		totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered)
 	}
 }

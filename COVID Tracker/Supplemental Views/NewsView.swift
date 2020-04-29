@@ -13,6 +13,7 @@ import URLImage
 struct NewsView: View {
     @State private var searchQuery: String = ""
 	@ObservedObject var fetch = getNews()
+	@State var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -37,13 +38,35 @@ struct NewsView: View {
 								.padding(EdgeInsets(top: 7.5, leading: 7.5, bottom: 0, trailing: 0))
 						}
 						Spacer()
-						Text(item.source.name)
-							.font(.subheadline)
-							.foregroundColor(.gray)
-							.bold()
-							.padding(EdgeInsets(top: 5, leading: 7.5, bottom: 7.5, trailing: 0))
 					}
 				}
+				/*Button(action: {
+					self.showingDetail.toggle()
+				}) {
+					VStack (alignment: .leading){
+						HStack {
+							URLImage(URLRequest(url: URL(string: item.urlToImage)!), delay: 0.25) { proxy in
+								proxy.image
+									.resizable()
+									.aspectRatio(contentMode: .fill)
+									.clipped()
+									.clipShape(Circle())
+							}
+							.frame(width: 60, height: 60)
+							.padding(EdgeInsets(top: 7.5, leading: 7.5, bottom: 0, trailing: 0))
+							Text(item.title)
+								.font(.subheadline)
+								.bold()
+								.lineLimit(3)
+								.padding(EdgeInsets(top: 7.5, leading: 7.5, bottom: 0, trailing: 0))
+						}
+						Spacer()
+					}
+				}.sheet(isPresented: self.$showingDetail) {
+					NavigationView {
+						 WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.title), displayMode: .inline)
+					}
+				}*/
 			}
 		}
 	}
