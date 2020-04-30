@@ -122,17 +122,6 @@ struct TotalView: View {
 								.bold()
 						}
 						Spacer()
-						/*HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text(fetch.extras.global.newRecovered.withCommas())
-								.foregroundColor(.orange)
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()*/
 					}
 				}
 				Section(header: Text("Tests")
@@ -177,14 +166,12 @@ struct TotalView_Previews: PreviewProvider {
 
 class getAll : ObservableObject {
 	@Published var global : Global!
-	@Published var extras : Welcome!
 	
 	init() {
 		loadAll()
-		loadExtras()
 	}
 	func loadAll(){
-		let urlString = "https://corona.lmao.ninja/v2/all"
+		let urlString = "https://disease.sh/v2/all"
 		
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
@@ -192,19 +179,6 @@ class getAll : ObservableObject {
 				let decoder = JSONDecoder()
 				if let data = try? decoder.decode(Global.self, from: d) {
 					global = data
-				}
-			}
-		}
-	}
-	func loadExtras() {
-		let urlString = "https://api.covid19api.com/summary"
-		
-		if let url = URL(string: urlString) {
-			if let d = try? Data(contentsOf: url) {
-				// we're OK to parse!
-				let decoder = JSONDecoder()
-				if let data = try? decoder.decode(Welcome.self, from: d) {
-					extras = data
 				}
 			}
 		}
@@ -257,47 +231,5 @@ struct Global : Codable {
 		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
 		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion)
 		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries)
-	}
-}
-
-// Welcome & GlobalExtras
-struct Welcome : Codable {
-	let global : GlobalExtras!
-
-	enum CodingKeys: String, CodingKey {
-		case global = "Global"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		global = try values.decodeIfPresent(GlobalExtras.self, forKey: .global)
-	}
-}
-
-struct GlobalExtras : Codable {
-	let newConfirmed : Int?
-	let totalConfirmed : Int?
-	let newDeaths : Int?
-	let totalDeaths : Int?
-	let newRecovered : Int!
-	let totalRecovered : Int?
-
-	enum CodingKeys: String, CodingKey {
-		case newConfirmed = "NewConfirmed"
-		case totalConfirmed = "TotalConfirmed"
-		case newDeaths = "NewDeaths"
-		case totalDeaths = "TotalDeaths"
-		case newRecovered = "NewRecovered"
-		case totalRecovered = "TotalRecovered"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		newConfirmed = try values.decodeIfPresent(Int.self, forKey: .newConfirmed)
-		totalConfirmed = try values.decodeIfPresent(Int.self, forKey: .totalConfirmed)
-		newDeaths = try values.decodeIfPresent(Int.self, forKey: .newDeaths)
-		totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths)
-		newRecovered = try values.decodeIfPresent(Int.self, forKey: .newRecovered) ?? 0
-		totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered)
 	}
 }

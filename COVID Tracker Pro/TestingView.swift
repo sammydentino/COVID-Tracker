@@ -35,7 +35,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("California").font(.subheadline)
@@ -56,7 +56,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Delaware").font(.subheadline)
@@ -77,7 +77,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Florida").font(.subheadline)
@@ -98,7 +98,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Massachusetts").font(.subheadline)
@@ -119,7 +119,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Nevada").font(.subheadline)
@@ -140,7 +140,7 @@ struct TestingView: View {
 							NavigationView {
 								 TestDetail(item: item).navigationBarTitle(item.name)
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				/*Section(header: Text("New Jersey")) {
@@ -158,7 +158,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("New York")) {
@@ -176,7 +176,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Pennsylvania")) {
@@ -194,7 +194,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Texas")) {
@@ -212,7 +212,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}*/
 				/*Section(header: Text("Utah")) {
@@ -230,7 +230,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}
 				Section(header: Text("Washington")) {
@@ -248,7 +248,7 @@ struct TestingView: View {
 									.bold()
 								Spacer()
 							}
-						}
+						}.buttonStyle(PlainButtonStyle())
 					}
 				}*/
 			}.listStyle(GroupedListStyle())

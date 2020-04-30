@@ -157,7 +157,7 @@ class getStates : ObservableObject {
 	}
 	
 	func loadStates() {
-		let statesString = "https://corona.lmao.ninja/v2/states"
+		let statesString = "https://disease.sh/v2/states"
 		
 		if let url = URL(string: statesString) {
 			if let d = try? Data(contentsOf: url) {

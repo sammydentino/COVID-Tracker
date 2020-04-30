@@ -244,19 +244,19 @@ struct Global : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		updated = try values.decodeIfPresent(Int.self, forKey: .updated)
-		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
-		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
-		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
-		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
-		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered)
-		active = try values.decodeIfPresent(Int.self, forKey: .active)
-		critical = try values.decodeIfPresent(Int.self, forKey: .critical)
-		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion)
-		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion)
-		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
-		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion)
-		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries)
+		updated = try values.decodeIfPresent(Int.self, forKey: .updated) ?? 0
+		cases = try values.decodeIfPresent(Int.self, forKey: .cases) ?? 0
+		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases) ?? 0
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
+		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths) ?? 0
+		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered) ?? 0
+		active = try values.decodeIfPresent(Int.self, forKey: .active) ?? 0
+		critical = try values.decodeIfPresent(Int.self, forKey: .critical) ?? 0
+		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion) ?? 0
+		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion) ?? 0
+		tests = try values.decodeIfPresent(Int.self, forKey: .tests) ?? 0
+		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion) ?? 0.0
+		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries) ?? 0
 	}
 }
 

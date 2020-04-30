@@ -183,7 +183,7 @@ class getCountries: ObservableObject {
 	}
 	
 	func loadCountries() {
-		let urlString = "https://corona.lmao.ninja/v2/countries"
+		let urlString = "https://disease.sh/v2/countries"
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
 				// we're OK to parse!
