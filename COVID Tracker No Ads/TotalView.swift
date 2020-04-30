@@ -1,8 +1,8 @@
 //
 //  TotalView.swift
-//  COVIDradar
+//  COVID Tracker (No Ads)
 //
-//  Created by Sammy Dentino on 4/15/20.
+//  Created by Sammy Dentino on 4/29/20.
 //  Copyright © 2020 Sammy Dentino. All rights reserved.
 //
 

@@ -11,6 +11,20 @@
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
 		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
+		EB77BF4D245A6CA9003BC5D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF4C245A6CA9003BC5D7 /* AppDelegate.swift */; };
+		EB77BF4F245A6CA9003BC5D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF4E245A6CA9003BC5D7 /* SceneDelegate.swift */; };
+		EB77BF51245A6CA9003BC5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF50245A6CA9003BC5D7 /* ContentView.swift */; };
+		EB77BF53245A6CAA003BC5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF52245A6CAA003BC5D7 /* Assets.xcassets */; };
+		EB77BF56245A6CAA003BC5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF55245A6CAA003BC5D7 /* Preview Assets.xcassets */; };
+		EB77BF59245A6CAA003BC5D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF57245A6CAA003BC5D7 /* LaunchScreen.storyboard */; };
+		EB77BF65245A6CD7003BC5D7 /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
+		EB77BF6B245A6D10003BC5D7 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6A245A6D10003BC5D7 /* TotalView.swift */; };
+		EB77BF6D245A6D37003BC5D7 /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6C245A6D37003BC5D7 /* SourcesView.swift */; };
+		EB77BF6F245A6D63003BC5D7 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6E245A6D63003BC5D7 /* CountryView.swift */; };
+		EB77BF70245A6D87003BC5D7 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
+		EB77BF72245A6DCF003BC5D7 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF71245A6DCF003BC5D7 /* TestingView.swift */; };
+		EB77BF74245A6DF7003BC5D7 /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF73245A6DF7003BC5D7 /* StatesView.swift */; };
+		EB77BF76245A6EA3003BC5D7 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF75245A6EA3003BC5D7 /* NewsView.swift */; };
 		EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AA2448196C00BA0CF0 /* AppDelegate.swift */; };
 		EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AC2448196C00BA0CF0 /* SceneDelegate.swift */; };
 		EB8504AF2448196C00BA0CF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AE2448196C00BA0CF0 /* ContentView.swift */; };
@@ -47,6 +61,26 @@
 		EB132011244F9CEA0092B927 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		EB390AFA24529985003657D4 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker No Ads.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF4C245A6CA9003BC5D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EB77BF4E245A6CA9003BC5D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EB77BF50245A6CA9003BC5D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB77BF52245A6CAA003BC5D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB77BF55245A6CAA003BC5D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB77BF58245A6CAA003BC5D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EB77BF5A245A6CAA003BC5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB77BF5E245A6CD7003BC5D7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF5F245A6CD7003BC5D7 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF60245A6CD7003BC5D7 /* URLImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = URLImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF6A245A6D10003BC5D7 /* TotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		EB77BF6C245A6D37003BC5D7 /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
+		EB77BF6E245A6D63003BC5D7 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		EB77BF71245A6DCF003BC5D7 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
+		EB77BF73245A6DF7003BC5D7 /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
+		EB77BF75245A6EA3003BC5D7 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		EB77BF77245A6EC9003BC5D7 /* URLImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = URLImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF7B245A6EE7003BC5D7 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF7F245A6EED003BC5D7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8504A72448196C00BA0CF0 /* COVID Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8504AA2448196C00BA0CF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB8504AC2448196C00BA0CF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +117,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EB77BF47245A6CA9003BC5D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB77BF65245A6CD7003BC5D7 /* Pods_COVID_Tracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB8504A42448196C00BA0CF0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,11 +163,40 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		EB77BF4B245A6CA9003BC5D7 /* COVID Tracker No Ads */ = {
+			isa = PBXGroup;
+			children = (
+				EB77BF4C245A6CA9003BC5D7 /* AppDelegate.swift */,
+				EB77BF4E245A6CA9003BC5D7 /* SceneDelegate.swift */,
+				EB77BF50245A6CA9003BC5D7 /* ContentView.swift */,
+				EB77BF52245A6CAA003BC5D7 /* Assets.xcassets */,
+				EB77BF57245A6CAA003BC5D7 /* LaunchScreen.storyboard */,
+				EB77BF5A245A6CAA003BC5D7 /* Info.plist */,
+				EB77BF54245A6CAA003BC5D7 /* Preview Content */,
+				EB77BF6A245A6D10003BC5D7 /* TotalView.swift */,
+				EB77BF6C245A6D37003BC5D7 /* SourcesView.swift */,
+				EB77BF6E245A6D63003BC5D7 /* CountryView.swift */,
+				EB77BF71245A6DCF003BC5D7 /* TestingView.swift */,
+				EB77BF73245A6DF7003BC5D7 /* StatesView.swift */,
+				EB77BF75245A6EA3003BC5D7 /* NewsView.swift */,
+			);
+			path = "COVID Tracker No Ads";
+			sourceTree = "<group>";
+		};
+		EB77BF54245A6CAA003BC5D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EB77BF55245A6CAA003BC5D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		EB85049E2448196C00BA0CF0 = {
 			isa = PBXGroup;
 			children = (
 				EB8504A92448196C00BA0CF0 /* COVID Tracker */,
 				EB8A2634245528A600C03C53 /* COVID Tracker macOS */,
+				EB77BF4B245A6CA9003BC5D7 /* COVID Tracker No Ads */,
 				EB8504A82448196C00BA0CF0 /* Products */,
 				EBDD6F0F244933BD00372189 /* Frameworks */,
 				298BA46E99FD23E1372AE821 /* Pods */,
@@ -138,6 +209,7 @@
 			children = (
 				EB8504A72448196C00BA0CF0 /* COVID Tracker.app */,
 				EB8A2633245528A600C03C53 /* COVID Tracker macOS.app */,
+				EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +317,12 @@
 		EBDD6F0F244933BD00372189 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB77BF7F245A6EED003BC5D7 /* GoogleUtilities.framework */,
+				EB77BF7B245A6EE7003BC5D7 /* nanopb.framework */,
+				EB77BF77245A6EC9003BC5D7 /* URLImage.framework */,
+				EB77BF5E245A6CD7003BC5D7 /* GoogleUtilities.framework */,
+				EB77BF5F245A6CD7003BC5D7 /* nanopb.framework */,
+				EB77BF60245A6CD7003BC5D7 /* URLImage.framework */,
 				EBDD6F14244939A000372189 /* ExternalAccessory.framework */,
 				EBDD6F12244933C700372189 /* MapKit.framework */,
 				EBDD6F10244933BD00372189 /* AudioToolbox.framework */,
@@ -256,6 +334,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EB77BF49245A6CA9003BC5D7 /* COVID Tracker No Ads */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker No Ads" */;
+			buildPhases = (
+				EB77BF46245A6CA9003BC5D7 /* Sources */,
+				EB77BF47245A6CA9003BC5D7 /* Frameworks */,
+				EB77BF48245A6CA9003BC5D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "COVID Tracker No Ads";
+			productName = "COVID Tracker (No Ads)";
+			productReference = EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */;
+			productType = "com.apple.product-type.application";
+		};
 		EB8504A62448196C00BA0CF0 /* COVID Tracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB8504BB2448196D00BA0CF0 /* Build configuration list for PBXNativeTarget "COVID Tracker" */;
@@ -305,6 +400,9 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Sammy Dentino";
 				TargetAttributes = {
+					EB77BF49245A6CA9003BC5D7 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					EB8504A62448196C00BA0CF0 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -331,11 +429,22 @@
 			targets = (
 				EB8504A62448196C00BA0CF0 /* COVID Tracker */,
 				EB8A2632245528A600C03C53 /* COVID Tracker macOS */,
+				EB77BF49245A6CA9003BC5D7 /* COVID Tracker No Ads */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EB77BF48245A6CA9003BC5D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB77BF59245A6CAA003BC5D7 /* LaunchScreen.storyboard in Resources */,
+				EB77BF56245A6CAA003BC5D7 /* Preview Assets.xcassets in Resources */,
+				EB77BF53245A6CAA003BC5D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB8504A52448196C00BA0CF0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +510,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EB77BF46245A6CA9003BC5D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB77BF4D245A6CA9003BC5D7 /* AppDelegate.swift in Sources */,
+				EB77BF6B245A6D10003BC5D7 /* TotalView.swift in Sources */,
+				EB77BF74245A6DF7003BC5D7 /* StatesView.swift in Sources */,
+				EB77BF76245A6EA3003BC5D7 /* NewsView.swift in Sources */,
+				EB77BF4F245A6CA9003BC5D7 /* SceneDelegate.swift in Sources */,
+				EB77BF70245A6D87003BC5D7 /* Int.swift in Sources */,
+				EB77BF6F245A6D63003BC5D7 /* CountryView.swift in Sources */,
+				EB77BF72245A6DCF003BC5D7 /* TestingView.swift in Sources */,
+				EB77BF51245A6CA9003BC5D7 /* ContentView.swift in Sources */,
+				EB77BF6D245A6D37003BC5D7 /* SourcesView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB8504A32448196C00BA0CF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -439,6 +565,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		EB77BF57245A6CAA003BC5D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB77BF58245A6CAA003BC5D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -458,6 +592,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EB77BF5B245A6CAA003BC5D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker No Ads/Preview Content\"";
+				DEVELOPMENT_TEAM = G9X97N3XGU;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "COVID Tracker (No Ads)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker--No-Ads-";
+				PRODUCT_NAME = "COVID Tracker No Ads";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB77BF5C245A6CAA003BC5D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker No Ads/Preview Content\"";
+				DEVELOPMENT_TEAM = G9X97N3XGU;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "COVID Tracker (No Ads)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker--No-Ads-";
+				PRODUCT_NAME = "COVID Tracker No Ads";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EB8504B92448196D00BA0CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -678,6 +854,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker No Ads" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB77BF5B245A6CAA003BC5D7 /* Debug */,
+				EB77BF5C245A6CAA003BC5D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EB8504A22448196C00BA0CF0 /* Build configuration list for PBXProject "COVID Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
