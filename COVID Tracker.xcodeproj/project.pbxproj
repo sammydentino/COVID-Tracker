@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C5782232C671B68299B20B0 /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
 		EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B792453C1A300A07629 /* BottomBar-SwiftUI */; };
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
 		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
@@ -17,7 +18,6 @@
 		EB77BF53245A6CAA003BC5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF52245A6CAA003BC5D7 /* Assets.xcassets */; };
 		EB77BF56245A6CAA003BC5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF55245A6CAA003BC5D7 /* Preview Assets.xcassets */; };
 		EB77BF59245A6CAA003BC5D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB77BF57245A6CAA003BC5D7 /* LaunchScreen.storyboard */; };
-		EB77BF65245A6CD7003BC5D7 /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
 		EB77BF6B245A6D10003BC5D7 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6A245A6D10003BC5D7 /* TotalView.swift */; };
 		EB77BF6D245A6D37003BC5D7 /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6C245A6D37003BC5D7 /* SourcesView.swift */; };
 		EB77BF6F245A6D63003BC5D7 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB77BF6E245A6D63003BC5D7 /* CountryView.swift */; };
@@ -61,7 +61,7 @@
 		EB132011244F9CEA0092B927 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		EB390AFA24529985003657D4 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
-		EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker No Ads.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB77BF4A245A6CA9003BC5D7 /* COVID Tracker Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB77BF4C245A6CA9003BC5D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB77BF4E245A6CA9003BC5D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EB77BF50245A6CA9003BC5D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB77BF65245A6CD7003BC5D7 /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +130,7 @@
 			files = (
 				EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */,
 				EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */,
+				0C5782232C671B68299B20B0 /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +163,7 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		EB77BF4B245A6CA9003BC5D7 /* COVID Tracker No Ads */ = {
+		EB77BF4B245A6CA9003BC5D7 /* COVID Tracker Pro */ = {
 			isa = PBXGroup;
 			children = (
 				EB77BF4C245A6CA9003BC5D7 /* AppDelegate.swift */,
@@ -180,7 +180,7 @@
 				EB77BF73245A6DF7003BC5D7 /* StatesView.swift */,
 				EB77BF75245A6EA3003BC5D7 /* NewsView.swift */,
 			);
-			path = "COVID Tracker No Ads";
+			path = "COVID Tracker Pro";
 			sourceTree = "<group>";
 		};
 		EB77BF54245A6CAA003BC5D7 /* Preview Content */ = {
@@ -196,7 +196,7 @@
 			children = (
 				EB8504A92448196C00BA0CF0 /* COVID Tracker */,
 				EB8A2634245528A600C03C53 /* COVID Tracker macOS */,
-				EB77BF4B245A6CA9003BC5D7 /* COVID Tracker No Ads */,
+				EB77BF4B245A6CA9003BC5D7 /* COVID Tracker Pro */,
 				EB8504A82448196C00BA0CF0 /* Products */,
 				EBDD6F0F244933BD00372189 /* Frameworks */,
 				298BA46E99FD23E1372AE821 /* Pods */,
@@ -209,7 +209,7 @@
 			children = (
 				EB8504A72448196C00BA0CF0 /* COVID Tracker.app */,
 				EB8A2633245528A600C03C53 /* COVID Tracker macOS.app */,
-				EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */,
+				EB77BF4A245A6CA9003BC5D7 /* COVID Tracker Pro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB77BF49245A6CA9003BC5D7 /* COVID Tracker No Ads */ = {
+		EB77BF49245A6CA9003BC5D7 /* COVID Tracker Pro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker No Ads" */;
+			buildConfigurationList = EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker Pro" */;
 			buildPhases = (
 				EB77BF46245A6CA9003BC5D7 /* Sources */,
 				EB77BF47245A6CA9003BC5D7 /* Frameworks */,
@@ -346,9 +346,9 @@
 			);
 			dependencies = (
 			);
-			name = "COVID Tracker No Ads";
+			name = "COVID Tracker Pro";
 			productName = "COVID Tracker (No Ads)";
-			productReference = EB77BF4A245A6CA9003BC5D7 /* COVID Tracker No Ads.app */;
+			productReference = EB77BF4A245A6CA9003BC5D7 /* COVID Tracker Pro.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EB8504A62448196C00BA0CF0 /* COVID Tracker */ = {
@@ -429,7 +429,7 @@
 			targets = (
 				EB8504A62448196C00BA0CF0 /* COVID Tracker */,
 				EB8A2632245528A600C03C53 /* COVID Tracker macOS */,
-				EB77BF49245A6CA9003BC5D7 /* COVID Tracker No Ads */,
+				EB77BF49245A6CA9003BC5D7 /* COVID Tracker Pro */,
 			);
 		};
 /* End PBXProject section */
@@ -597,17 +597,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker No Ads/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker Pro/Preview Content\"";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "COVID Tracker (No Ads)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				INFOPLIST_FILE = "COVID Tracker Pro/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker--No-Ads-";
-				PRODUCT_NAME = "COVID Tracker No Ads";
+				PRODUCT_NAME = "COVID Tracker Pro";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -618,17 +618,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker No Ads/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"COVID Tracker Pro/Preview Content\"";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "COVID Tracker (No Ads)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				INFOPLIST_FILE = "COVID Tracker Pro/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker--No-Ads-";
-				PRODUCT_NAME = "COVID Tracker No Ads";
+				PRODUCT_NAME = "COVID Tracker Pro";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -768,7 +768,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -793,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -854,7 +854,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker No Ads" */ = {
+		EB77BF5D245A6CAA003BC5D7 /* Build configuration list for PBXNativeTarget "COVID Tracker Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB77BF5B245A6CAA003BC5D7 /* Debug */,

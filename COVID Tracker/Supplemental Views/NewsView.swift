@@ -38,6 +38,11 @@ struct NewsView: View {
 								.padding(EdgeInsets(top: 7.5, leading: 7.5, bottom: 0, trailing: 0))
 						}
 						Spacer()
+						Text(item.source.name)
+							.font(.subheadline)
+							.foregroundColor(.gray)
+							.bold()
+							.padding(EdgeInsets(top: 5, leading: 7.5, bottom: 7.5, trailing: 0))
 					}
 				}
 				/*Button(action: {
