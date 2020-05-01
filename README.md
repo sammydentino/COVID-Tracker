@@ -4,4 +4,5 @@ Live case statistics and news about COVID-19
 
 Screenshots:
 
-![41AC9EF7-2F71-4FF3-A247-DF890DBE366C](https://user-images.githubusercontent.com/58920635/80442881-bdf1e100-88c2-11ea-83a2-62bdce0ee558.png)
+![IMG_1754](https://user-images.githubusercontent.com/58920635/80772265-bda05280-8b1b-11ea-8dfb-df244c287e99.PNG)
+![IMG_1755](https://user-images.githubusercontent.com/58920635/80772266-bed17f80-8b1b-11ea-9772-bd836138cf03.PNG)
