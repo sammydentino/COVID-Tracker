@@ -8,6 +8,26 @@
 
 import SwiftUI
 
+struct ButtonView: View {
+	@State var showingDetail = false
+	let item: Testing
+	
+	var body: some View {
+		Button(action: {
+			self.showingDetail.toggle()
+		}) {
+			Text(item.name)
+				.font(.subheadline)
+				.bold()
+				.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+		}.sheet(isPresented: self.$showingDetail) {
+			NavigationView {
+				TestDetail(item: self.item).navigationBarTitle(self.item.name)
+			}
+		}
+	}
+}
+
 struct TestingView: View {
     @State private var searchQuery: String = ""
 	@ObservedObject var fetch = getTesting()
@@ -17,66 +37,35 @@ struct TestingView: View {
 		VStack {
 			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(8)
 			List {
-				Section(header: Text("\nArizona").font(.subheadline)
-				.bold()) {
-					ForEach(fetch.arizona.filter {
-						self.searchQuery.isEmpty ?
-							true :
-							"\($0)".contains(self.searchQuery)
-					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
+				Group {
+					Section(header: Text("\nArizona").font(.subheadline)
+					.bold()) {
+						ForEach(fetch.arizona.filter {
+							self.searchQuery.isEmpty ?
+								true :
+								"\($0)".contains(self.searchQuery)
+						}, id: \.name) { item in
+							ButtonView(item: item)
 						}
 					}
-				}
-				Section(header: Text("California").font(.subheadline)
-				.bold()) {
-					ForEach(fetch.california.filter {
-						self.searchQuery.isEmpty ?
-							true :
-							"\($0)".contains(self.searchQuery)
-					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
+					Section(header: Text("California").font(.subheadline)
+					.bold()) {
+						ForEach(fetch.california.filter {
+							self.searchQuery.isEmpty ?
+								true :
+								"\($0)".contains(self.searchQuery)
+						}, id: \.name) { item in
+							ButtonView(item: item)
 						}
 					}
-				}
-				Section(header: Text("Delaware").font(.subheadline)
-				.bold()) {
-					ForEach(fetch.delaware.filter {
-						self.searchQuery.isEmpty ?
-							true :
-							"\($0)".contains(self.searchQuery)
-					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
+					Section(header: Text("Delaware").font(.subheadline)
+					.bold()) {
+						ForEach(fetch.delaware.filter {
+							self.searchQuery.isEmpty ?
+								true :
+								"\($0)".contains(self.searchQuery)
+						}, id: \.name) { item in
+							ButtonView(item: item)
 						}
 					}
 				}
@@ -87,18 +76,7 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("Massachusetts").font(.subheadline)
@@ -108,18 +86,7 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("Nevada").font(.subheadline)
@@ -129,36 +96,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							Text(item.name)
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 TestDetail(item: item).navigationBarTitle(item.name)
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
-				/*Section(header: Text("New Jersey")) {
+				Section(header: Text("New Jersey")) {
 					ForEach(fetch.newJersey.filter {
 						self.searchQuery.isEmpty ?
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("New York")) {
@@ -167,16 +114,7 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("Pennsylvania")) {
@@ -185,16 +123,7 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("Texas")) {
@@ -203,34 +132,16 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
-				}*/
-				/*Section(header: Text("Utah")) {
+				}
+				Section(header: Text("Utah")) {
 					ForEach(fetch.utah.filter {
 						self.searchQuery.isEmpty ?
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
 				}
 				Section(header: Text("Washington")) {
@@ -239,41 +150,14 @@ struct TestingView: View {
 							true :
 							"\($0)".contains(self.searchQuery)
 					}, id: \.name) { item in
-						NavigationLink(destination: TestDetail(item: item).navigationBarTitle(item.name)) {
-							VStack(alignment:.leading){
-								Spacer()
-								Text(item.name)
-									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-									.font(.subheadline)
-									.bold()
-								Spacer()
-							}
-						}
+						ButtonView(item: item)
 					}
-				}*/
+				}
 			}.listStyle(GroupedListStyle())
 			.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }
-/*
-let id = UUID()
-let location_id : String!
-let address_1 : String!
-let city : String!
-let region : String!
-let state_province : String!
-let postal_code : String!
-let country : String!
-
-let id = UUID()
-let location_id : String!
-let number : String!
-let ext : String!
-let type : String!
-let language : String!
-let description : String!
-*/
 
 struct TestDetail: View {
 	let item: Testing!
@@ -327,7 +211,7 @@ struct TestDetail: View {
 						Spacer()
 					}
 				}
-				Section(header: Text("Location Hours\nSunday: 1, Monday: 2, Tuesday: 3, etc.")
+				Section(header: Text("Hours")
 					.foregroundColor(.green)
 					.font(.subheadline)
 					.bold()) {
@@ -335,15 +219,12 @@ struct TestDetail: View {
 						Spacer()
 						ForEach(item.regular_schedule) { item in
 							HStack {
-								Text("Day: " + item.weekday)
+								Text(item.weekday + ": ")
 									.font(.subheadline)
 									.bold()
 								Spacer()
 								VStack (alignment: .trailing) {
-									Text("Opens: " + item.opens_at)
-										.font(.subheadline)
-										.bold()
-									Text("Closes: " + item.closes_at)
+									Text(item.opens_at + " - " + item.closes_at)
 										.font(.subheadline)
 										.bold()
 								}
@@ -484,7 +365,7 @@ class getTesting : ObservableObject {
 		}
 	}
 	func loadNewJersey() {
-		let urlString = "https://covid-19-testing.github.io/locations/newjersey/complete.json"
+		let urlString = "https://covid-19-testing.github.io/locations/new-jersey/complete.json"
 		
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
@@ -497,7 +378,7 @@ class getTesting : ObservableObject {
 		}
 	}
 	func loadNewYork() {
-		let urlString = "https://covid-19-testing.github.io/locations/newyork/complete.json"
+		let urlString = "https://covid-19-testing.github.io/locations/new-york/complete.json"
 		
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
@@ -642,7 +523,7 @@ struct Physical_address : Codable, Identifiable {
 struct Regular_schedule : Codable, Identifiable {
 	let id = UUID()
 	let location_id : String!
-	let weekday : String!
+	var weekday : String!
 	let opens_at : String!
 	let closes_at : String!
 
@@ -661,6 +542,24 @@ struct Regular_schedule : Codable, Identifiable {
 		weekday = try values.decodeIfPresent(String.self, forKey: .weekday)
 		opens_at = try values.decodeIfPresent(String.self, forKey: .opens_at)
 		closes_at = try values.decodeIfPresent(String.self, forKey: .closes_at)
+		switch weekday {
+		case "0":
+			weekday = "Sunday"
+		case "1":
+			weekday = "Monday"
+		case "2":
+			weekday = "Tuesday"
+		case "3":
+			weekday = "Wednesday"
+		case "4":
+			weekday = "Thursday"
+		case "5":
+			weekday = "Friday"
+		case "6":
+			weekday = "Saturday"
+		default:
+			weekday = "N/A"
+		}
 	}
 }
 

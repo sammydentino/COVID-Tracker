@@ -138,9 +138,8 @@ struct CountryView: View {
 			SearchBar(text: self.$searchQuery,
 					  placeholder: "Case Sensitive").padding(8)
 			List {
-				Section(header: Text("\nSorted by Most Cases")
-					.font(.system(size: 12))
-					.foregroundColor(.gray).bold()) {
+				Section(header: Text("\nSorted by Most Cases").font(.subheadline)
+				.bold()) {
 					ForEach(fetch.countries.filter {
 						self.searchQuery.isEmpty ?
 							true :
