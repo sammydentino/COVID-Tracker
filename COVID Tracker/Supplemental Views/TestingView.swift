@@ -34,7 +34,7 @@ struct TestingView: View {
 	@State var showingDetail = false
 	
 	var body: some View {
-		VStack {
+		VStack(alignment: .leading, spacing: 0) {
 			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(8)
 			List {
 				Group {

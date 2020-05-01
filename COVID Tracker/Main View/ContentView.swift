@@ -53,7 +53,7 @@ struct ContentView: View {
 				Text("States")
 			}.tag(1)
 			NavigationView {
-				VStack(alignment: .center, spacing: 0) {
+				VStack {
 					TotalView()
 						.navigationBarTitle(Text("COVID-19 Tracker"))
 					Banner()
@@ -88,18 +88,6 @@ struct ContentView: View {
 				Image(systemName: "tray.2")
 				Text("News")
 			}.tag(4)
-			/*NavigationView {
-				VStack {
-					SourcesView()
-						.navigationBarTitle(Text("Sources"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "info.circle")
-				Text("Sources")
-			}.tag(5)*/
 		}.animation(.default)
     }
 }
