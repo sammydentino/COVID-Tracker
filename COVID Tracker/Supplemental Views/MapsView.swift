@@ -42,6 +42,7 @@ struct MapsView: View {
 				}
 			}
 			MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
+			Banner()
 		}
     }
 }
