@@ -72,6 +72,7 @@ struct SourcesView: View {
 				
 			}.listStyle(GroupedListStyle())
 				.environment(\.horizontalSizeClass, .regular)
+			Banner()
 		}
     }
 }

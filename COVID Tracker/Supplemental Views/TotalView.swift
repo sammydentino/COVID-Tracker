@@ -70,7 +70,6 @@ struct TotalView: View {
 						Text("View Source Information")
 							.font(.subheadline)
 							.bold()
-							.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 					}.sheet(isPresented: $showingDetail) {
 						NavigationView {
 							SourcesView().navigationBarTitle("Sources")
@@ -154,6 +153,7 @@ struct TotalView: View {
 				}
 			}.listStyle(GroupedListStyle())
 				.environment(\.horizontalSizeClass, .regular)
+			Banner()
 		}
     }
 }

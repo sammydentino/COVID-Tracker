@@ -7,10 +7,8 @@
 //
 
 import SwiftUI
-//import BottomBar_SwiftUI
 
 struct ContentView: View {
-	
 	@State var selectedView = 2
 	@State public var searchQuery : String = ""
 	
@@ -20,13 +18,6 @@ struct ContentView: View {
     
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
-		/*UIKitTabView([
-            UIKitTabView.Tab(view: TestingView(), title: "Testing", image: "info.circle"),
-            UIKitTabView.Tab(view: CountryView(), title: "Countries", image: "map"),
-			UIKitTabView.Tab(view: TotalView(), title: "Global", image: "globe"),
-			UIKitTabView.Tab(view: StatesView(), title: "States", image: "house"),
-			UIKitTabView.Tab(view: NewsView(), title: "News", image: "tray.2")
-        ])*/
 		TabView(selection: $selectedView) {
 			NavigationView {
 				VStack {
@@ -54,9 +45,8 @@ struct ContentView: View {
 			}.tag(1)
 			NavigationView {
 				VStack {
-					TotalView()
+					MapsView()
 						.navigationBarTitle(Text("COVID-19 Tracker"))
-					Banner()
 				}
 			}
 			.navigationViewStyle(StackNavigationViewStyle())
@@ -92,82 +82,13 @@ struct ContentView: View {
     }
 }
 
-/*
-let items: [BottomBarItem] = [
-    BottomBarItem(icon: "globe", title: "Global", color: .purple),
-    BottomBarItem(icon: "map", title: "Countries", color: .pink),
-    BottomBarItem(icon: "house", title: "States", color: .orange),
-    BottomBarItem(icon: "person", title: "Testing", color: .blue)
-]
-
-struct ContentView: View {
-	@State var selectedIndex: Int = 0
-	
-	var selectedItem: BottomBarItem {
-		items[selectedIndex]
-	}
-	
-	init() {
-		UINavigationBar.appearance().backgroundColor = .systemBackground
-	}
-		
-	//tab controller -> navigation controller -> each tab's views
-	var body: some View {
-		UIKitTabView([
-            UIKitTabView.Tab(view: TestingView(), title: "Testing", image: "info.circle"),
-            UIKitTabView.Tab(view: CountryView(), title: "Countries", image: "map"),
-			UIKitTabView.Tab(view: TotalView(), title: "Global", image: "globe"),
-			UIKitTabView.Tab(view: StatesView(), title: "States", image: "house"),
-			UIKitTabView.Tab(view: NewsView(), title: "News", image: "tray.2")
-        ])
-		/*VStack {
-			TabView(selection: $selectedIndex) {
-				NavigationView {
-					VStack(alignment: .center, spacing: 0) {
-						TotalView()
-							.navigationBarTitle(Text("\nGlobal"))
-						Banner()
-						BottomBar(selectedIndex: $selectedIndex, items: items)
-					}
-				}.navigationViewStyle(StackNavigationViewStyle())
-				NavigationView {
-					VStack {
-						CountryView()
-							.navigationBarTitle(Text("All Countries"))
-						Banner()
-						BottomBar(selectedIndex: $selectedIndex, items: items)
-					}
-				}.navigationViewStyle(StackNavigationViewStyle()).tag(1)
-				NavigationView {
-					VStack {
-						StatesView()
-							.navigationBarTitle(Text("All States"))
-						Banner()
-						BottomBar(selectedIndex: $selectedIndex, items: items)
-					}
-				}.navigationViewStyle(StackNavigationViewStyle()).tag(2)
-				NavigationView {
-					VStack {
-						TestingView()
-							.navigationBarTitle(Text("Testing Centers"))
-						Banner()
-						BottomBar(selectedIndex: $selectedIndex, items: items)
-					}
-				}.tag(3)
-			}
-		}.edgesIgnoringSafeArea(.all).padding(EdgeInsets(top: 2.5, leading: 0, bottom: 0, trailing: 0)).animation(.default)*/
-	}
-}*/
-
 struct ContentView_Previews: PreviewProvider {
-    
 	static var previews: some View {
         ContentView()
     }
 }
 
 struct SearchBar: UIViewRepresentable {
-
     @Binding var text: String
 	var placeholder: String
 

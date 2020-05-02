@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C5782232C671B68299B20B0 /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
-		EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB116B792453C1A300A07629 /* BottomBar-SwiftUI */; };
 		EB132012244F9CEA0092B927 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB132011244F9CEA0092B927 /* Banner.swift */; };
 		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
@@ -33,10 +31,9 @@
 		EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
 		EBB9D9462450095300620ACE /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9D9452450095200620ACE /* SourcesView.swift */; };
 		EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE9F42244A724F00EA286F /* StatesView.swift */; };
-		EBD9426F2457BA0000AAD774 /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */; };
-		EBD942712457BA5400AAD774 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD942702457BA5400AAD774 /* TabBarController.swift */; };
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
+		EBE18443245DF830000E85C3 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,14 +75,13 @@
 		EB8A265F24552E4500C03C53 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EBB9D9452450095200620ACE /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
 		EBBE9F42244A724F00EA286F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
-		EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
-		EBD942702457BA5400AAD774 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EBDD6F0E244933BD00372189 /* COVID Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID Tracker.entitlements"; sourceTree = "<group>"; };
 		EBDD6F10244933BD00372189 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EBDD6F12244933C700372189 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EBDD6F14244939A000372189 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		EBE18442245DF830000E85C3 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
 		FCF130CA95EF34FA54002A5B /* Pods-COVID Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.release.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,9 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB116B7A2453C1A300A07629 /* BottomBar-SwiftUI in Frameworks */,
 				EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */,
-				0C5782232C671B68299B20B0 /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +213,7 @@
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB390AFA24529985003657D4 /* TestingView.swift */,
+				EBE18442245DF830000E85C3 /* MapsView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -244,8 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				EB8504C0244828EE00BA0CF0 /* Int.swift */,
-				EBD9426E2457BA0000AAD774 /* UIKitTabView.swift */,
-				EBD942702457BA5400AAD774 /* TabBarController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,7 +279,6 @@
 			);
 			name = "COVID Tracker";
 			packageProductDependencies = (
-				EB116B792453C1A300A07629 /* BottomBar-SwiftUI */,
 			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
@@ -337,7 +329,6 @@
 			);
 			mainGroup = EB85049E2448196C00BA0CF0;
 			packageReferences = (
-				EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
@@ -424,14 +415,13 @@
 				EB132012244F9CEA0092B927 /* Banner.swift in Sources */,
 				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
+				EBE18443245DF830000E85C3 /* MapsView.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
 				EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
-				EBD942712457BA5400AAD774 /* TabBarController.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* ContentView.swift in Sources */,
-				EBD9426F2457BA0000AAD774 /* UIKitTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -631,7 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.4;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -720,25 +710,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EB116B792453C1A300A07629 /* BottomBar-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB116B782453C1A300A07629 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
-			productName = "BottomBar-SwiftUI";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB85049F2448196C00BA0CF0 /* Project object */;
 }
