@@ -15,34 +15,75 @@ import Combine
 
 struct MapsView: View {
 	@ObservedObject var coronaCases = CoronaObservable()
+	@ObservedObject var fetch = getAll()
 	@State var showingDetail = false
     var body: some View {
-		VStack(alignment: .center){
-            HStack{
-				Text("Cases\n" + coronaCases.coronaOutbreak.totalCases.withCommas())
-                .multilineTextAlignment(.center).font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+		VStack(alignment: .leading){
+			Group {
+			HStack{
+				Text("Cases").font(.subheadline).bold()
 				Spacer()
-				Text("Deaths\n" + coronaCases.coronaOutbreak.totalDeaths.withCommas())
-                .multilineTextAlignment(.center).font(.headline)
-				.foregroundColor(.red)
+				Text(coronaCases.coronaOutbreak.totalCases.withCommas())
+					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+					.font(.subheadline)
+					.bold()
+			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+			Spacer()
+			HStack{
+				Text("Deaths").font(.subheadline).bold()
 				Spacer()
-				Text("Recovered\n" + coronaCases.coronaOutbreak.totalRecovered.withCommas())
-                .multilineTextAlignment(.center).font(.headline)
-				.foregroundColor(.green)
-			}.padding()
+				Text(coronaCases.coronaOutbreak.totalDeaths.withCommas())
+					.font(.subheadline)
+					.foregroundColor(.red)
+					.bold()
+			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+			Spacer()
+			HStack {
+				Text("Locations")
+					.font(.subheadline)
+					.bold()
+				Spacer()
+				Text(fetch.global.affectedCountries.withCommas())
+					.foregroundColor(.orange)
+					.font(.subheadline)
+					.bold()
+			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+			Spacer()
+			}
+			HStack{
+				Text("Recovered").font(.subheadline).bold()
+				Spacer()
+				Text(coronaCases.coronaOutbreak.totalRecovered.withCommas())
+					.font(.subheadline)
+					.foregroundColor(.green)
+					.bold()
+			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+			Spacer()
+			HStack {
+				Text("Tests Recorded")
+					.font(.subheadline)
+					.bold()
+				Spacer()
+				Text(fetch.global.tests.withCommas())
+					.foregroundColor(.purple)
+					.font(.subheadline)
+					.bold()
+			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+			Spacer()
 			Button(action: {
 				self.showingDetail.toggle()
 			}) {
-				Text("More Information")
+				Text("Source Information")
 					.font(.subheadline)
 					.bold()
+					.padding(.leading, 15)
+					.foregroundColor(.gray)
 			}.sheet(isPresented: $showingDetail) {
 				NavigationView {
-					TotalView().navigationBarTitle("Global")
+					SourcesView().navigationBarTitle("Sources")
 				}
 			}
 			MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
-			Banner()
 		}
     }
 }
@@ -201,4 +242,74 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         annotationView?.detailCalloutAccessoryView = subtitleLabel
         return annotationView
     }
+}
+
+class getAll : ObservableObject {
+	@Published var global : Global!
+	
+	init() {
+		loadAll()
+	}
+	func loadAll(){
+		let urlString = "https://disease.sh/v2/all"
+		
+		if let url = URL(string: urlString) {
+			if let d = try? Data(contentsOf: url) {
+				// we're OK to parse!
+				let decoder = JSONDecoder()
+				if let data = try? decoder.decode(Global.self, from: d) {
+					global = data
+				}
+			}
+		}
+	}
+}
+
+struct Global : Codable {
+	let updated : Int?
+	let cases : Int!
+	let todayCases : Int!
+	let deaths : Int!
+	let todayDeaths : Int!
+	let recovered : Int!
+	let active : Int!
+	let critical : Int!
+	let casesPerOneMillion : Int!
+	let deathsPerOneMillion : Int!
+	let tests : Int!
+	let testsPerOneMillion : Double!
+	let affectedCountries : Int!
+
+	enum CodingKeys: String, CodingKey {
+		case updated = "updated"
+		case cases = "cases"
+		case todayCases = "todayCases"
+		case deaths = "deaths"
+		case todayDeaths = "todayDeaths"
+		case recovered = "recovered"
+		case active = "active"
+		case critical = "critical"
+		case casesPerOneMillion = "casesPerOneMillion"
+		case deathsPerOneMillion = "deathsPerOneMillion"
+		case tests = "tests"
+		case testsPerOneMillion = "testsPerOneMillion"
+		case affectedCountries = "affectedCountries"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		updated = try values.decodeIfPresent(Int.self, forKey: .updated)
+		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
+		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
+		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
+		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered)
+		active = try values.decodeIfPresent(Int.self, forKey: .active)
+		critical = try values.decodeIfPresent(Int.self, forKey: .critical)
+		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion)
+		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion)
+		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
+		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion)
+		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries)
+	}
 }
