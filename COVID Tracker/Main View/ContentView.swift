@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	@State var selectedView = 2
+	@State var selectedView = 0
 	@State public var searchQuery : String = ""
 	
 	init() {
@@ -21,30 +21,6 @@ struct ContentView: View {
 		TabView(selection: $selectedView) {
 			NavigationView {
 				VStack {
-					TestingView()
-						.navigationBarTitle(Text("Testing Centers"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "info.circle")
-				Text("Testing")
-			}.tag(0)
-			NavigationView {
-				VStack {
-					StatesView()
-						.navigationBarTitle(Text("All States"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "house")
-				Text("States")
-			}.tag(1)
-			NavigationView {
-				VStack {
 					MapsView()
 						.navigationBarTitle(Text("COVID-19 Tracker"))
 				}
@@ -53,7 +29,7 @@ struct ContentView: View {
 				.tabItem {
 				Image(systemName: "globe")
 				Text("Global")
-			}.tag(2)
+			}.tag(0)
 			NavigationView {
 				VStack {
 					CountryView()
@@ -65,7 +41,18 @@ struct ContentView: View {
 				.tabItem {
 				Image(systemName: "map")
 				Text("Countries")
-			}.tag(3)
+			}.tag(1)
+			NavigationView {
+				VStack {
+					StatesCombinedView()
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "book")
+				Text("States")
+			}.tag(2)
 			NavigationView {
 				VStack {
 					NewsView()
@@ -75,9 +62,9 @@ struct ContentView: View {
 			}
 			.navigationViewStyle(StackNavigationViewStyle())
 				.tabItem {
-				Image(systemName: "tray.2")
+				Image(systemName: "paperplane")
 				Text("News")
-			}.tag(4)
+			}.tag(3)
 		}.animation(.default)
     }
 }
@@ -85,59 +72,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
         ContentView()
-    }
-}
-
-struct SearchBar: UIViewRepresentable {
-    @Binding var text: String
-	var placeholder: String
-
-    class Coordinator: NSObject, UISearchBarDelegate {
-
-        @Binding var text: String
-
-        init(text: Binding<String>) {
-            _text = text
-        }
-
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(text: $text)
-    }
-
-    func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
-		searchBar.placeholder = placeholder
-		searchBar.searchBarStyle = .minimal
-        return searchBar
-    }
-
-    func updateUIView(_ uiView: UISearchBar,
-                      context: UIViewRepresentableContext<SearchBar>) {
-        uiView.text = text
-    }
-}
-
-class AnyGestureRecognizer: UIGestureRecognizer {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        //To prevent keyboard hide and show when switching from one textfield to another
-        if let textField = touches.first?.view, textField is UITextField {
-            state = .failed
-        } else {
-            state = .began
-        }
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       state = .ended
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
-        state = .cancelled
     }
 }

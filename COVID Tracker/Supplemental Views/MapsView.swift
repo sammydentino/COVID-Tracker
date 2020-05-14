@@ -14,46 +14,46 @@ import MapKit
 import Combine
 
 struct MapsView: View {
-	@ObservedObject var coronaCases = CoronaObservable()
-	@ObservedObject var fetch = getAll()
-	@State var showingDetail = false
+	@ObservedObject private var coronaCases = CoronaObservable()
+	@ObservedObject private var fetch = getAll()
+	@State private var showingDetail = false
     var body: some View {
 		VStack(alignment: .leading){
 			Group {
-			HStack{
-				Text("Cases").font(.subheadline).bold()
+				HStack{
+					Text("Cases").font(.subheadline).bold()
+					Spacer()
+					Text("\(coronaCases.coronaOutbreak.totalCases.withCommas())")
+						.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+						.font(.subheadline)
+						.bold()
+				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
 				Spacer()
-				Text(coronaCases.coronaOutbreak.totalCases.withCommas())
-					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-					.font(.subheadline)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
-			HStack{
-				Text("Deaths").font(.subheadline).bold()
+				HStack{
+					Text("Deaths").font(.subheadline).bold()
+					Spacer()
+					Text("\(coronaCases.coronaOutbreak.totalDeaths.withCommas())")
+						.font(.subheadline)
+						.foregroundColor(.red)
+						.bold()
+				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
 				Spacer()
-				Text(coronaCases.coronaOutbreak.totalDeaths.withCommas())
-					.font(.subheadline)
-					.foregroundColor(.red)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
-			HStack {
-				Text("Locations")
-					.font(.subheadline)
-					.bold()
+				HStack {
+					Text("Locations")
+						.font(.subheadline)
+						.bold()
+					Spacer()
+					Text("\(fetch.global.affectedCountries.withCommas())")
+						.foregroundColor(.orange)
+						.font(.subheadline)
+						.bold()
+				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
 				Spacer()
-				Text(fetch.global.affectedCountries.withCommas())
-					.foregroundColor(.orange)
-					.font(.subheadline)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
 			}
 			HStack{
 				Text("Recovered").font(.subheadline).bold()
 				Spacer()
-				Text(coronaCases.coronaOutbreak.totalRecovered.withCommas())
+				Text("\(coronaCases.coronaOutbreak.totalRecovered.withCommas())")
 					.font(.subheadline)
 					.foregroundColor(.green)
 					.bold()
@@ -64,7 +64,7 @@ struct MapsView: View {
 					.font(.subheadline)
 					.bold()
 				Spacer()
-				Text(fetch.global.tests.withCommas())
+				Text("\(fetch.global.tests.withCommas())")
 					.foregroundColor(.purple)
 					.font(.subheadline)
 					.bold()
@@ -134,7 +134,7 @@ class CoronaObservable : ObservableObject {
     @Published var caseAnnotations = [CaseAnnotations]()
     @Published var coronaOutbreak = (totalCases: 0, totalRecovered: 0, totalDeaths: 0)
 
-   var url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/1/query"
+    var url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/1/query"
     var cancellable : Set<AnyCancellable> = Set()
     
     init() {

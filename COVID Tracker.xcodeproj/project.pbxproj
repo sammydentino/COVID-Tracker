@@ -18,8 +18,14 @@
 		EB8504B72448196D00BA0CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */; };
 		EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
 		EBA1900324512DD40082DCCF /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5568CDF8CE8FBD44AEEB17B /* Pods_COVID_Tracker.framework */; };
+		EBB95AFB246C91FE006A373E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95AFA246C91FE006A373E /* Array.swift */; };
+		EBB95AFF246CCEE3006A373E /* StatesCombinedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */; };
+		EBB95B02246CD019006A373E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B01246CD019006A373E /* SearchBar.swift */; };
+		EBB95B06246CD0AD006A373E /* GradientButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B05246CD0AD006A373E /* GradientButtonStyle.swift */; };
+		EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */; };
 		EBB9D9462450095300620ACE /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9D9452450095200620ACE /* SourcesView.swift */; };
 		EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE9F42244A724F00EA286F /* StatesView.swift */; };
+		EBC42F702468E8CF00E06413 /* CountyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC42F6F2468E8CF00E06413 /* CountyView.swift */; };
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 		EBE18443245DF830000E85C3 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapsView.swift */; };
@@ -49,8 +55,14 @@
 		EB8504B62448196D00BA0CF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB8504B82448196D00BA0CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8504C0244828EE00BA0CF0 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		EBB95AFA246C91FE006A373E /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesCombinedView.swift; sourceTree = "<group>"; };
+		EBB95B01246CD019006A373E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		EBB95B05246CD0AD006A373E /* GradientButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonStyle.swift; sourceTree = "<group>"; };
+		EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGestureOrganizer.swift; sourceTree = "<group>"; };
 		EBB9D9452450095200620ACE /* SourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesView.swift; sourceTree = "<group>"; };
 		EBBE9F42244A724F00EA286F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
+		EBC42F6F2468E8CF00E06413 /* CountyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountyView.swift; sourceTree = "<group>"; };
 		EBDD6F0E244933BD00372189 /* COVID Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "COVID Tracker.entitlements"; sourceTree = "<group>"; };
 		EBDD6F10244933BD00372189 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EBDD6F12244933C700372189 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -114,6 +126,7 @@
 		EB8504A92448196C00BA0CF0 /* COVID Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				EBB95B00246CCFFC006A373E /* Utilities */,
 				EB8F120A2451192F00845269 /* Advertisements */,
 				EB8F12062451187E00845269 /* Supplemental Views */,
 				EB8F120B2451194C00845269 /* Extensions */,
@@ -154,6 +167,8 @@
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB390AFA24529985003657D4 /* TestingView.swift */,
 				EBE18442245DF830000E85C3 /* MapsView.swift */,
+				EBC42F6F2468E8CF00E06413 /* CountyView.swift */,
+				EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -179,8 +194,19 @@
 			isa = PBXGroup;
 			children = (
 				EB8504C0244828EE00BA0CF0 /* Int.swift */,
+				EBB95AFA246C91FE006A373E /* Array.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EBB95B00246CCFFC006A373E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EBB95B01246CD019006A373E /* SearchBar.swift */,
+				EBB95B05246CD0AD006A373E /* GradientButtonStyle.swift */,
+				EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EBDD6F0F244933BD00372189 /* Frameworks */ = {
@@ -321,14 +347,20 @@
 			files = (
 				EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */,
 				EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */,
+				EBB95AFF246CCEE3006A373E /* StatesCombinedView.swift in Sources */,
 				EB132012244F9CEA0092B927 /* Banner.swift in Sources */,
+				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
 				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
+				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
 				EBE18443245DF830000E85C3 /* MapsView.swift in Sources */,
+				EBB95B06246CD0AD006A373E /* GradientButtonStyle.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
+				EBB95AFB246C91FE006A373E /* Array.swift in Sources */,
 				EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */,
+				EBC42F702468E8CF00E06413 /* CountyView.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* ContentView.swift in Sources */,
 			);
@@ -482,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.2;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -507,7 +539,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.2;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;

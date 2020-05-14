@@ -24,7 +24,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(country.cases.withCommas())
+							Text("\(country.cases.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -35,7 +35,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(country.active.withCommas())
+							Text("\(country.active.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -46,7 +46,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(country.critical.withCommas())
+							Text("\(country.critical.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -56,7 +56,7 @@ struct DetailView: View {
 						HStack {
 							Text("New Today").font(.subheadline).bold()
 							Spacer()
-							Text(country.todayCases.withCommas())
+							Text("\(country.todayCases.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -74,7 +74,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(country.deaths.withCommas())
+							Text("\(country.deaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -85,7 +85,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(country.todayDeaths.withCommas())
+							Text("\(country.todayDeaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -101,7 +101,7 @@ struct DetailView: View {
 							.font(.subheadline)
 							.bold()
 						Spacer()
-						Text(country.recovered.withCommas())
+						Text("\(country.recovered.withCommas())")
 							.foregroundColor(.orange)
 							.font(.subheadline)
 							.bold()
@@ -115,7 +115,7 @@ struct DetailView: View {
 							.font(.subheadline)
 							.bold()
 						Spacer()
-						Text(country.tests.withCommas())
+						Text("\(country.tests.withCommas())")
 							.foregroundColor(.green)
 							.font(.subheadline)
 							.bold()
@@ -130,25 +130,19 @@ struct DetailView: View {
 
 struct CountryView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject var fetch = getCountries()
-	@State var showingDetail = false
+	@ObservedObject private var fetch = getCountries()
+	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery,
-					  placeholder: "Case Sensitive").padding(8)
+			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
 			List {
-				Section(header: Text("\nSorted by Most Cases").font(.subheadline)
-				.bold()) {
-					ForEach(fetch.countries.filter {
-						self.searchQuery.isEmpty ?
-							true :
-							"\($0)".contains(self.searchQuery)
-					}, id: \.country) { item in
+				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold()) {
+					ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.contains(searchQuery) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
-							Text(item.country)
+							Text("\(item.country)")
 								.font(.subheadline)
 								.bold()
 								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))

@@ -11,8 +11,8 @@ import SwiftUI
 // isn't used at the moment
 
 struct TotalView: View {
-	@ObservedObject var fetch = getAll()
-	@State var showingDetail = false
+	@ObservedObject private var fetch = getAll()
+	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack (alignment: .center, spacing: 0) {

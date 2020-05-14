@@ -69,7 +69,6 @@ struct SourcesView: View {
 							.bold()
 					}.font(.subheadline)
 				}
-				
 			}.listStyle(GroupedListStyle())
 				.environment(\.horizontalSizeClass, .regular)
 			Banner()

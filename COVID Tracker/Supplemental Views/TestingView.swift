@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ButtonView: View {
-	@State var showingDetail = false
+	@State private var showingDetail = false
 	let item: Testing
 	
 	var body: some View {
@@ -30,15 +30,15 @@ struct ButtonView: View {
 
 struct TestingView: View {
     @State private var searchQuery: String = ""
-	@ObservedObject var fetch = getTesting()
-	@State var showingDetail = false
+	@ObservedObject private var fetch = getTesting()
+	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(8)
+			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(.leading, 8).padding(.trailing, 8)
 			List {
 				Group {
-					Section(header: Text("\nArizona").font(.subheadline)
+					Section(header: Text("Arizona").font(.subheadline)
 					.bold()) {
 						ForEach(fetch.arizona.filter {
 							self.searchQuery.isEmpty ?
@@ -171,7 +171,7 @@ struct TestDetail: View {
 					.bold()) {
 					VStack (alignment:.leading){
 						Spacer()
-						Text(item.name)
+						Text("\(item.name)")
 							.font(.subheadline)
 							.bold()
 						Spacer()
@@ -184,15 +184,12 @@ struct TestDetail: View {
 					VStack (alignment:.leading){
 						Spacer()
 						ForEach(item.physical_address) { item in
-							Text(item.address_1 + ",")
+							Text("\(item.address_1),")
 								.font(.subheadline)
 								.bold()
-							Text(item.city + " " + item.postal_code)
+							Text("\(item.city), \(item.state_province) \(item.postal_code)")
 								.font(.subheadline)
 								.bold()
-							/*Text(item.postal_code)
-							.font(.subheadline)
-							.bold()*/
 						}
 						Spacer()
 					}
@@ -204,7 +201,7 @@ struct TestDetail: View {
 					VStack (alignment:.leading){
 						Spacer()
 						ForEach(item.phones) { item in
-							Text(item.number)
+							Text("\(item.number)")
 								.font(.subheadline)
 								.bold()
 						}
@@ -219,12 +216,12 @@ struct TestDetail: View {
 						Spacer()
 						ForEach(item.regular_schedule) { item in
 							HStack {
-								Text(item.weekday + ": ")
+								Text("\(item.weekday): ")
 									.font(.subheadline)
 									.bold()
 								Spacer()
 								VStack (alignment: .trailing) {
-									Text(item.opens_at + " - " + item.closes_at)
+									Text("\(item.opens_at) - \(item.closes_at)")
 										.font(.subheadline)
 										.bold()
 								}
@@ -239,7 +236,7 @@ struct TestDetail: View {
 					.bold()) {
 					VStack (alignment:.leading){
 						Spacer()
-						Text(item.description)
+						Text("\(item.description)")
 							.font(.subheadline)
 							.bold()
 						Spacer()

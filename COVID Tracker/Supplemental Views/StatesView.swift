@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DetailView2: View {
 	let state : States
+	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack {
@@ -24,7 +25,7 @@ struct DetailView2: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(state.cases.withCommas() )
+							Text("\(state.cases.withCommas())" )
 								.font(.subheadline)
 								.bold()
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -35,7 +36,7 @@ struct DetailView2: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(state.active.withCommas())
+							Text("\(state.active.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -46,7 +47,7 @@ struct DetailView2: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(state.todayCases.withCommas())
+							Text("\(state.todayCases.withCommas())")
 								.font(.subheadline)
 								.bold()
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -64,7 +65,7 @@ struct DetailView2: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(state.deaths.withCommas())
+							Text("\(state.deaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -75,7 +76,7 @@ struct DetailView2: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text(state.todayDeaths.withCommas())
+							Text("\(state.todayDeaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -91,7 +92,7 @@ struct DetailView2: View {
 							.font(.subheadline)
 							.bold()
 						Spacer()
-						Text(state.tests.withCommas())
+						Text("\(state.tests.withCommas())")
 							.foregroundColor(.green)
 							.font(.subheadline)
 							.bold()
@@ -106,25 +107,21 @@ struct DetailView2: View {
 
 struct StatesView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject var fetch = getStates()
-	@State var showingDetail = false
+	@ObservedObject private var fetch = getStates()
+	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery,
-					  placeholder: "Case Sensitive").padding(8)
+			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
 			List {
-				Section(header: Text("\nSorted by Most Cases").font(.subheadline)
-				.bold()) {
+				Section(header: Text("Sorted Alphabetically").font(.subheadline).bold()) {
 					ForEach(fetch.states.filter {
-						self.searchQuery.isEmpty ?
-							true :
-							"\($0)".contains(self.searchQuery)
-					}, id: \.state) { item in
+						self.searchQuery.isEmpty ? true : "\($0)".contains(self.searchQuery)
+					}) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
-							Text(item.state)
+							Text("\(item.state)")
 								.font(.subheadline)
 								.bold()
 								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
@@ -152,6 +149,9 @@ class getStates : ObservableObject {
 	
 	init() {
 		loadStates()
+		states = states.sorted(by: {
+			$0.state < $1.state
+		})
 	}
 	
 	func loadStates() {
