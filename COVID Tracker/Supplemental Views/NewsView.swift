@@ -113,7 +113,7 @@ class getNews : ObservableObject {
 		}
 	}
 	func loadNews2() {
-		let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=16EulFnovCr1GleXhJO2wJPaV_uT8wFKeexVWVtjfAgIUdVf"
+		let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=I6_B_W8rEFe9iX7zxWF2La-Nc50WGQWLZWrU0hogorm-66le"
 
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
