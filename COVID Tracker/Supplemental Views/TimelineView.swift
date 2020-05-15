@@ -12,8 +12,8 @@ import SwiftUICharts
 struct TimelineView: View {
 	@ObservedObject var fetch = getTimeline()
     var body: some View {
-		VStack {
-			BarChartView(data: ChartData(points: fetch.cases.reversed()), title: "Cases for Last 60 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientNeonBlue, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+		VStack (alignment: .leading, spacing: 0){
+			ChartCombinedView().padding(8)
 			List(fetch.timeline) { item in
 				VStack {
 					HStack {
@@ -42,6 +42,27 @@ struct TimelineView: View {
     }
 }
 
+struct ChartCombinedView : View {
+	@State private var selected = 0
+	@ObservedObject var fetch = getTimeline()
+	var body: some View {
+		VStack {
+			Picker("", selection: $selected) {
+				Text("Cases").tag(0)
+				Text("Deaths").tag(1)
+				Text("Recovered").tag(2)
+			}.pickerStyle(SegmentedPickerStyle()).padding(.leading, 17).padding(.trailing, 17)
+			if selected == 0 {
+				BarChartView(data: ChartData(points: fetch.cases.reversed()), title: "Cases in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+			} else if selected == 1 {
+				BarChartView(data: ChartData(points: fetch.deaths.reversed()), title: "Deaths in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+			} else if selected == 2 {
+				BarChartView(data: ChartData(points: fetch.recovered.reversed()), title: "Recovered in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+			}
+		}
+	}
+}
+
 struct TimelineView_Previews: PreviewProvider {
     static var previews: some View {
         TimelineView()
@@ -51,13 +72,19 @@ struct TimelineView_Previews: PreviewProvider {
 class getTimeline: ObservableObject {
 	@Published var timeline : [Timeline]!
 	@Published var cases = [Double]()
+	@Published var deaths = [Double]()
+	@Published var recovered = [Double]()
 	
 	init() {
 		loadTimeline()
 		for item in timeline {
 			cases.append(item.cases)
+			deaths.append(item.deaths)
+			recovered.append(item.recovered)
 		}
-		cases = Array(cases[0..<60])
+		cases = Array(cases[0..<30])
+		deaths = Array(deaths[0..<30])
+		recovered = Array(recovered[0..<30])
 	}
 	
 	func loadTimeline() {
@@ -81,6 +108,8 @@ struct Timeline : Codable, Identifiable {
 	let totalDeaths : Int!
 	let totalRecovered : Int!
 	var cases: Double!
+	var deaths: Double!
+	var recovered: Double!
 
 	enum CodingKeys: String, CodingKey {
 		case update = "last_update"
@@ -96,6 +125,8 @@ struct Timeline : Codable, Identifiable {
 		totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths) ?? 0
 		totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered) ?? 0
 		cases = Double(totalCases)
+		deaths = Double(totalDeaths)
+		recovered = Double(totalRecovered)
 	}
 }
 
