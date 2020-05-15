@@ -277,3 +277,38 @@ struct Tweets : Codable, Identifiable {
 		url = "https://mobile.twitter.com/user/status/" + tweet_id
 	}
 }
+
+struct NewsIn : Codable {
+	let success : Bool?
+	let message : [NewsArticle]!
+
+	enum CodingKeys: String, CodingKey {
+		case success = "success"
+		case message = "message"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		success = try values.decodeIfPresent(Bool.self, forKey: .success)
+		message = try values.decodeIfPresent([NewsArticle].self, forKey: .message)
+	}
+}
+
+struct NewsArticle : Codable {
+	let title : String!
+	let url : String!
+	let published : String!
+
+	enum CodingKeys: String, CodingKey {
+		case title = "title"
+		case url = "url"
+		case published = "published"
+	}
+
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		title = try values.decodeIfPresent(String.self, forKey: .title) ?? "N/A"
+		url = try values.decodeIfPresent(String.self, forKey: .url) ?? "N/A"
+		published = try values.decodeIfPresent(String.self, forKey: .published) ?? "N/A"
+	}
+}

@@ -9,7 +9,7 @@
 import SwiftUI
 
 // isn't used at the moment
-
+/*
 struct TotalView: View {
 	@ObservedObject private var fetch = getAll()
 	@State private var showingDetail = false
@@ -165,3 +165,4 @@ struct TotalView_Previews: PreviewProvider {
 		TotalView()
     }
 }
+*/
