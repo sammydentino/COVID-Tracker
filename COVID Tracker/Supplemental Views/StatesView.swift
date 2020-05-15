@@ -15,7 +15,7 @@ struct DetailView2: View {
 	var body: some View {
 		VStack {
 			List {
-				Section(header: Text("\nCases")
+				Section(header: Text("Cases")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
@@ -42,17 +42,6 @@ struct DetailView2: View {
 								.bold()
 						}
 						Spacer()
-						HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("\(state.todayCases.withCommas())")
-								.font(.subheadline)
-								.bold()
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-						}
-						Spacer()
 					}
 				}
 				Section(header: Text("Deaths")
@@ -66,17 +55,6 @@ struct DetailView2: View {
 								.bold()
 							Spacer()
 							Text("\(state.deaths.withCommas())")
-								.foregroundColor(.red)
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()
-						HStack {
-							Text("New Today")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("\(state.todayDeaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -98,6 +76,35 @@ struct DetailView2: View {
 							.bold()
 					}
 				}
+				Section(header: Text("Statistics")
+					.font(.headline)
+					.foregroundColor(.purple)) {
+					VStack {
+						Spacer()
+						HStack {
+							Text("Deaths")
+								.font(.subheadline)
+								.bold()
+							Spacer()
+							Text("\(state.deathRate, specifier: "%.2f")%")
+								.foregroundColor(.purple)
+								.font(.subheadline)
+								.bold()
+						}
+						Spacer()
+						HStack {
+							Text("Active")
+								.font(.subheadline)
+								.bold()
+							Spacer()
+							Text("\(state.activeVsConf, specifier: "%.2f")%")
+								.foregroundColor(.purple)
+								.font(.subheadline)
+								.bold()
+						}
+						Spacer()
+					}
+				}
 			}.listStyle(GroupedListStyle())
 				.environment(\.horizontalSizeClass, .regular)
 			Banner()
@@ -114,7 +121,7 @@ struct StatesView: View {
 		VStack(alignment: .leading, spacing: 0) {
 			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
 			List {
-				Section(header: Text("Sorted Alphabetically").font(.subheadline).bold()) {
+				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold()) {
 					ForEach(fetch.states.filter {
 						self.searchQuery.isEmpty ? true : "\($0)".contains(self.searchQuery)
 					}) { item in
@@ -150,7 +157,7 @@ class getStates : ObservableObject {
 	init() {
 		loadStates()
 		states = states.sorted(by: {
-			$0.state < $1.state
+			$0.cases > $1.cases
 		})
 	}
 	
@@ -179,6 +186,9 @@ struct States : Codable, Identifiable {
 	let active : Int!
 	let tests : Int!
 	let testsPerOneMillion : Int!
+	let deathRate: Double!
+	let testedRate: Double!
+	let activeVsConf: Double!
 
 	enum CodingKeys: String, CodingKey {
 		case state = "state"
@@ -201,5 +211,8 @@ struct States : Codable, Identifiable {
 		active = try values.decodeIfPresent(Int.self, forKey: .active)
 		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
 		testsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .testsPerOneMillion)
+		deathRate = ((Double(deaths)) / (Double(cases))) * 100
+		testedRate = ((Double(tests) / Double(cases))) * 100
+		activeVsConf = ((Double(active) / Double(cases))) * 100
 	}
 }

@@ -165,7 +165,7 @@ struct TestDetail: View {
 	var body: some View {
 		VStack {
 			List {
-				Section(header: Text("\nName")
+				Section(header: Text("Name")
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 					.font(.subheadline)
 					.bold()) {
@@ -195,7 +195,7 @@ struct TestDetail: View {
 					}
 				}
 				Section(header: Text("Phone Number")
-					.foregroundColor(.orange)
+					.foregroundColor(.green)
 					.font(.subheadline)
 					.bold()) {
 					VStack (alignment:.leading){
@@ -206,28 +206,6 @@ struct TestDetail: View {
 								.bold()
 						}
 						Spacer()
-					}
-				}
-				Section(header: Text("Hours")
-					.foregroundColor(.green)
-					.font(.subheadline)
-					.bold()) {
-					VStack (alignment:.leading){
-						Spacer()
-						ForEach(item.regular_schedule) { item in
-							HStack {
-								Text("\(item.weekday): ")
-									.font(.subheadline)
-									.bold()
-								Spacer()
-								VStack (alignment: .trailing) {
-									Text("\(item.opens_at) - \(item.closes_at)")
-										.font(.subheadline)
-										.bold()
-								}
-							}
-							Spacer()
-						}
 					}
 				}
 				Section(header: Text("Description")

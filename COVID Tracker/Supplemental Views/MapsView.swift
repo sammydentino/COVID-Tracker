@@ -21,7 +21,7 @@ struct MapsView: View {
 		VStack(alignment: .leading){
 			Group {
 				HStack{
-					Text("Cases").font(.subheadline).bold()
+					Text("Total Cases").font(.subheadline).bold()
 					Spacer()
 					Text("\(coronaCases.coronaOutbreak.totalCases.withCommas())")
 						.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -39,11 +39,11 @@ struct MapsView: View {
 				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
 				Spacer()
 				HStack {
-					Text("Locations")
+					Text("Active Cases")
 						.font(.subheadline)
 						.bold()
 					Spacer()
-					Text("\(fetch.global.affectedCountries.withCommas())")
+					Text("\(fetch.global.active.withCommas())")
 						.foregroundColor(.orange)
 						.font(.subheadline)
 						.bold()
@@ -246,7 +246,6 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
 
 class getAll : ObservableObject {
 	@Published var global : Global!
-	
 	init() {
 		loadAll()
 	}
@@ -298,18 +297,18 @@ struct Global : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		updated = try values.decodeIfPresent(Int.self, forKey: .updated)
-		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
-		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
-		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
-		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
-		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered)
-		active = try values.decodeIfPresent(Int.self, forKey: .active)
-		critical = try values.decodeIfPresent(Int.self, forKey: .critical)
-		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion)
-		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion)
+		updated = try values.decodeIfPresent(Int.self, forKey: .updated) ?? 0
+		cases = try values.decodeIfPresent(Int.self, forKey: .cases) ?? 0
+		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases) ?? 0
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
+		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths) ?? 0
+		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered) ?? 0
+		active = try values.decodeIfPresent(Int.self, forKey: .active) ?? 0
+		critical = try values.decodeIfPresent(Int.self, forKey: .critical) ?? 0
+		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion) ?? 0
+		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion) ?? 0
 		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
-		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion)
-		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries)
+		testsPerOneMillion = try values.decodeIfPresent(Double.self, forKey: .testsPerOneMillion) ?? 0
+		affectedCountries = try values.decodeIfPresent(Int.self, forKey: .affectedCountries) ?? 0
 	}
 }

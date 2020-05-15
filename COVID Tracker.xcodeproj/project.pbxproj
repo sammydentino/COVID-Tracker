@@ -29,6 +29,7 @@
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 		EBE18443245DF830000E85C3 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapsView.swift */; };
+		EBEC03B3246E2A3B00993B51 /* NewsCombinedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC03B2246E2A3B00993B51 /* NewsCombinedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		EBE18442245DF830000E85C3 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
+		EBEC03B2246E2A3B00993B51 /* NewsCombinedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCombinedView.swift; sourceTree = "<group>"; };
 		FCF130CA95EF34FA54002A5B /* Pods-COVID Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.release.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				EBE18442245DF830000E85C3 /* MapsView.swift */,
 				EBC42F6F2468E8CF00E06413 /* CountyView.swift */,
 				EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */,
+				EBEC03B2246E2A3B00993B51 /* NewsCombinedView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
 				EBE18443245DF830000E85C3 /* MapsView.swift in Sources */,
+				EBEC03B3246E2A3B00993B51 /* NewsCombinedView.swift in Sources */,
 				EBB95B06246CD0AD006A373E /* GradientButtonStyle.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
@@ -514,7 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -539,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;

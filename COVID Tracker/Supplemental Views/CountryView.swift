@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct DetailView: View {
-	let country : Country
+	let country : Countries
 	
 	var body: some View {
 		VStack {
 			List {
-				Section(header: Text("\nCases")
+				Section(header: Text("Cases")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
@@ -24,7 +24,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text("\(country.cases.withCommas())")
+							Text("\(country.confirmed.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -36,27 +36,6 @@ struct DetailView: View {
 								.bold()
 							Spacer()
 							Text("\(country.active.withCommas())")
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()
-						HStack {
-							Text("Critical")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("\(country.critical.withCommas())")
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							
-						}
-						Spacer()
-						HStack {
-							Text("New Today").font(.subheadline).bold()
-							Spacer()
-							Text("\(country.todayCases.withCommas())")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
@@ -80,45 +59,64 @@ struct DetailView: View {
 								.bold()
 						}
 						Spacer()
+					}
+				}
+				Section(header: Text("Recovered")
+					.font(.headline)
+					.foregroundColor(.green)) {
+					VStack {
+						Spacer()
 						HStack {
-							Text("New Today")
+							Text("Total")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text("\(country.todayDeaths.withCommas())")
-								.foregroundColor(.red)
+							Text("\(country.recovered.withCommas())")
+								.foregroundColor(.green)
 								.font(.subheadline)
 								.bold()
 						}
 						Spacer()
 					}
 				}
-				Section(header: Text("Recovered")
+				Section(header: Text("Statistics")
 					.font(.headline)
-					.foregroundColor(.orange)) {
-					HStack {
-						Text("Total")
-							.font(.subheadline)
-							.bold()
+					.foregroundColor(.purple)) {
+					VStack {
 						Spacer()
-						Text("\(country.recovered.withCommas())")
-							.foregroundColor(.orange)
-							.font(.subheadline)
-							.bold()
-					}
-				}
-				Section(header: Text("Tests")
-					.font(.headline)
-					.foregroundColor(.green)) {
-					HStack {
-						Text("Total")
-							.font(.subheadline)
-							.bold()
+						HStack {
+							Text("Deaths")
+								.font(.subheadline)
+								.bold()
+							Spacer()
+							Text("\(country.deathRate, specifier: "%.2f")%")
+								.foregroundColor(.purple)
+								.font(.subheadline)
+								.bold()
+						}
 						Spacer()
-						Text("\(country.tests.withCommas())")
-							.foregroundColor(.green)
-							.font(.subheadline)
-							.bold()
+						HStack {
+							Text("Recovered")
+								.font(.subheadline)
+								.bold()
+							Spacer()
+							Text("\(country.recoveredRate, specifier: "%.2f")%")
+								.foregroundColor(.purple)
+								.font(.subheadline)
+								.bold()
+						}
+						Spacer()
+						HStack {
+							Text("Active")
+								.font(.subheadline)
+								.bold()
+							Spacer()
+							Text("\(country.activeVsConf, specifier: "%.2f")%")
+								.foregroundColor(.purple)
+								.font(.subheadline)
+								.bold()
+						}
+						Spacer()
 					}
 				}
 			}.listStyle(GroupedListStyle())
@@ -138,17 +136,17 @@ struct CountryView: View {
 			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
 			List {
 				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold()) {
-					ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.contains(searchQuery) })) { item in
+					ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.location.contains(searchQuery) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
-							Text("\(item.country)")
+							Text("\(item.location)")
 								.font(.subheadline)
 								.bold()
 								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
 						}.sheet(isPresented: self.$showingDetail) {
 							NavigationView {
-								DetailView(country: item).navigationBarTitle(item.country)
+								DetailView(country: item).navigationBarTitle(item.location)
 							}
 						}
 					}
@@ -166,97 +164,78 @@ struct CountryView_Previews: PreviewProvider {
 }
 
 class getCountries: ObservableObject {
-	@Published var countries : [Country]!
+	@Published var countries : [Countries]!
 	
 	init() {
 		loadCountries()
 		countries = countries.sorted(by: {
-			$0.cases > $1.cases
+			$0.confirmed > $1.confirmed
 		})
 	}
 	
 	func loadCountries() {
-		let urlString = "https://disease.sh/v2/countries"
+		let urlString = "https://covid2019-api.herokuapp.com/v2/current"
 		if let url = URL(string: urlString) {
 			if let d = try? Data(contentsOf: url) {
 				// we're OK to parse!
 				let decoder = JSONDecoder()
-				if let data = try? decoder.decode([Country].self, from: d) {
-					countries = data
+				if let data = try? decoder.decode(CountriesIn.self, from: d) {
+					countries = data.data
 				}
 			}
 		}
 	}
 }
 
-struct Country : Codable, Identifiable {
-	let id = UUID()
-	let updated : Int!
-	let country : String!
-	//let countryInfo : CountryInfo!
-	let cases : Int!
-	let todayCases : Int!
-	let deaths : Int!
-	let todayDeaths : Int!
-	let recovered : Int!
-	let active : Int!
-	let critical : Int!
-	let casesPerOneMillion : Int!
-	let deathsPerOneMillion : Int!
-	let tests : Int!
-	let testsPerOneMillion : Int!
-	let continent : String!
+struct CountriesIn : Codable {
+	let data : [Countries]!
+	let dt : String?
+	let ts : Int?
 
 	enum CodingKeys: String, CodingKey {
-		case updated = "updated"
-		case country = "country"
-		//case countryInfo = "countryInfo"
-		case cases = "cases"
-		case todayCases = "todayCases"
-		case deaths = "deaths"
-		case todayDeaths = "todayDeaths"
-		case recovered = "recovered"
-		case active = "active"
-		case critical = "critical"
-		case casesPerOneMillion = "casesPerOneMillion"
-		case deathsPerOneMillion = "deathsPerOneMillion"
-		case tests = "tests"
-		case testsPerOneMillion = "testsPerOneMillion"
-		case continent = "continent"
+
+		case data = "data"
+		case dt = "dt"
+		case ts = "ts"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		updated = try values.decodeIfPresent(Int.self, forKey: .updated)
-		country = try values.decodeIfPresent(String.self, forKey: .country)
-		//countryInfo = try values.decodeIfPresent(CountryInfo.self, forKey: .countryInfo)
-		cases = try values.decodeIfPresent(Int.self, forKey: .cases)
-		todayCases = try values.decodeIfPresent(Int.self, forKey: .todayCases)
-		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths)
-		todayDeaths = try values.decodeIfPresent(Int.self, forKey: .todayDeaths)
-		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered)
-		active = try values.decodeIfPresent(Int.self, forKey: .active)
-		critical = try values.decodeIfPresent(Int.self, forKey: .critical)
-		casesPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .casesPerOneMillion)
-		deathsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .deathsPerOneMillion)
-		tests = try values.decodeIfPresent(Int.self, forKey: .tests)
-		testsPerOneMillion = try values.decodeIfPresent(Int.self, forKey: .testsPerOneMillion)
-		continent = try values.decodeIfPresent(String.self, forKey: .continent)
+		data = try values.decodeIfPresent([Countries].self, forKey: .data)
+		dt = try values.decodeIfPresent(String.self, forKey: .dt)
+		ts = try values.decodeIfPresent(Int.self, forKey: .ts)
 	}
+
 }
 
-/*struct CountryInfo : Codable {
-	let lat : String!
-	let long : String!
+struct Countries : Codable, Identifiable {
+	let id = UUID()
+	let location : String!
+	let confirmed : Int!
+	let deaths : Int!
+	let recovered : Int!
+	let active : Int!
+	let deathRate: Double!
+	let recoveredRate: Double!
+	let activeVsConf: Double!
 
 	enum CodingKeys: String, CodingKey {
-		case lat = "lat"
-		case long = "long"
+		case location = "location"
+		case confirmed = "confirmed"
+		case deaths = "deaths"
+		case recovered = "recovered"
+		case active = "active"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		lat = try values.decodeIfPresent(String.self, forKey: .lat)
-		long = try values.decodeIfPresent(String.self, forKey: .long)
+		location = try values.decodeIfPresent(String.self, forKey: .location) ?? "N/A"
+		confirmed = try values.decodeIfPresent(Int.self, forKey: .confirmed) ?? 0
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
+		recovered = try values.decodeIfPresent(Int.self, forKey: .recovered) ?? 0
+		active = try values.decodeIfPresent(Int.self, forKey: .active) ?? 0
+		deathRate = ((Double(deaths)) / (Double(confirmed))) * 100
+		recoveredRate = ((Double(recovered) / Double(confirmed))) * 100
+		activeVsConf = ((Double(active) / Double(confirmed))) * 100
 	}
-}*/
+}
