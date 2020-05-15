@@ -53,11 +53,11 @@ struct ChartCombinedView : View {
 				Text("Recovered").tag(2)
 			}.pickerStyle(SegmentedPickerStyle()).padding(.leading, 17).padding(.trailing, 17)
 			if selected == 0 {
-				BarChartView(data: ChartData(points: fetch.cases.reversed()), title: "Cases in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+				BarChartView(data: ChartData(points: fetch.cases.reversed()), title: "Cases in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.blue, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
 			} else if selected == 1 {
-				BarChartView(data: ChartData(points: fetch.deaths.reversed()), title: "Deaths in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+				BarChartView(data: ChartData(points: fetch.deaths.reversed()), title: "Deaths in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.OrangeStart, secondGradientColor: Colors.OrangeEnd, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
 			} else if selected == 2 {
-				BarChartView(data: ChartData(points: fetch.recovered.reversed()), title: "Recovered in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.GradientPurple, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+				BarChartView(data: ChartData(points: fetch.recovered.reversed()), title: "Recovered in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, secondGradientColor: Color.green, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
 			}
 		}
 	}
@@ -127,47 +127,5 @@ struct Timeline : Codable, Identifiable {
 		cases = Double(totalCases)
 		deaths = Double(totalDeaths)
 		recovered = Double(totalRecovered)
-	}
-}
-
-struct Cases : Codable, Identifiable {
-	let id = UUID()
-	let totalCases : Int!
-
-	enum CodingKeys: String, CodingKey {
-		case totalCases = "total_cases"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		totalCases = try values.decodeIfPresent(Int.self, forKey: .totalCases) ?? 0
-	}
-}
-
-struct Deaths : Codable, Identifiable {
-	let id = UUID()
-	let totalDeaths : Int!
-
-	enum CodingKeys: String, CodingKey {
-		case totalDeaths = "total_deaths"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths) ?? 0
-	}
-}
-
-struct Recovered : Codable, Identifiable {
-	let id = UUID()
-	let totalRecovered : Int!
-
-	enum CodingKeys: String, CodingKey {
-		case totalRecovered = "total_recovered"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered) ?? 0
 	}
 }
