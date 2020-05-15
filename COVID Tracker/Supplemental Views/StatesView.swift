@@ -82,7 +82,7 @@ struct DetailView2: View {
 					VStack {
 						Spacer()
 						HStack {
-							Text("Deaths")
+							Text("Fatality Rate")
 								.font(.subheadline)
 								.bold()
 							Spacer()
@@ -93,7 +93,7 @@ struct DetailView2: View {
 						}
 						Spacer()
 						HStack {
-							Text("Active")
+							Text("Currently Active")
 								.font(.subheadline)
 								.bold()
 							Spacer()
@@ -106,7 +106,6 @@ struct DetailView2: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 			Banner()
 		}
 	}
@@ -140,7 +139,6 @@ struct StatesView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }

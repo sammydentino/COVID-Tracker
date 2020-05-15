@@ -85,7 +85,7 @@ struct DetailView: View {
 					VStack {
 						Spacer()
 						HStack {
-							Text("Deaths")
+							Text("Fatality Rate")
 								.font(.subheadline)
 								.bold()
 							Spacer()
@@ -96,7 +96,7 @@ struct DetailView: View {
 						}
 						Spacer()
 						HStack {
-							Text("Recovered")
+							Text("Recovery Rate")
 								.font(.subheadline)
 								.bold()
 							Spacer()
@@ -107,7 +107,7 @@ struct DetailView: View {
 						}
 						Spacer()
 						HStack {
-							Text("Active")
+							Text("Currently Active")
 								.font(.subheadline)
 								.bold()
 							Spacer()
@@ -120,7 +120,6 @@ struct DetailView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 			Banner()
 		}
 	}
@@ -152,7 +151,6 @@ struct CountryView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }

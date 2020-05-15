@@ -20,19 +20,19 @@ struct CountyView: View {
 			List {
 				Section(header: Text("Search Results").font(.subheadline).bold()) {
 					ForEach(fetch.counties.filter { item in
-						item.county_name == self.searchQuery
+						item.countyName == self.searchQuery
 					}) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
 							HStack {
-								Text(item.county_name).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
 								Spacer()
-								Text(item.state_name).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+								Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
 							}
 						}.sheet(isPresented: self.$showingDetail) {
 							NavigationView {
-								 DetailView3(county: item).navigationBarTitle(item.county_name)
+								 DetailView3(county: item).navigationBarTitle(item.countyName)
 							}
 						}
 					}
@@ -43,19 +43,18 @@ struct CountyView: View {
 							self.showingDetail.toggle()
 						}) {
 							HStack {
-								Text(item.county_name).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+								Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
 								Spacer()
-								Text(item.state_name).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+								Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
 							}
 						}.sheet(isPresented: self.$showingDetail) {
 							NavigationView {
-								 DetailView3(county: item).navigationBarTitle(item.county_name)
+								 DetailView3(county: item).navigationBarTitle(item.countyName)
 							}
 						}
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }
@@ -88,10 +87,17 @@ struct DetailView3: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text("\(county.new.withCommas())")
-								.font(.subheadline)
-								.bold()
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+							if(county.new == 0) {
+								Text("N/A")
+									.font(.subheadline)
+									.bold()
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+							} else {
+								Text("\(county.new.withCommas())")
+									.font(.subheadline)
+									.bold()
+									.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+							}
 						}
 						Spacer()
 					}
@@ -106,7 +112,7 @@ struct DetailView3: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text("\(county.death.withCommas())")
+							Text("\(county.deaths.withCommas())")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -117,30 +123,36 @@ struct DetailView3: View {
 								.font(.subheadline)
 								.bold()
 							Spacer()
-							Text("\(county.new_death.withCommas())")
-								.foregroundColor(.red)
-								.font(.subheadline)
-								.bold()
+							if(county.newDeaths == 0) {
+								Text("N/A")
+									.font(.subheadline)
+									.bold()
+									.foregroundColor(.red)
+							} else {
+								Text("\(county.newDeaths.withCommas())")
+									.font(.subheadline)
+									.bold()
+									.foregroundColor(.red)
+							}
 						}
 						Spacer()
 					}
 				}
-				Section(header: Text("Fatality Rate")
+				Section(header: Text("Statistics")
 					.font(.headline)
 					.foregroundColor(.green)) {
 					HStack {
-						Text("Total")
+						Text("Fatality Rate")
 							.font(.subheadline)
 							.bold()
 						Spacer()
-						Text("\(county.fatality_rate)")
+						Text("\(county.fatalityRate)")
 							.foregroundColor(.green)
 							.font(.subheadline)
 							.bold()
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 			Banner()
 		}
 	}
@@ -153,7 +165,7 @@ class getCounties: ObservableObject {
 	init() {
 		loadCounties()
 		counties = counties.sorted(by: {
-			$0.county_name < $1.county_name
+			$0.countyName < $1.countyName
 		})
 		top10 = top10.sorted(by: {
 			$0.confirmed > $1.confirmed
@@ -209,41 +221,41 @@ struct DataResponse : Codable {
 
 struct County : Codable, Identifiable {
 	let id = UUID()
-	let county_name : String!
-	let state_name : String!
+	let countyName : String!
+	let stateName : String!
 	let confirmed : Int!
 	let new : Int!
-	let death : Int!
-	let new_death : Int!
-	let fatality_rate : String!
+	let deaths : Int!
+	let newDeaths : Int!
+	let fatalityRate : String!
 	let latitude : Double!
 	let longitude : Double!
-	let last_update : String!
+	let update : String!
 
 	enum CodingKeys: String, CodingKey {
-		case county_name = "county_name"
-		case state_name = "state_name"
+		case countyName = "county_name"
+		case stateName = "state_name"
 		case confirmed = "confirmed"
 		case new = "new"
-		case death = "death"
-		case new_death = "new_death"
-		case fatality_rate = "fatality_rate"
+		case deaths = "death"
+		case newDeaths = "new_death"
+		case fatalityRate = "fatality_rate"
 		case latitude = "latitude"
 		case longitude = "longitude"
-		case last_update = "last_update"
+		case update = "last_update"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		county_name = try values.decodeIfPresent(String.self, forKey: .county_name) ?? "N/A"
-		state_name = try values.decodeIfPresent(String.self, forKey: .state_name) ?? "N/A"
+		countyName = try values.decodeIfPresent(String.self, forKey: .countyName) ?? "N/A"
+		stateName = try values.decodeIfPresent(String.self, forKey: .stateName) ?? "N/A"
 		confirmed = try values.decodeIfPresent(Int.self, forKey: .confirmed) ?? 0
 		new = try values.decodeIfPresent(Int.self, forKey: .new) ?? 0
-		death = try values.decodeIfPresent(Int.self, forKey: .death) ?? 0
-		new_death = try values.decodeIfPresent(Int.self, forKey: .new_death) ?? 0
-		fatality_rate = try values.decodeIfPresent(String.self, forKey: .fatality_rate) ?? "N/A"
+		deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
+		newDeaths = try values.decodeIfPresent(Int.self, forKey: .newDeaths) ?? 0
+		fatalityRate = try values.decodeIfPresent(String.self, forKey: .fatalityRate) ?? "N/A"
 		latitude = try values.decodeIfPresent(Double.self, forKey: .latitude) ?? 0.0
 		longitude = try values.decodeIfPresent(Double.self, forKey: .longitude) ?? 0.0
-		last_update = try values.decodeIfPresent(String.self, forKey: .last_update) ?? "N/A"
+		update = try values.decodeIfPresent(String.self, forKey: .update) ?? "N/A"
 	}
 }

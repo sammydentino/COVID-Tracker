@@ -55,6 +55,18 @@ struct ContentView: View {
 			}.tag(2)
 			NavigationView {
 				VStack {
+					TimelineView()
+						.navigationBarTitle(Text("Timeline"))
+					Banner()
+				}
+			}
+			.navigationViewStyle(StackNavigationViewStyle())
+				.tabItem {
+				Image(systemName: "chart.bar")
+				Text("Timeline")
+			}.tag(3)
+			NavigationView {
+				VStack {
 					NewsView()
 						.navigationBarTitle(Text("News"))
 					Banner()
@@ -64,7 +76,7 @@ struct ContentView: View {
 				.tabItem {
 				Image(systemName: "paperplane")
 				Text("News")
-			}.tag(3)
+			}.tag(4)
 		}.animation(.default)
     }
 }

@@ -154,7 +154,6 @@ struct TestingView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			.environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }
@@ -221,7 +220,6 @@ struct TestDetail: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-				.environment(\.horizontalSizeClass, .regular)
 			Banner()
 		}
 	}
