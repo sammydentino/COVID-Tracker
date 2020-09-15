@@ -14,7 +14,7 @@ struct CountryDetailView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("Cases")
+                Section(header: Text("\nCases")
                     .font(.headline)
                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
                     VStack {

@@ -12,10 +12,55 @@ import Combine
 class getAll : ObservableObject {
     @Published var global : Global!
     @Published var extras : Welcome!
+    @Published var countries : [Country]!
+    @Published var usa: Country!
+    @Published var states : [States]!
+    @Published var counties: [County]!
+    @Published var top10: [County]!
+    @Published var news: [News]!
+    @Published var timeline : [Timeline]!
+    @Published var cases = [Double]()
+    @Published var deaths = [Double]()
+    @Published var recovered = [Double]()
     
     init() {
         loadAll()
         loadExtras()
+        self.loadCountries()
+        for item in self.countries! {
+            if item.country == "USA" {
+                usa = item
+            }
+        }
+        self.countries! = self.countries!.filter({
+            $0.country != "USA"
+        })
+        self.usa!.country = "United States"
+        self.countries!.append(self.usa!)
+        self.countries! = self.countries!.sorted(by: {
+            $0.cases > $1.cases
+        })
+        DispatchQueue.main.async {
+            self.loadStates()
+            self.states = self.states.sorted(by: {
+                $0.cases > $1.cases
+            })
+            self.loadCounties()
+            self.counties = self.counties.sorted(by: {
+                $0.countyName < $1.countyName
+            })
+            self.top10 = self.top10.sorted(by: {
+                $0.confirmed > $1.confirmed
+            })
+            self.top10 = Array(self.top10.prefix(10))
+            self.loadNews()
+            self.loadTimeline()
+            for item in self.timeline {
+                self.cases.append(item.cases)
+                self.deaths.append(item.deaths)
+                self.recovered.append(item.recovered)
+            }
+        }
     }
     func loadAll(){
         let urlString = "https://disease.sh/v2/all"
@@ -43,29 +88,6 @@ class getAll : ObservableObject {
             }
         }
     }
-}
-
-class getCountries: ObservableObject {
-    @Published var countries : [Country]!
-    @Published var usa: Country!
-    
-    init() {
-        self.loadCountries()
-        for item in self.countries! {
-            if item.country == "USA" {
-                usa = item
-            }
-        }
-        self.countries! = self.countries!.filter({
-            $0.country != "USA"
-        })
-        self.usa!.country = "United States"
-        self.countries!.append(self.usa!)
-        self.countries! = self.countries!.sorted(by: {
-            $0.cases > $1.cases
-        })
-    }
-    
     func loadCountries() {
         let urlString = "https://disease.sh/v2/countries"
         if let url = URL(string: urlString) {
@@ -78,20 +100,6 @@ class getCountries: ObservableObject {
             }
         }
     }
-}
-
-class getStates : ObservableObject {
-    @Published var states : [States]!
-    
-    init() {
-        DispatchQueue.main.async {
-            self.loadStates()
-            self.states = self.states.sorted(by: {
-                $0.cases > $1.cases
-            })
-        }
-    }
-    
     func loadStates() {
         let statesString = "https://disease.sh/v2/states"
         
@@ -103,24 +111,6 @@ class getStates : ObservableObject {
                     states = data
                 }
             }
-        }
-    }
-}
-
-class getCounties: ObservableObject {
-    @Published var counties: [County]!
-    @Published var top10: [County]!
-    
-    init() {
-        DispatchQueue.main.async {
-            self.loadCounties()
-            self.counties = self.counties.sorted(by: {
-                $0.countyName < $1.countyName
-            })
-            self.top10 = self.top10.sorted(by: {
-                $0.confirmed > $1.confirmed
-            })
-            self.top10 = Array(self.top10.prefix(10))
         }
     }
     func loadCounties() {
@@ -136,16 +126,6 @@ class getCounties: ObservableObject {
             }
         }
     }
-}
-
-class getNews : ObservableObject {
-    @Published var news: [News]!
-    
-    init() {
-        DispatchQueue.main.async {
-            self.loadNews()
-        }
-    }
     func loadNews() {
         let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=I6_B_W8rEFe9iX7zxWF2La-Nc50WGQWLZWrU0hogorm-66le"
 
@@ -159,28 +139,6 @@ class getNews : ObservableObject {
             }
         }
     }
-}
-
-class getTimeline: ObservableObject {
-    @Published var timeline : [Timeline]!
-    @Published var cases = [Double]()
-    @Published var deaths = [Double]()
-    @Published var recovered = [Double]()
-    
-    init() {
-        DispatchQueue.main.async {
-            self.loadTimeline()
-            for item in self.timeline {
-                self.cases.append(item.cases)
-                self.deaths.append(item.deaths)
-                self.recovered.append(item.recovered)
-            }
-        }
-        //cases = Array(cases[0..<30])
-        //deaths = Array(deaths[0..<30])
-        //recovered = Array(recovered[0..<30])
-    }
-    
     func loadTimeline() {
         let urlString = "https://covid19-api.org/api/timeline"
         if let url = URL(string: urlString) {

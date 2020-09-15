@@ -10,22 +10,29 @@ import SwiftUI
 
 struct CountryView: View {
 	@State private var searchQuery: String = ""
-    let fetch: getCountries!
+    let fetch: getAll!
 	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5).padding(.top, -10).padding(.bottom, 5)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5)
 			List {
-				Section(header: Text("\nSorted by Most Cases").font(.subheadline).bold()) {
+				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10)) {
                     ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
-							Text("\(item.country)")
-								.font(.subheadline)
-								.bold()
-								.padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+                            HStack {
+                                Text("\(item.country)")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("→")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.secondary)
+                            }
 						}.sheet(isPresented: self.$showingDetail) {
 							NavigationView {
 								CountryDetailView(country: item).navigationBarTitle(item.country)
@@ -33,7 +40,7 @@ struct CountryView: View {
 						}
 					}
 				}
-			}.listStyle(GroupedListStyle())
+			}
 		}
 	}
 }

@@ -10,15 +10,14 @@ import SwiftUI
 
 struct StatesCombinedView : View {
 	@State private var selected = 0
-    let fetchstates: getStates!
-    let fetchcounties: getCounties!
+    let fetch: getAll!
 	
 	var body: some View {
 		VStack {
 			if selected == 0 {
-                StatesView(fetch: fetchstates).navigationBarTitle("States")
+                StatesView(fetch: fetch).navigationBarTitle("States")
 			} else if selected == 1 {
-                CountyView(fetch: fetchcounties).navigationBarTitle("Counties")
+                CountyView(fetch: fetch).navigationBarTitle("Counties")
 			} /*else if selected == 2 {
 				TestingView().navigationBarTitle("Testing")
 			}*/

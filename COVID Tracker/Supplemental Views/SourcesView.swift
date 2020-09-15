@@ -12,7 +12,7 @@ struct SourcesView: View {
     var body: some View {
 		VStack(spacing: 0) {
 			List {
-				Section(header: Text("Information")
+				Section(header: Text("\nInformation")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)),
 						footer: Text("github.com/CSSEGISandData/COVID-19\n")
@@ -70,6 +70,7 @@ struct SourcesView: View {
 					}.font(.subheadline)
 				}
 			}.listStyle(GroupedListStyle())
+                .environment(\.horizontalSizeClass, .compact)
 		}
     }
 }

@@ -11,16 +11,16 @@ import SwiftUI
 struct CountyView: View {
 	@State private var searchQuery: String = ""
 	@State private var showingDetail = false
-    let fetch: getCounties!
+    let fetch: getAll!
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5).padding(.top, -10).padding(.bottom, 5)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5)
 			List {
                 if fetch.counties.filter { item in
                     item.countyName.lowercased() == self.searchQuery.lowercased()
                 }.count != 0 {
-                    Section(header: Text("\nSearch Results").font(.subheadline).bold()) {
+                    Section(header: Text("Search Results").font(.subheadline).bold().padding(.vertical, 10)) {
                         ForEach(fetch.counties.filter { item in
                             item.countyName.lowercased() == self.searchQuery.lowercased()
                         }) { item in
@@ -30,7 +30,7 @@ struct CountyView: View {
                                 HStack {
                                     Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
                                     Spacer()
-                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                    Text(item.stateName + " →").foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
                                 }
                             }.sheet(isPresented: self.$showingDetail) {
                                 NavigationView {
@@ -39,7 +39,7 @@ struct CountyView: View {
                             }
                         }
                     }
-                    Section(header: Text("Top 10 Most Affected").font(.subheadline).bold()) {
+                    Section(header: Text("Top 10 Most Affected").font(.subheadline).bold().padding(.vertical, 10)) {
                         ForEach(fetch.top10) { item in
                             Button(action: {
                                 self.showingDetail.toggle()
@@ -47,7 +47,7 @@ struct CountyView: View {
                                 HStack {
                                     Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
                                     Spacer()
-                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                    Text(item.stateName + " →").foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
                                 }
                             }.sheet(isPresented: self.$showingDetail) {
                                 NavigationView {
@@ -57,7 +57,7 @@ struct CountyView: View {
                         }
                     }
                 } else {
-                    Section(header: Text("\nTop 10 Most Affected").font(.subheadline).bold()) {
+                    Section(header: Text("Top 10 Most Affected").font(.subheadline).bold().padding(.vertical, 10)) {
                         ForEach(fetch.top10) { item in
                             Button(action: {
                                 self.showingDetail.toggle()
@@ -65,7 +65,7 @@ struct CountyView: View {
                                 HStack {
                                     Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
                                     Spacer()
-                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                    Text(item.stateName + " →").foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
                                 }
                             }.sheet(isPresented: self.$showingDetail) {
                                 NavigationView {
@@ -75,7 +75,7 @@ struct CountyView: View {
                         }
                     }
                 }
-			}.listStyle(GroupedListStyle())
+			}
 		}
 	}
 }
