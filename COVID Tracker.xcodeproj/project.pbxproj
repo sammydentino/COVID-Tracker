@@ -89,13 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		298BA46E99FD23E1372AE821 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		EB13200D244F9C800092B927 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +102,6 @@
 				EB8504A92448196C00BA0CF0 /* COVID Tracker */,
 				EB8504A82448196C00BA0CF0 /* Products */,
 				EBDD6F0F244933BD00372189 /* Frameworks */,
-				298BA46E99FD23E1372AE821 /* Pods */,
 				EB13200D244F9C800092B927 /* Recovered References */,
 			);
 			sourceTree = "<group>";
