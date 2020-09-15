@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ButtonView: View {
+/*struct ButtonView: View {
 	@State private var showingDetail = false
 	let item: Testing
 	
@@ -565,4 +565,4 @@ struct Phones : Codable, Identifiable {
 		language = try values.decodeIfPresent(String.self, forKey: .language)
 		description = try values.decodeIfPresent(String.self, forKey: .description)
 	}
-}
+}*/
