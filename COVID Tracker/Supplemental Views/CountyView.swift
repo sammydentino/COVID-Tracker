@@ -88,7 +88,7 @@ struct DetailView3: View {
 		VStack(spacing: 0) {
 			CountyMapView(lat: county.latitude, long: county.longitude).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200)
 			List {
-				Section(header: Text("Cases")
+				Section(header: Text("\nCases")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
@@ -163,19 +163,23 @@ struct DetailView3: View {
 				Section(header: Text("Statistics")
 					.font(.headline)
 					.foregroundColor(.green)) {
-					HStack {
-						Text("Fatality Rate")
-							.font(.subheadline)
-							.bold()
-						Spacer()
-						Text("\(county.fatalityRate)")
-							.foregroundColor(.green)
-							.font(.subheadline)
-							.bold()
-					}
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Fatality Rate")
+                                .font(.subheadline)
+                                .bold()
+                            Spacer()
+                            Text("\(county.fatalityRate)")
+                                .foregroundColor(.green)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                        Spacer()
+                    }
 				}
 			}.listStyle(GroupedListStyle())
-			//Banner()
+                .environment(\.horizontalSizeClass, .compact)
 		}
 	}
 }

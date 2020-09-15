@@ -136,30 +136,38 @@ struct TotalView: View {
 				Section(header: Text("Tests")
 					.font(.headline)
 					.foregroundColor(.green)) {
-					HStack {
-						Text("Total")
-							.font(.subheadline)
-							.bold()
-						Spacer()
-                        Text(fetch.global.tests!.withCommas())
-							.foregroundColor(.green)
-							.font(.subheadline)
-							.bold()
-					}
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Total")
+                                .font(.subheadline)
+                                .bold()
+                            Spacer()
+                            Text(fetch.global.tests!.withCommas())
+                                .foregroundColor(.green)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                        Spacer()
+                    }
 				}
 				Section(header: Text("Affected Areas")
 					.font(.headline)
 					.foregroundColor(.purple)) {
-					HStack {
-						Text("Total")
-							.font(.subheadline)
-							.bold()
-						Spacer()
-                        Text(fetch.global.affectedCountries!.withCommas())
-							.foregroundColor(.purple)
-							.font(.subheadline)
-							.bold()
-					}
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Total")
+                                .font(.subheadline)
+                                .bold()
+                            Spacer()
+                            Text(fetch.global.affectedCountries!.withCommas())
+                                .foregroundColor(.purple)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                        Spacer()
+                    }
 				}
 			}.listStyle(GroupedListStyle())
 				.environment(\.horizontalSizeClass, .compact)

@@ -17,6 +17,7 @@ struct ContentView: View {
     @ObservedObject private var fetchstates = getStates()
     @ObservedObject private var fetchcounties = getCounties()
     @ObservedObject private var fetchtimeline = getTimeline()
+    @ObservedObject private var fetchnews = getNews()
     
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
@@ -60,7 +61,7 @@ struct ContentView: View {
                 } else {
                     NavigationView {
                         VStack {
-                            NewsView()
+                            NewsView(fetch: fetchnews)
                                 .navigationBarTitle(Text("News")).animation(.default)
                         }
                     }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)

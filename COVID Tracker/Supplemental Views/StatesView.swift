@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct DetailView2: View {
-	let state : States
+	let state : States!
 	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack {
 			List {
-				Section(header: Text("Cases")
+				Section(header: Text("\nCases")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
@@ -65,16 +65,20 @@ struct DetailView2: View {
 				Section(header: Text("Tests")
 					.font(.headline)
 					.foregroundColor(.green)) {
-					HStack {
-						Text("Total")
-							.font(.subheadline)
-							.bold()
-						Spacer()
-						Text("\(state.tests.withCommas())")
-							.foregroundColor(.green)
-							.font(.subheadline)
-							.bold()
-					}
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("Total")
+                                .font(.subheadline)
+                                .bold()
+                            Spacer()
+                            Text("\(state.tests.withCommas())")
+                                .foregroundColor(.green)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                        Spacer()
+                    }
 				}
 				Section(header: Text("Statistics")
 					.font(.headline)
@@ -106,7 +110,7 @@ struct DetailView2: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			//Banner()
+                .environment(\.horizontalSizeClass, .compact)
 		}
 	}
 }

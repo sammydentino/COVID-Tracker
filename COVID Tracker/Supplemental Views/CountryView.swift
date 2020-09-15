@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct DetailView: View {
-	let country : Countries
+	let country : Countries!
 	
 	var body: some View {
 		VStack {
 			List {
-				Section(header: Text("Cases")
+				Section(header: Text("\nCases")
 					.font(.headline)
 					.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
@@ -95,17 +95,6 @@ struct DetailView: View {
 								.bold()
 						}
 						Spacer()
-						/*HStack {
-							Text("Recovery Rate")
-								.font(.subheadline)
-								.bold()
-							Spacer()
-							Text("\(country.recoveredRate, specifier: "%.2f")%")
-								.foregroundColor(.purple)
-								.font(.subheadline)
-								.bold()
-						}
-						Spacer()*/
 						HStack {
 							Text("Currently Active")
 								.font(.subheadline)
@@ -120,7 +109,7 @@ struct DetailView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			//Banner()
+                .environment(\.horizontalSizeClass, .compact)
 		}
 	}
 }
@@ -204,7 +193,7 @@ struct CountriesIn : Codable {
 
 struct Countries : Codable, Identifiable {
 	let id = UUID()
-	let location : String!
+	var location : String!
 	let confirmed : Int!
 	let deaths : Int!
 	let recovered : Int!
@@ -231,5 +220,8 @@ struct Countries : Codable, Identifiable {
 		deathRate = ((Double(deaths)) / (Double(confirmed))) * 100
 		recoveredRate = ((Double(recovered) / Double(confirmed))) * 100
 		activeVsConf = ((Double(active) / Double(confirmed))) * 100
+        if location == "US" {
+            location = "United States"
+        }
 	}
 }

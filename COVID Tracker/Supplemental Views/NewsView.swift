@@ -12,12 +12,12 @@ import URLImage
 
 struct NewsView: View {
     @State private var searchQuery: String = ""
-	@ObservedObject private var fetch = getNews()
+    let fetch: getNews!
 	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading) {
-			List (fetch.news2) { item in
+			List (fetch.news) { item in
 				NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.title), displayMode: .inline)) {
 					VStack (alignment: .leading){
 						HStack {
@@ -49,34 +49,6 @@ struct NewsView: View {
 	}
 }
 
-struct TwitterView: View {
-    @State private var searchQuery: String = ""
-	@ObservedObject private var fetch = getNews()
-	@State private var showingDetail = false
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			List (fetch.tweets.message.tweets) { item in
-				NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.full_text), displayMode: .inline)) {
-					VStack (alignment: .leading){
-						Text(item.full_text)
-						.font(.subheadline)
-						.bold()
-						.lineLimit(3)
-						.padding(EdgeInsets(top: 7.5, leading: 7.5, bottom: 0, trailing: 0))
-					}
-				}
-			}
-		}
-	}
-}
-
-struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsView()
-    }
-}
-
 struct WebView : UIViewRepresentable {
     let request: URLRequest
       
@@ -90,29 +62,14 @@ struct WebView : UIViewRepresentable {
 }
 
 class getNews : ObservableObject {
-	@Published var news : [News]!
-	@Published var news2: [News2]!
-	@Published var tweets: Twitter!
+	@Published var news: [News]!
 	
 	init() {
-		//loadNews()
-		loadNews2()
-		//loadTwitter()
+        DispatchQueue.main.async {
+            self.loadNews()
+        }
 	}
 	func loadNews() {
-		let urlString = "https://covidtracking.com/api/press"
-
-		if let url = URL(string: urlString) {
-			if let d = try? Data(contentsOf: url) {
-				// we're OK to parse!
-				let decoder = JSONDecoder()
-				if let data = try? decoder.decode([News].self, from: d) {
-					news = data
-				}
-			}
-		}
-	}
-	func loadNews2() {
 		let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=I6_B_W8rEFe9iX7zxWF2La-Nc50WGQWLZWrU0hogorm-66le"
 
 		if let url = URL(string: urlString) {
@@ -120,54 +77,16 @@ class getNews : ObservableObject {
 				// we're OK to parse!
 				let decoder = JSONDecoder()
 				if let data = try? decoder.decode(Results.self, from: d) {
-					news2 = data.news
+					news = data.news
 				}
 			}
 		}
-	}
-	func loadTwitter() {
-		let urlString = "https://covid19-us-api.herokuapp.com/twitter"
-
-		if let url = URL(string: urlString) {
-			if let d = try? Data(contentsOf: url) {
-				// we're OK to parse!
-				let decoder = JSONDecoder()
-				if let data = try? decoder.decode(Twitter.self, from: d) {
-					tweets = data
-				}
-			}
-		}
-	}
-}
-
-struct News : Codable, Identifiable {
-	let id = UUID()
-	let title : String!
-	let url : String!
-	let publication : String!
-	var urlToImage: String!
-	let publishDate : String!
-
-	enum CodingKeys: String, CodingKey {
-		case title = "title"
-		case url = "url"
-		case publication = "publication"
-		case publishDate = "publishDate"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		title = try values.decodeIfPresent(String.self, forKey: .title) ?? "Not Available"
-		url = try values.decodeIfPresent(String.self, forKey: .url) ?? "www.google.com"
-		publication = try values.decodeIfPresent(String.self, forKey: .publication) ?? "N/A"
-		publishDate = try values.decodeIfPresent(String.self, forKey: .publishDate) ?? "N/A"
-		urlToImage = "https://www.google.com/s2/favicons?domain_url=" + url
 	}
 }
 
 struct Results : Codable {
 	let status : String?
-	let news : [News2]!
+	let news : [News]!
 	let page : Int?
 
 	enum CodingKeys: String, CodingKey {
@@ -179,12 +98,12 @@ struct Results : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		status = try values.decodeIfPresent(String.self, forKey: .status)
-		news = try values.decodeIfPresent([News2].self, forKey: .news)
+		news = try values.decodeIfPresent([News].self, forKey: .news)
 		page = try values.decodeIfPresent(Int.self, forKey: .page)
 	}
 }
 
-struct News2 : Codable, Identifiable {
+struct News : Codable, Identifiable {
 	let id = UUID()
 	let title : String!
 	let description : String!
