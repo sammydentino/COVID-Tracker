@@ -17,73 +17,7 @@ struct MapsView: View {
 	@ObservedObject private var coronaCases = CoronaObservable()
 	@State private var showingDetail = false
     var body: some View {
-		VStack(alignment: .leading){
-			Group {
-				HStack{
-					Text("Total Cases").font(.subheadline).bold()
-					Spacer()
-					Text("\(coronaCases.coronaOutbreak.totalCases.withCommas())")
-						.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-						.font(.subheadline)
-						.bold()
-				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-				Spacer()
-				HStack{
-					Text("Deaths").font(.subheadline).bold()
-					Spacer()
-					Text("\(coronaCases.coronaOutbreak.totalDeaths.withCommas())")
-						.font(.subheadline)
-						.foregroundColor(.red)
-						.bold()
-				}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-				Spacer()
-			}
-			HStack{
-				Text("Recovered").font(.subheadline).bold()
-				Spacer()
-				Text("\(coronaCases.coronaOutbreak.totalRecovered.withCommas())")
-					.font(.subheadline)
-					.foregroundColor(.green)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
-			HStack {
-				Text("Fatality Rate")
-					.font(.subheadline)
-					.bold()
-				Spacer()
-				Text("\((Double(coronaCases.coronaOutbreak.totalDeaths) / Double(coronaCases.coronaOutbreak.totalCases)) * 100, specifier: "%.2f")%")
-					.foregroundColor(.purple)
-					.font(.subheadline)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
-			HStack {
-				Text("Recovery Rate")
-					.font(.subheadline)
-					.bold()
-				Spacer()
-				Text("\((Double(coronaCases.coronaOutbreak.totalRecovered) / Double(coronaCases.coronaOutbreak.totalCases)) * 100, specifier: "%.2f")%")
-					.foregroundColor(.orange)
-					.font(.subheadline)
-					.bold()
-			}.padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-			Spacer()
-			Button(action: {
-				self.showingDetail.toggle()
-			}) {
-				Text("Source Information")
-					.font(.subheadline)
-					.bold()
-					.padding(.leading, 15)
-					.foregroundColor(.gray)
-			}.sheet(isPresented: $showingDetail) {
-				NavigationView {
-					SourcesView().navigationBarTitle("Sources")
-				}
-			}
-			MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
-		}
+		MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
     }
 }
 

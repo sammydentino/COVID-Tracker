@@ -9,64 +9,26 @@
 import SwiftUI
 import SwiftUICharts
 
-struct TimelineView: View {
-	@ObservedObject var fetch = getTimeline()
-    var body: some View {
-		VStack (alignment: .leading, spacing: 0){
-			ChartCombinedView().padding(8)
-			List(fetch.timeline) { item in
-				VStack {
-					HStack {
-						Text((item.update.prefix(10)).suffix(4))
-							.font(.title)
-							.bold()
-						Spacer()
-						VStack(alignment: .trailing, spacing: 0) {
-							Text("Cases: \(item.totalCases.withCommas())")
-								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
-								.font(.subheadline)
-								.bold()
-							Text("Deaths: \(item.totalDeaths.withCommas())")
-								.foregroundColor(.red)
-								.font(.subheadline)
-								.bold()
-							Text("Recovered: \(item.totalRecovered.withCommas())")
-								.foregroundColor(.green)
-								.font(.subheadline)
-								.bold()
-						}
-					}
-				}.padding(8)
-			}
-		}
-    }
-}
-
-struct ChartCombinedView : View {
+struct TimelineView : View {
 	@State private var selected = 0
-	@ObservedObject var fetch = getTimeline()
+    let fetch: getTimeline!
+    @State private var showingDetail = false
 	var body: some View {
 		VStack {
 			Picker("", selection: $selected) {
 				Text("Cases").tag(0)
 				Text("Deaths").tag(1)
 				Text("Recovered").tag(2)
-			}.pickerStyle(SegmentedPickerStyle()).padding(.leading, 17).padding(.trailing, 17)
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 12.5).padding(.top, -2.5)
 			if selected == 0 {
-				BarChartView(data: ChartData(points: fetch.cases.reversed()), title: "Cases in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.blue, secondGradientColor: Colors.GradientNeonBlue, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+                LineView(data: self.fetch.cases.reversed(), title: "Cases", legend: "Latest: \(Int(self.fetch.cases[0]).withCommas())").padding().padding(.bottom, 100)
 			} else if selected == 1 {
-				BarChartView(data: ChartData(points: fetch.deaths.reversed()), title: "Deaths in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Colors.OrangeStart, secondGradientColor: Colors.OrangeEnd, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+				LineView(data: self.fetch.deaths.reversed(), title: "Deaths", legend: "Latest: \(Int(self.fetch.deaths[0]).withCommas())").padding().padding(.bottom, 100)
 			} else if selected == 2 {
-				BarChartView(data: ChartData(points: fetch.recovered.reversed()), title: "Recovered in the last 30 Days", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, secondGradientColor: Color.green, textColor: Color.black, legendTextColor: Color.primary, dropShadowColor: Color.clear), form: ChartForm.large, dropShadow: false).padding(8)
+                LineView(data: self.fetch.recovered.reversed(), title: "Recovered", legend: "Latest: \(Int(self.fetch.recovered[0]).withCommas())").padding().padding(.bottom, 100)
 			}
 		}
 	}
-}
-
-struct TimelineView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimelineView()
-    }
 }
 
 class getTimeline: ObservableObject {
@@ -76,15 +38,17 @@ class getTimeline: ObservableObject {
 	@Published var recovered = [Double]()
 	
 	init() {
-		loadTimeline()
-		for item in timeline {
-			cases.append(item.cases)
-			deaths.append(item.deaths)
-			recovered.append(item.recovered)
-		}
-		cases = Array(cases[0..<30])
-		deaths = Array(deaths[0..<30])
-		recovered = Array(recovered[0..<30])
+        DispatchQueue.main.async {
+            self.loadTimeline()
+            for item in self.timeline {
+                self.cases.append(item.cases)
+                self.deaths.append(item.deaths)
+                self.recovered.append(item.recovered)
+            }
+        }
+		//cases = Array(cases[0..<30])
+		//deaths = Array(deaths[0..<30])
+		//recovered = Array(recovered[0..<30])
 	}
 	
 	func loadTimeline() {
@@ -110,6 +74,10 @@ struct Timeline : Codable, Identifiable {
 	var cases: Double!
 	var deaths: Double!
 	var recovered: Double!
+    var dateFormatter = DateFormatter()
+    var dateFormatterPrint = DateFormatter()
+    var datein: Date!
+    var dateout: String!
 
 	enum CodingKeys: String, CodingKey {
 		case update = "last_update"
@@ -127,5 +95,10 @@ struct Timeline : Codable, Identifiable {
 		cases = Double(totalCases)
 		deaths = Double(totalDeaths)
 		recovered = Double(totalRecovered)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatterPrint.dateFormat = "MMMM dd"
+        datein = dateFormatter.date(from: update)
+        dateout = dateFormatterPrint.string(from: datein ?? Date())
+        //date = dateFormatter.string(from: Date(timeIntervalSince1970: update))
 	}
 }

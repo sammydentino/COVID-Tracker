@@ -12,48 +12,70 @@ import MapKit
 struct CountyView: View {
 	@State private var searchQuery: String = ""
 	@State private var showingDetail = false
-	@ObservedObject private var fetch = getCounties()
+    let fetch: getCounties!
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive - Exact Name").padding(.leading, 8).padding(.trailing, 8)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5).padding(.top, -5).padding(.bottom, 5)
 			List {
-				Section(header: Text("Search Results").font(.subheadline).bold()) {
-					ForEach(fetch.counties.filter { item in
-						item.countyName == self.searchQuery
-					}) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							HStack {
-								Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
-								Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
-							}
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 DetailView3(county: item).navigationBarTitle(item.countyName)
-							}
-						}
-					}
-				}
-				Section(header: Text("Top 10 Most Affected").font(.subheadline).bold()) {
-					ForEach(fetch.top10) { item in
-						Button(action: {
-							self.showingDetail.toggle()
-						}) {
-							HStack {
-								Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
-								Spacer()
-								Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
-							}
-						}.sheet(isPresented: self.$showingDetail) {
-							NavigationView {
-								 DetailView3(county: item).navigationBarTitle(item.countyName)
-							}
-						}
-					}
-				}
+                if fetch.counties.filter { item in
+                    item.countyName.lowercased() == self.searchQuery.lowercased()
+                }.count != 0 {
+                    Section(header: Text("\nSearch Results").font(.subheadline).bold()) {
+                        ForEach(fetch.counties.filter { item in
+                            item.countyName.lowercased() == self.searchQuery.lowercased()
+                        }) { item in
+                            Button(action: {
+                                self.showingDetail.toggle()
+                            }) {
+                                HStack {
+                                    Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+                                    Spacer()
+                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                }
+                            }.sheet(isPresented: self.$showingDetail) {
+                                NavigationView {
+                                     DetailView3(county: item).navigationBarTitle(item.countyName)
+                                }
+                            }
+                        }
+                    }
+                    Section(header: Text("Top 10 Most Affected").font(.subheadline).bold()) {
+                        ForEach(fetch.top10) { item in
+                            Button(action: {
+                                self.showingDetail.toggle()
+                            }) {
+                                HStack {
+                                    Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+                                    Spacer()
+                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                }
+                            }.sheet(isPresented: self.$showingDetail) {
+                                NavigationView {
+                                     DetailView3(county: item).navigationBarTitle(item.countyName)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    Section(header: Text("\nTop 10 Most Affected").font(.subheadline).bold()) {
+                        ForEach(fetch.top10) { item in
+                            Button(action: {
+                                self.showingDetail.toggle()
+                            }) {
+                                HStack {
+                                    Text(item.countyName).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 25))
+                                    Spacer()
+                                    Text(item.stateName).foregroundColor(.gray).font(.subheadline).bold().padding(EdgeInsets(top: 5, leading: 25, bottom: 5, trailing: 0))
+                                }
+                            }.sheet(isPresented: self.$showingDetail) {
+                                NavigationView {
+                                     DetailView3(county: item).navigationBarTitle(item.countyName)
+                                }
+                            }
+                        }
+                    }
+                }
 			}.listStyle(GroupedListStyle())
 		}
 	}
@@ -153,7 +175,7 @@ struct DetailView3: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			Banner()
+			//Banner()
 		}
 	}
 }
@@ -163,14 +185,16 @@ class getCounties: ObservableObject {
 	@Published var top10: [County]!
 	
 	init() {
-		loadCounties()
-		counties = counties.sorted(by: {
-			$0.countyName < $1.countyName
-		})
-		top10 = top10.sorted(by: {
-			$0.confirmed > $1.confirmed
-		})
-		top10 = Array(top10.prefix(10))
+        DispatchQueue.main.async {
+            self.loadCounties()
+            self.counties = self.counties.sorted(by: {
+                $0.countyName < $1.countyName
+            })
+            self.top10 = self.top10.sorted(by: {
+                $0.confirmed > $1.confirmed
+            })
+            self.top10 = Array(self.top10.prefix(10))
+        }
 	}
 	func loadCounties() {
 		let urlString = "https://covid19-us-api.herokuapp.com/county"

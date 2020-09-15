@@ -95,7 +95,7 @@ struct DetailView: View {
 								.bold()
 						}
 						Spacer()
-						HStack {
+						/*HStack {
 							Text("Recovery Rate")
 								.font(.subheadline)
 								.bold()
@@ -105,7 +105,7 @@ struct DetailView: View {
 								.font(.subheadline)
 								.bold()
 						}
-						Spacer()
+						Spacer()*/
 						HStack {
 							Text("Currently Active")
 								.font(.subheadline)
@@ -120,22 +120,22 @@ struct DetailView: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			Banner()
+			//Banner()
 		}
 	}
 }
 
 struct CountryView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject private var fetch = getCountries()
+    let fetch: getCountries!
 	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5).padding(.top, -10).padding(.bottom, 5)
 			List {
-				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold()) {
-					ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.location.contains(searchQuery) })) { item in
+				Section(header: Text("\nSorted by Most Cases").font(.subheadline).bold()) {
+                    ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.location.lowercased().contains(searchQuery.lowercased()) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
@@ -155,20 +155,16 @@ struct CountryView: View {
 	}
 }
 
-struct CountryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CountryView()
-    }
-}
-
 class getCountries: ObservableObject {
 	@Published var countries : [Countries]!
 	
 	init() {
-		loadCountries()
-		countries = countries.sorted(by: {
-			$0.confirmed > $1.confirmed
-		})
+        DispatchQueue.main.async {
+            self.loadCountries()
+            self.countries = self.countries.sorted(by: {
+                $0.confirmed > $1.confirmed
+            })
+        }
 	}
 	
 	func loadCountries() {

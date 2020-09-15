@@ -35,7 +35,7 @@ struct TestingView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery, placeholder: "Case Sensitive").padding(.leading, 8).padding(.trailing, 8)
+			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
 			List {
 				Group {
 					Section(header: Text("Arizona").font(.subheadline)
@@ -220,7 +220,7 @@ struct TestDetail: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			Banner()
+			//Banner()
 		}
 	}
 }

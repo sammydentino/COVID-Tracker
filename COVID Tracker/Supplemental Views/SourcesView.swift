@@ -70,7 +70,7 @@ struct SourcesView: View {
 					}.font(.subheadline)
 				}
 			}.listStyle(GroupedListStyle())
-			Banner()
+			//Banner()
 		}
     }
 }

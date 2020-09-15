@@ -106,23 +106,23 @@ struct DetailView2: View {
 					}
 				}
 			}.listStyle(GroupedListStyle())
-			Banner()
+			//Banner()
 		}
 	}
 }
 
 struct StatesView: View {
 	@State private var searchQuery: String = ""
-	@ObservedObject private var fetch = getStates()
+    let fetch: getStates!
 	@State private var showingDetail = false
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-			SearchBar(text: self.$searchQuery).padding(.leading, 8).padding(.trailing, 8)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5).padding(.top, -5).padding(.bottom, 5)
 			List {
-				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold()) {
+				Section(header: Text("\nSorted by Most Cases").font(.subheadline).bold()) {
 					ForEach(fetch.states.filter {
-						self.searchQuery.isEmpty ? true : "\($0)".contains(self.searchQuery)
+                        self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
 					}) { item in
 						Button(action: {
 							self.showingDetail.toggle()
@@ -143,20 +143,16 @@ struct StatesView: View {
 	}
 }
 
-struct StatesView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatesView()
-    }
-}
-
 class getStates : ObservableObject {
 	@Published var states : [States]!
 	
 	init() {
-		loadStates()
-		states = states.sorted(by: {
-			$0.cases > $1.cases
-		})
+        DispatchQueue.main.async {
+            self.loadStates()
+            self.states = self.states.sorted(by: {
+                $0.cases > $1.cases
+            })
+        }
 	}
 	
 	func loadStates() {

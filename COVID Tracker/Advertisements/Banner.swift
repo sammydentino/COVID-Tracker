@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sammy Dentino. All rights reserved.
 //
 
-import GoogleMobileAds
+/*import GoogleMobileAds
 import SwiftUI
 import UIKit
 
@@ -40,3 +40,4 @@ struct Banner_Previews: PreviewProvider {
         Banner()
     }
 }
+*/

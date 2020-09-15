@@ -9,75 +9,67 @@
 import SwiftUI
 
 struct ContentView: View {
-	@State var selectedView = 0
+	@State var selected = 0
 	@State public var searchQuery : String = ""
-	
-	init() {
-		UINavigationBar.appearance().backgroundColor = .systemBackground
-	}
+    @State var mainpage = 0
+    @ObservedObject private var fetchall = getAll()
+    @ObservedObject private var fetchcountries = getCountries()
+    @ObservedObject private var fetchstates = getStates()
+    @ObservedObject private var fetchcounties = getCounties()
+    @ObservedObject private var fetchtimeline = getTimeline()
     
 	//tab controller -> navigation controller -> each tab's views
 	var body: some View {
-		TabView(selection: $selectedView) {
-			NavigationView {
-				VStack {
-					MapsView()
-						.navigationBarTitle(Text("COVID-19 Tracker"))
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "globe")
-				Text("Global")
-			}.tag(0)
-			NavigationView {
-				VStack {
-					CountryView()
-						.navigationBarTitle(Text("All Countries"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "map")
-				Text("Countries")
-			}.tag(1)
-			NavigationView {
-				VStack {
-					StatesCombinedView()
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "book")
-				Text("States")
-			}.tag(2)
-			NavigationView {
-				VStack {
-					TimelineView()
-						.navigationBarTitle(Text("Timeline"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "chart.bar")
-				Text("Timeline")
-			}.tag(3)
-			NavigationView {
-				VStack {
-					NewsView()
-						.navigationBarTitle(Text("News"))
-					Banner()
-				}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-				.tabItem {
-				Image(systemName: "paperplane")
-				Text("News")
-			}.tag(4)
-		}.animation(.default)
+        VStack {
+            ZStack {
+                if selected == 0 {
+                    NavigationView {
+                        VStack {
+                            Picker("", selection: self.$mainpage) {
+                                Text("Statistics").tag(0)
+                                Text("Map").tag(1)
+                                Text("Timeline").tag(2)
+                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 12.5).padding(.bottom, 5)
+                            ZStack {
+                                if mainpage == 0 {
+                                    TotalView(fetch: fetchall)
+                                        .navigationBarTitle(Text("COVID-19 Tracker")).animation(.default)
+                                } else if mainpage == 1 {
+                                    MapsView()
+                                        .navigationBarTitle(Text("Map")).animation(.default)
+                                } else {
+                                    TimelineView(fetch: fetchtimeline)
+                                        .navigationBarTitle(Text("Timeline")).animation(.default)
+                                }
+                            }
+                        }
+                    }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)
+                } else if selected == 1 {
+                    NavigationView {
+                        VStack {
+                            CountryView(fetch: fetchcountries)
+                                .navigationBarTitle(Text("Countries")).animation(.default)
+                        }
+                    }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)
+                } else if selected == 2 {
+                    NavigationView {
+                        VStack {
+                            StatesCombinedView(fetchstates: fetchstates, fetchcounties: fetchcounties).animation(.default)
+                        }
+                    }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)
+                } else {
+                    NavigationView {
+                        VStack {
+                            NewsView()
+                                .navigationBarTitle(Text("News")).animation(.default)
+                        }
+                    }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)
+                }
+            }
+            TabBar(index: $selected)
+        }.gesture(DragGesture().onChanged{_ in
+            UIApplication.shared.endEditing(true)
+        }).animation(.default)
     }
 }
 
