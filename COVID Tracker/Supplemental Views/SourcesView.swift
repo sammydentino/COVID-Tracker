@@ -70,13 +70,6 @@ struct SourcesView: View {
 					}.font(.subheadline)
 				}
 			}.listStyle(GroupedListStyle())
-			//Banner()
 		}
-    }
-}
-
-struct SourcesView_Previews: PreviewProvider {
-    static var previews: some View {
-        SourcesView()
     }
 }

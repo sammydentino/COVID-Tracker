@@ -11,8 +11,9 @@ import SwiftUI
 struct ContentView: View {
 	@State var selected = 0
 	@State public var searchQuery : String = ""
-    @State var mainpage = 0
+    @State var maintab = 0
     @ObservedObject private var fetchall = getAll()
+    @ObservedObject private var coronaCases = CoronaObservable()
     @ObservedObject private var fetchcountries = getCountries()
     @ObservedObject private var fetchstates = getStates()
     @ObservedObject private var fetchcounties = getCounties()
@@ -26,23 +27,23 @@ struct ContentView: View {
                 if selected == 0 {
                     NavigationView {
                         VStack {
-                            Picker("", selection: self.$mainpage) {
-                                Text("Statistics").tag(0)
-                                Text("Map").tag(1)
-                                Text("Timeline").tag(2)
-                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 12.5).padding(.bottom, 5)
                             ZStack {
-                                if mainpage == 0 {
+                                if maintab == 0 {
                                     TotalView(fetch: fetchall)
                                         .navigationBarTitle(Text("COVID-19 Tracker")).animation(.default)
-                                } else if mainpage == 1 {
-                                    MapsView()
+                                } else if maintab == 1 {
+                                    MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
                                         .navigationBarTitle(Text("Map")).animation(.default)
                                 } else {
                                     TimelineView(fetch: fetchtimeline)
                                         .navigationBarTitle(Text("Timeline")).animation(.default)
                                 }
                             }
+                            Picker("", selection: self.$maintab) {
+                                Text("Statistics").tag(0)
+                                Text("Map").tag(1)
+                                Text("Timeline").tag(2)
+                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 30).padding(.vertical, 2.5)
                         }
                     }.navigationViewStyle(StackNavigationViewStyle()).animation(.default)
                 } else if selected == 1 {

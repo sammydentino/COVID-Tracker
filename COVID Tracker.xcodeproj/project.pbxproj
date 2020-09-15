@@ -32,7 +32,15 @@
 		EBC42F702468E8CF00E06413 /* CountyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC42F6F2468E8CF00E06413 /* CountyView.swift */; };
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
-		EBE18443245DF830000E85C3 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapsView.swift */; };
+		EBE18443245DF830000E85C3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapView.swift */; };
+		EBEAF58525112FE900403142 /* JSONStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58425112FE900403142 /* JSONStructs.swift */; };
+		EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF586251130BE00403142 /* DataGrabbers.swift */; };
+		EBEAF5892511520C00403142 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF5882511520C00403142 /* CountryDetailView.swift */; };
+		EBEAF58B2511523800403142 /* StatesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58A2511523800403142 /* StatesDetailView.swift */; };
+		EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58C251152A300403142 /* CaseAnnotations.swift */; };
+		EBEAF590251152F100403142 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58F251152F100403142 /* WebView.swift */; };
+		EBEAF5922511532400403142 /* CountyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF5912511532400403142 /* CountyDetailView.swift */; };
+		EBEAF5942511533900403142 /* CountyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF5932511533900403142 /* CountyMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +79,15 @@
 		EBDD6F14244939A000372189 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
-		EBE18442245DF830000E85C3 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
+		EBE18442245DF830000E85C3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		EBEAF58425112FE900403142 /* JSONStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructs.swift; sourceTree = "<group>"; };
+		EBEAF586251130BE00403142 /* DataGrabbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGrabbers.swift; sourceTree = "<group>"; };
+		EBEAF5882511520C00403142 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
+		EBEAF58A2511523800403142 /* StatesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesDetailView.swift; sourceTree = "<group>"; };
+		EBEAF58C251152A300403142 /* CaseAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseAnnotations.swift; sourceTree = "<group>"; };
+		EBEAF58F251152F100403142 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		EBEAF5912511532400403142 /* CountyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountyDetailView.swift; sourceTree = "<group>"; };
+		EBEAF5932511533900403142 /* CountyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountyMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +133,7 @@
 				EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */,
 				EB8504B82448196D00BA0CF0 /* Info.plist */,
 				EB8504B22448196D00BA0CF0 /* Preview Content */,
+				EBEAF58E251152B600403142 /* Data */,
 			);
 			path = "COVID Tracker";
 			sourceTree = "<group>";
@@ -142,14 +159,19 @@
 			children = (
 				EBDD6F1824493C8500372189 /* TotalView.swift */,
 				EBB9D9452450095200620ACE /* SourcesView.swift */,
+				EBE18442245DF830000E85C3 /* MapView.swift */,
+				EB33BD38246F1E74009FED4B /* TimelineView.swift */,
 				EBDD6F1624493C7D00372189 /* CountryView.swift */,
+				EBEAF5882511520C00403142 /* CountryDetailView.swift */,
+				EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */,
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
+				EBEAF58A2511523800403142 /* StatesDetailView.swift */,
+				EBC42F6F2468E8CF00E06413 /* CountyView.swift */,
+				EBEAF5912511532400403142 /* CountyDetailView.swift */,
+				EBEAF5932511533900403142 /* CountyMapView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB390AFA24529985003657D4 /* TestingView.swift */,
-				EBE18442245DF830000E85C3 /* MapsView.swift */,
-				EBC42F6F2468E8CF00E06413 /* CountyView.swift */,
-				EBB95AFE246CCEE3006A373E /* StatesCombinedView.swift */,
-				EB33BD38246F1E74009FED4B /* TimelineView.swift */,
+				EBEAF58F251152F100403142 /* WebView.swift */,
 				EB21BE4B251018D70039E430 /* TabBar.swift */,
 			);
 			path = "Supplemental Views";
@@ -199,6 +221,16 @@
 				EBDD6F10244933BD00372189 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBEAF58E251152B600403142 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EBEAF58425112FE900403142 /* JSONStructs.swift */,
+				EBEAF586251130BE00403142 /* DataGrabbers.swift */,
+				EBEAF58C251152A300403142 /* CaseAnnotations.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,12 +316,17 @@
 				EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */,
 				EBB95AFF246CCEE3006A373E /* StatesCombinedView.swift in Sources */,
 				EB33BD39246F1E74009FED4B /* TimelineView.swift in Sources */,
+				EBEAF5942511533900403142 /* CountyMapView.swift in Sources */,
+				EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */,
+				EBEAF58525112FE900403142 /* JSONStructs.swift in Sources */,
+				EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */,
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
 				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
 				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
-				EBE18443245DF830000E85C3 /* MapsView.swift in Sources */,
+				EBE18443245DF830000E85C3 /* MapView.swift in Sources */,
+				EBEAF5892511520C00403142 /* CountryDetailView.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
@@ -299,6 +336,9 @@
 				EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */,
 				EBC42F702468E8CF00E06413 /* CountyView.swift in Sources */,
 				EB21BE4C251018D70039E430 /* TabBar.swift in Sources */,
+				EBEAF58B2511523800403142 /* StatesDetailView.swift in Sources */,
+				EBEAF590251152F100403142 /* WebView.swift in Sources */,
+				EBEAF5922511532400403142 /* CountyDetailView.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* ContentView.swift in Sources */,
 			);
@@ -441,7 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID Tracker/COVID Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;
@@ -465,7 +505,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID Tracker/COVID Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;
