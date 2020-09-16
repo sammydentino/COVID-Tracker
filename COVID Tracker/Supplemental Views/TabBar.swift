@@ -37,7 +37,7 @@ struct TabBar: View {
                 Image("Global")
                     .resizable()
                     .frame(width: 25, height: 25)
-                Text(self.index == 0 ? "Global" : "").font(.system(size: 15, weight: .medium, design: .rounded))
+                Text(self.index == 0 ? "Tracker" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 0 ? themeColor : Color.clear)
                 .clipShape(Capsule()).onTapGesture {
