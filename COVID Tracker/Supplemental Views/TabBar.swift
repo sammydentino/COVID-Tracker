@@ -35,8 +35,10 @@ struct TabBar: View {
         HStack(spacing: 10) {
             HStack {
                 Image("Global")
+                    .renderingMode(.template)
                     .resizable()
-                    .frame(width: 25, height: 25)
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.primary)
                 Text(self.index == 0 ? "Tracker" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 0 ? themeColor : Color.clear)
@@ -45,8 +47,10 @@ struct TabBar: View {
                 }.minimumScaleFactor(0.5)
             HStack {
                 Image("Country")
+                    .renderingMode(.template)
                     .resizable()
-                    .frame(width: 25, height: 22.5)
+                    .frame(width: 30, height: 27.5)
+                    .foregroundColor(.primary)
                 Text(self.index == 1 ? "Countries" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 1 ? themeColor : Color.clear)
@@ -55,9 +59,11 @@ struct TabBar: View {
                 }.minimumScaleFactor(0.5)
             HStack {
                 Image("USA")
+                    .renderingMode(.template)
                     .resizable()
-                    .frame(width: 30, height: 27.5)
+                    .frame(width: 35, height: 32.5)
                     .padding(.vertical, -7.5)
+                    .foregroundColor(.primary)
                 Text(self.index == 2 ? "States" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 2 ? themeColor : Color.clear)
@@ -66,8 +72,10 @@ struct TabBar: View {
                 }.minimumScaleFactor(0.5)
             HStack {
                 Image("News")
+                    .renderingMode(.template)
                     .resizable()
-                    .frame(width: 22.5, height: 22.5)
+                    .frame(width: 27.5, height: 27.5)
+                    .foregroundColor(.primary)
                 Text(self.index == 4 ? "News" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 4 ? themeColor : Color.clear)

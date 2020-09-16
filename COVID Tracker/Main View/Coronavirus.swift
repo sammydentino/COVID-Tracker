@@ -52,7 +52,7 @@ struct Coronavirus: View {
             }.gesture(DragGesture().onChanged{_ in
                 UIApplication.shared.endEditing(true)
             }).animation(.default)
-        }.navigationBarColor(.clear).navigationViewStyle(StackNavigationViewStyle()).animation(.default)
+        }.navigationBarColor(UIColor.myControlBackground).navigationViewStyle(StackNavigationViewStyle()).animation(.default)
     }
 }
 
