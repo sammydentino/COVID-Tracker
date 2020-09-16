@@ -34,6 +34,8 @@
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 		EBE18443245DF830000E85C3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapView.swift */; };
+		EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B852512806200A02F8E /* NavigationBarModifier.swift */; };
+		EBE87B882512807600A02F8E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B872512807600A02F8E /* View.swift */; };
 		EBEAF58525112FE900403142 /* JSONStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58425112FE900403142 /* JSONStructs.swift */; };
 		EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF586251130BE00403142 /* DataGrabbers.swift */; };
 		EBEAF5892511520C00403142 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF5882511520C00403142 /* CountryDetailView.swift */; };
@@ -82,6 +84,8 @@
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		EBE18442245DF830000E85C3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		EBE87B852512806200A02F8E /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+		EBE87B872512807600A02F8E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		EBEAF58425112FE900403142 /* JSONStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructs.swift; sourceTree = "<group>"; };
 		EBEAF586251130BE00403142 /* DataGrabbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGrabbers.swift; sourceTree = "<group>"; };
 		EBEAF5882511520C00403142 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				EB390AFA24529985003657D4 /* TestingView.swift */,
 				EBEAF58F251152F100403142 /* WebView.swift */,
 				EB21BE4B251018D70039E430 /* TabBar.swift */,
+				EBE87B852512806200A02F8E /* NavigationBarModifier.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				EB21BE4D251018ED0039E430 /* UIDevice.swift */,
 				EB00D6502510696F00D5A6FB /* UIApplication.swift */,
 				EB648CE925118AAA0078F37B /* UIFont.swift */,
+				EBE87B872512807600A02F8E /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE87B882512807600A02F8E /* View.swift in Sources */,
 				EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */,
 				EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */,
 				EBB95AFF246CCEE3006A373E /* StatesCombinedView.swift in Sources */,
@@ -344,6 +351,7 @@
 				EBEAF590251152F100403142 /* WebView.swift in Sources */,
 				EBEAF5922511532400403142 /* CountyDetailView.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
+				EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* Coronavirus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID Tracker/COVID Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;
@@ -509,7 +517,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "COVID Tracker/COVID Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G9X97N3XGU;
 				ENABLE_PREVIEWS = YES;

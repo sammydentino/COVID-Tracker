@@ -16,7 +16,7 @@ struct NewsView: View {
 	
 	var body: some View {
 		List (fetch.news) { item in
-            NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).navigationBarTitle(Text(item.title), displayMode: .inline)) {
+            NavigationLink(destination: WebView(request: URLRequest(url: URL(string: item.url)!)).edgesIgnoringSafeArea(.bottom).navigationBarTitle(Text(item.title), displayMode: .inline)) {
                 VStack (alignment: .leading){
                     HStack {
                         URLImage(URLRequest(url: URL(string: item.image)!), delay: 0.25) { proxy in

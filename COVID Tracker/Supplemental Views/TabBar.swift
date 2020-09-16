@@ -34,9 +34,9 @@ struct TabBar: View {
     var body: some View {
         HStack(spacing: 10) {
             HStack {
-                Image(systemName: "globe")
+                Image("Global")
                     .resizable()
-                    .frame(width: 22.5, height: 22.5)
+                    .frame(width: 25, height: 25)
                 Text(self.index == 0 ? "Global" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 0 ? themeColor : Color.clear)
@@ -44,7 +44,7 @@ struct TabBar: View {
                     self.index = 0
                 }.minimumScaleFactor(0.5)
             HStack {
-                Image(systemName: "map")
+                Image("Country")
                     .resizable()
                     .frame(width: 25, height: 22.5)
                 Text(self.index == 1 ? "Countries" : "").font(.system(size: 15, weight: .medium, design: .rounded))
@@ -54,9 +54,10 @@ struct TabBar: View {
                     self.index = 1
                 }.minimumScaleFactor(0.5)
             HStack {
-                Image(systemName: "book")
+                Image("USA")
                     .resizable()
-                    .frame(width: 25, height: 22.5)
+                    .frame(width: 30, height: 30)
+                    .padding(.vertical, -7.5)
                 Text(self.index == 2 ? "States" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
                 .background(self.index == 2 ? themeColor : Color.clear)
@@ -64,7 +65,7 @@ struct TabBar: View {
                     self.index = 2
                 }.minimumScaleFactor(0.5)
             HStack {
-                Image(systemName: "paperplane")
+                Image("News")
                     .resizable()
                     .frame(width: 22.5, height: 22.5)
                 Text(self.index == 4 ? "News" : "").font(.system(size: 15, weight: .medium, design: .rounded))
