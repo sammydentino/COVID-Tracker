@@ -35,7 +35,7 @@ struct Coronavirus: View {
                             MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
                                 .navigationBarTitle(Text("Map"), displayMode: .large).animation(.default)
                         } else {
-                            TimelineView(fetch: fetch)
+                            TimelineView(fetch: fetch, cases: fetch.global.cases, deaths: fetch.global.deaths, recovered: fetch.global.recovered)
                                 .navigationBarTitle(Text("Timeline"), displayMode: .large).animation(.default)
                         }
                     } else if selected == 1 {

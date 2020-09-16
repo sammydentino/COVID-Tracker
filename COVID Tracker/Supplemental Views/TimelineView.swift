@@ -12,6 +12,9 @@ import SwiftUICharts
 struct TimelineView : View {
 	@State private var selected = 0
     let fetch: getAll!
+    let cases: Int!
+    let deaths: Int!
+    let recovered: Int!
     @State private var showingDetail = false
 	var body: some View {
 		VStack {
@@ -21,11 +24,11 @@ struct TimelineView : View {
                 Text("Recovered").tag(2)
             }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 15)
 			if selected == 0 {
-                LineView(data: self.fetch.cases.reversed(), title: "Cases", legend: "Latest: \(Int(self.fetch.cases[0]).withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
+                LineView(data: self.fetch.cases.reversed(), title: "Cases", legend: "Latest: \(cases.withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
 			} else if selected == 1 {
-                LineView(data: self.fetch.deaths.reversed(), title: "Deaths", legend: "Latest: \(Int(self.fetch.deaths[0]).withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
+                LineView(data: self.fetch.deaths.reversed(), title: "Deaths", legend: "Latest: \(deaths.withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
 			} else if selected == 2 {
-                LineView(data: self.fetch.recovered.reversed(), title: "Recovered", legend: "Latest: \(Int(self.fetch.recovered[0]).withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
+                LineView(data: self.fetch.recovered.reversed(), title: "Recovered", legend: "Latest: \(recovered.withCommas())", valueSpecifier: "%.0f").padding(.horizontal).padding(.bottom, 75).padding(.horizontal, 2.5)
 			}
         }
 	}

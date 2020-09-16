@@ -56,7 +56,7 @@ struct TabBar: View {
             HStack {
                 Image("USA")
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 30, height: 27.5)
                     .padding(.vertical, -7.5)
                 Text(self.index == 2 ? "States" : "").font(.system(size: 15, weight: .medium, design: .rounded))
             }.padding(15)
