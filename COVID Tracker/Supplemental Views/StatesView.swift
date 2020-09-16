@@ -15,9 +15,9 @@ struct StatesView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-            SearchBar(text: self.$searchQuery).padding(.horizontal, 2.5)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -7.5)
 			List {
-				Section(header: Text("Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10)) {
+				Section(header: Text(" Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10)) {
 					ForEach(fetch.states.filter {
                         self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
 					}) { item in
@@ -25,12 +25,12 @@ struct StatesView: View {
 							self.showingDetail.toggle()
 						}) {
                             HStack {
-                                Text("\(item.state)")
+                                Text(" \(item.state)")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(.primary)
                                 Spacer()
-                                Text("→")
+                                Text("→ ")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(.secondary)

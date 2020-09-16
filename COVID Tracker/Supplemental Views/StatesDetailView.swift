@@ -15,28 +15,28 @@ struct StatesDetailView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("\nCases")
+                Section(header: Text(" Cases")
                     .font(.headline)
                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.cases.withCommas())" )
+                            Text("\(state.cases.withCommas()) ")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                         }
                         Spacer()
                         HStack {
-                            Text("Active")
+                            Text(" Active")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.active.withCommas())")
+                            Text("\(state.active.withCommas()) ")
                                 .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                                 .font(.subheadline)
                                 .bold()
@@ -44,11 +44,11 @@ struct StatesDetailView: View {
                         Spacer()
                         if state.todayCases != 0 {
                             HStack {
-                                Text("New Today")
+                                Text(" New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(state.todayCases.withCommas())")
+                                Text("\(state.todayCases.withCommas()) ")
                                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                                     .font(.subheadline)
                                     .bold()
@@ -57,17 +57,17 @@ struct StatesDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Deaths")
+                Section(header: Text(" Deaths")
                     .font(.headline)
                     .foregroundColor(.red)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.deaths.withCommas())")
+                            Text("\(state.deaths.withCommas()) ")
                                 .foregroundColor(.red)
                                 .font(.subheadline)
                                 .bold()
@@ -75,11 +75,11 @@ struct StatesDetailView: View {
                         Spacer()
                         if state.todayDeaths != 0 {
                             HStack {
-                                Text("New Today")
+                                Text(" New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(state.todayDeaths.withCommas())")
+                                Text("\(state.todayDeaths.withCommas()) ")
                                     .foregroundColor(.red)
                                     .font(.subheadline)
                                     .bold()
@@ -88,17 +88,17 @@ struct StatesDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Recovered")
+                Section(header: Text(" Recovered")
                     .font(.headline)
                     .foregroundColor(.orange)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.recovered.withCommas())")
+                            Text("\(state.recovered.withCommas()) ")
                                 .foregroundColor(.orange)
                                 .font(.subheadline)
                                 .bold()
@@ -106,17 +106,17 @@ struct StatesDetailView: View {
                         Spacer()
                     }
                 }
-                Section(header: Text("Tests")
+                Section(header: Text(" Tests")
                     .font(.headline)
                     .foregroundColor(.green)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.tests.withCommas())")
+                            Text("\(state.tests.withCommas()) ")
                                 .foregroundColor(.green)
                                 .font(.subheadline)
                                 .bold()
@@ -124,39 +124,39 @@ struct StatesDetailView: View {
                         Spacer()
                     }
                 }
-                Section(header: Text("Statistics")
+                Section(header: Text(" Statistics")
                     .font(.headline)
                     .foregroundColor(.purple)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Population")
+                            Text(" Population")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.population.withCommas())")
+                            Text("\(state.population.withCommas()) ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text("Fatality Rate")
+                            Text(" Fatality Rate")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.deathRate, specifier: "%.2f")%")
+                            Text("\(state.deathRate, specifier: "%.2f")% ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text("Currently Active")
+                            Text(" Currently Active")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(state.activeVsConf, specifier: "%.2f")%")
+                            Text("\(state.activeVsConf, specifier: "%.2f")% ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()

@@ -15,49 +15,49 @@ struct TotalView: View {
 	var body: some View {
 		
 			List {
-				Section(header: Text("\nCases")
+				Section(header: Text("\n Cases")
 					.font(.headline).foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
 					VStack {
 						Spacer()
 						HStack {
-							Text("Total")
+							Text(" Total")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.cases.withCommas())
+                            Text("\(fetch.global.cases.withCommas()) ")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
 						}
 						Spacer()
 						HStack {
-							Text("Active")
+							Text(" Active")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.active.withCommas())
+                            Text("\(fetch.global.active.withCommas()) ")
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 								.font(.subheadline)
 								.bold()
 						}
 						Spacer()
 						HStack{
-							Text("Critical")
+							Text(" Critical")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.critical.withCommas())
+                            Text("\(fetch.global.critical.withCommas()) ")
 								.font(.subheadline)
 								.bold()
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
 						}
 						Spacer()
 						HStack {
-							Text("New Today")
+							Text(" New Today")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.todayCases.withCommas())
+                            Text("\(fetch.global.todayCases.withCommas()) ")
 								.font(.subheadline)
 								.bold()
 								.foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -68,44 +68,44 @@ struct TotalView: View {
 						self.showingDetail.toggle()
 					}) {
                         HStack {
-                            Text("View Source Information")
+                            Text(" View Source Information")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("→")
+                            Text("→ ")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.secondary)
-                        }.padding(.vertical, -2.5)
+                        }.padding(.vertical, -3)
 					}.sheet(isPresented: $showingDetail) {
 						NavigationView {
 							SourcesView().navigationBarTitle("Sources")
 						}
 					}
 				}
-				Section(header: Text("Deaths")
+				Section(header: Text(" Deaths")
 					.font(.headline)
 					.foregroundColor(.red)) {
 					VStack {
 						Spacer()
 						HStack {
-							Text("Total")
+							Text(" Total")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.deaths.withCommas())
+                            Text("\(fetch.global.deaths.withCommas()) ")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
 						}
 						Spacer()
 						HStack {
-							Text("New Today")
+							Text(" New Today")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.todayDeaths.withCommas())
+                            Text("\(fetch.global.todayDeaths.withCommas()) ")
 								.foregroundColor(.red)
 								.font(.subheadline)
 								.bold()
@@ -113,28 +113,28 @@ struct TotalView: View {
 						Spacer()
 					}
 				}
-				Section(header: Text("Recovered")
+				Section(header: Text(" Recovered")
 					.font(.headline)
 					.foregroundColor(.green)) {
 					VStack {
 						Spacer()
 						HStack {
-							Text("Total")
+							Text(" Total")
 								.font(.subheadline)
 								.bold()
 							Spacer()
-                            Text(fetch.global.recovered.withCommas())
+                            Text("\(fetch.global.recovered.withCommas()) ")
 								.foregroundColor(.green)
 								.font(.subheadline)
 								.bold()
 						}
 						Spacer()
                         HStack {
-                            Text("New Today")
+                            Text(" New Today")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text(fetch.global.todayRecovered.withCommas())
+                            Text("\(fetch.global.todayRecovered.withCommas()) ")
                                 .foregroundColor(.green)
                                 .font(.subheadline)
                                 .bold()
@@ -142,17 +142,17 @@ struct TotalView: View {
                         Spacer()
 					}
 				}
-				Section(header: Text("Tests")
+				Section(header: Text(" Tests")
 					.font(.headline)
 					.foregroundColor(.orange)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text(fetch.global.tests.withCommas())
+                            Text("\(fetch.global.tests.withCommas()) ")
                                 .foregroundColor(.orange)
                                 .font(.subheadline)
                                 .bold()
@@ -160,50 +160,50 @@ struct TotalView: View {
                         Spacer()
                     }
 				}
-				Section(header: Text("Statistics")
+				Section(header: Text(" Statistics")
 					.font(.headline)
 					.foregroundColor(.purple)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Affected Areas")
+                            Text(" Affected Areas")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text(fetch.global.affectedCountries.withCommas())
+                            Text("\(fetch.global.affectedCountries.withCommas()) ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text("Fatality Rate")
+                            Text(" Fatality Rate")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(fetch.global.deathRate, specifier: "%.2f")%")
+                            Text("\(fetch.global.deathRate, specifier: "%.2f")% ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text("Active Percentage")
+                            Text(" Currently Active")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(fetch.global.activeVsConf, specifier: "%.2f")%")
+                            Text("\(fetch.global.activeVsConf, specifier: "%.2f")% ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text("Recovered Percentage")
+                            Text(" Fully Recovered")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\((100 - fetch.global.activeVsConf), specifier: "%.2f")%")
+                            Text("\((100 - fetch.global.activeVsConf), specifier: "%.2f")% ")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()

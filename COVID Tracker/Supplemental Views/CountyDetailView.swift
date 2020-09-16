@@ -15,17 +15,17 @@ struct CountyDetailView: View {
         VStack(spacing: 0) {
             CountyMapView(lat: county.latitude, long: county.longitude).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200)
             List {
-                Section(header: Text("\nCases")
+                Section(header: Text("\n Cases")
                     .font(.headline)
                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(county.confirmed.withCommas())")
+                            Text("\(county.confirmed.withCommas()) ")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -33,11 +33,11 @@ struct CountyDetailView: View {
                         Spacer()
                         if county.new != 0 {
                             HStack {
-                                Text("New Today")
+                                Text(" New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(county.new.withCommas())")
+                                Text("\(county.new.withCommas()) ")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
@@ -46,17 +46,17 @@ struct CountyDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Deaths")
+                Section(header: Text(" Deaths")
                     .font(.headline)
                     .foregroundColor(.red)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Total")
+                            Text(" Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(county.deaths.withCommas())")
+                            Text("\(county.deaths.withCommas()) ")
                                 .foregroundColor(.red)
                                 .font(.subheadline)
                                 .bold()
@@ -64,11 +64,11 @@ struct CountyDetailView: View {
                         Spacer()
                         if county.newDeaths != 0 {
                             HStack {
-                                Text("New Today")
+                                Text(" New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(county.newDeaths.withCommas())")
+                                Text("\(county.newDeaths.withCommas()) ")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(.red)
@@ -77,17 +77,17 @@ struct CountyDetailView: View {
                         }
                     }
                 }
-                Section(header: Text("Statistics")
+                Section(header: Text(" Statistics")
                     .font(.headline)
                     .foregroundColor(.green)) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Fatality Rate")
+                            Text(" Fatality Rate")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(county.fatalityRate)")
+                            Text("\(county.fatalityRate) ")
                                 .foregroundColor(.green)
                                 .font(.subheadline)
                                 .bold()

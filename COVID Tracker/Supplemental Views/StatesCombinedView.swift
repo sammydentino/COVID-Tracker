@@ -14,6 +14,11 @@ struct StatesCombinedView : View {
 	
 	var body: some View {
 		VStack {
+            Picker("", selection: $selected) {
+                Text("States").tag(0)
+                Text("Counties").tag(1)
+                //Text("Testing").tag(2)
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 15)
 			if selected == 0 {
                 StatesView(fetch: fetch).navigationBarTitle("States")
 			} else if selected == 1 {
@@ -21,12 +26,6 @@ struct StatesCombinedView : View {
 			} /*else if selected == 2 {
 				TestingView().navigationBarTitle("Testing")
 			}*/
-            Picker("", selection: $selected) {
-                Text("States").tag(0)
-                Text("Counties").tag(1)
-                //Text("Testing").tag(2)
-            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 30)
-                .padding(.vertical, 2.5)
 		}
 	}
 }
