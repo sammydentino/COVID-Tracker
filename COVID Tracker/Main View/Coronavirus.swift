@@ -23,8 +23,7 @@ struct Coronavirus: View {
                     Picker("", selection: self.$maintab) {
                         Text("Statistics").tag(0)
                         Text("Map").tag(1)
-                        Text("Timeline").tag(2)
-                    }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 15)
+                    }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal, 15).padding(.vertical, 2.5).padding(.bottom, 5)
                 }
                 ZStack {
                     if selected == 0 {
@@ -33,16 +32,13 @@ struct Coronavirus: View {
                                 .navigationBarTitle(Text("COVID-19 Tracker"), displayMode: .large).animation(.default)
                         } else if maintab == 1 {
                             MapView(coronaCases: coronaCases.caseAnnotations, totalCases: coronaCases.coronaOutbreak.totalCases)
-                                .navigationBarTitle(Text("Map"), displayMode: .large).animation(.default)
-                        } else {
-                            TimelineView(fetch: fetch, cases: fetch.global.cases, deaths: fetch.global.deaths, recovered: fetch.global.recovered)
-                                .navigationBarTitle(Text("Timeline"), displayMode: .large).animation(.default)
+                                .navigationBarTitle(Text("COVID-19 Tracker"), displayMode: .large).animation(.default)
                         }
                     } else if selected == 1 {
                         CountryView(fetch: fetch)
                             .navigationBarTitle(Text("Countries"), displayMode: .large).animation(.default)
                     } else if selected == 2 {
-                        StatesCombinedView(fetch: fetch).animation(.default)
+                        StatesView(fetch: fetch).navigationBarTitle("States")
                     } else {
                         NewsView(fetch: fetch)
                             .navigationBarTitle(Text("News"), displayMode: .large).animation(.default)

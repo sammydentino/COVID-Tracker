@@ -14,28 +14,28 @@ struct CountryDetailView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("\n Cases")
+                Section(header: Text("\nCases")
                     .font(.headline)
-                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))) {
+                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)).fixCase()) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(" Total")
+                            Text("Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.cases.withCommas()) ")
+                            Text("\(country.cases.withCommas())")
                                 .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text(" Active")
+                            Text("Active")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.active.withCommas()) ")
+                            Text("\(country.active.withCommas())")
                                 .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                                 .font(.subheadline)
                                 .bold()
@@ -43,11 +43,11 @@ struct CountryDetailView: View {
                         Spacer()
                         if country.todayCases != 0 {
                             HStack {
-                                Text(" New Today")
+                                Text("New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(country.todayCases.withCommas()) ")
+                                Text("\(country.todayCases.withCommas())")
                                     .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
                                     .font(.subheadline)
                                     .bold()
@@ -56,17 +56,17 @@ struct CountryDetailView: View {
                         }
                     }
                 }
-                Section(header: Text(" Deaths")
+                Section(header: Text("Deaths")
                     .font(.headline)
-                    .foregroundColor(.red)) {
+                    .foregroundColor(.red).fixCase()) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(" Total")
+                            Text("Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.deaths.withCommas()) ")
+                            Text("\(country.deaths.withCommas())")
                                 .foregroundColor(.red)
                                 .font(.subheadline)
                                 .bold()
@@ -74,11 +74,11 @@ struct CountryDetailView: View {
                         Spacer()
                         if country.todayDeaths != 0 {
                             HStack {
-                                Text(" New Today")
+                                Text("New Today")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(country.todayDeaths.withCommas()) ")
+                                Text("\(country.todayDeaths.withCommas())")
                                     .foregroundColor(.red)
                                     .font(.subheadline)
                                     .bold()
@@ -87,17 +87,17 @@ struct CountryDetailView: View {
                         }
                     }
                 }
-                Section(header: Text(" Recovered")
+                Section(header: Text("Recovered")
                     .font(.headline)
-                    .foregroundColor(.green)) {
+                    .foregroundColor(.green).fixCase()) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(" Total")
+                            Text("Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.recovered.withCommas()) ")
+                            Text("\(country.recovered.withCommas())")
                                 .foregroundColor(.green)
                                 .font(.subheadline)
                                 .bold()
@@ -105,11 +105,11 @@ struct CountryDetailView: View {
                         Spacer()
                         if country.todayRecovered != 0 {
                             HStack {
-                                Text(" Today Recovered")
+                                Text("Today Recovered")
                                     .font(.subheadline)
                                     .bold()
                                 Spacer()
-                                Text("\(country.todayRecovered.withCommas()) ")
+                                Text("\(country.todayRecovered.withCommas())")
                                     .foregroundColor(.green)
                                     .font(.subheadline)
                                     .bold()
@@ -118,17 +118,17 @@ struct CountryDetailView: View {
                         }
                     }
                 }
-                Section(header: Text(" Tests")
+                Section(header: Text("Tests")
                     .font(.headline)
-                    .foregroundColor(.orange)) {
+                    .foregroundColor(.orange).fixCase()) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(" Total")
+                            Text("Total")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.tests.withCommas()) ")
+                            Text("\(country.tests.withCommas())")
                                 .foregroundColor(.orange)
                                 .font(.subheadline)
                                 .bold()
@@ -136,39 +136,39 @@ struct CountryDetailView: View {
                         Spacer()
                     }
                 }
-                Section(header: Text(" Statistics")
+                Section(header: Text("Statistics")
                     .font(.headline)
-                    .foregroundColor(.purple)) {
+                    .foregroundColor(.purple).fixCase()) {
                     VStack {
                         Spacer()
                         HStack {
-                            Text(" Population")
+                            Text("Population")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(country.population.withCommas()) ")
+                            Text("\(country.population.withCommas())")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text(" Fatality Rate")
+                            Text("Fatality Rate")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(((Double(country.deaths)) / (Double(country.cases))) * 100, specifier: "%.2f")% ")
+                            Text("\(((Double(country.deaths)) / (Double(country.cases))) * 100, specifier: "%.2f")%")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()
                         }
                         Spacer()
                         HStack {
-                            Text(" Currently Active")
+                            Text("Currently Active")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
-                            Text("\(((Double(country.active) / Double(country.cases))) * 100, specifier: "%.2f")%" )
+                            Text("\(((Double(country.active) / Double(country.cases))) * 100, specifier: "%.2f")%")
                                 .foregroundColor(.purple)
                                 .font(.subheadline)
                                 .bold()

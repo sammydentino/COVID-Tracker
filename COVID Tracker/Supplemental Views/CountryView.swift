@@ -15,9 +15,9 @@ struct CountryView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-            SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -11.5)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -10).padding(.bottom, 5)
 			List {
-				Section(header: Text(" Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10)) {
+				Section(header: Text(" Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10).fixCase()) {
                     ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()

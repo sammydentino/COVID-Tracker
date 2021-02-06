@@ -15,10 +15,7 @@ class getAll : ObservableObject {
     @Published var countries : [Country]!
     @Published var usa: Country!
     @Published var states : [States]!
-    @Published var counties: [County]!
-    @Published var top10: [County]!
     @Published var news: [News]!
-    @Published var timeline : [Timeline]!
     @Published var cases = [Double]()
     @Published var deaths = [Double]()
     @Published var recovered = [Double]()
@@ -45,21 +42,7 @@ class getAll : ObservableObject {
             self.states = self.states.sorted(by: {
                 $0.cases > $1.cases
             })
-            self.loadCounties()
-            self.counties = self.counties.sorted(by: {
-                $0.countyName < $1.countyName
-            })
-            self.top10 = self.top10.sorted(by: {
-                $0.confirmed > $1.confirmed
-            })
-            self.top10 = Array(self.top10.prefix(10))
             self.loadNews()
-            self.loadTimeline()
-            for item in self.timeline {
-                self.cases.append(item.cases)
-                self.deaths.append(item.deaths)
-                self.recovered.append(item.recovered)
-            }
         }
     }
     func loadAll(){
@@ -113,19 +96,6 @@ class getAll : ObservableObject {
             }
         }
     }
-    func loadCounties() {
-        let urlString = "https://covid19-us-api.herokuapp.com/county"
-        if let url = URL(string: urlString) {
-            if let d = try? Data(contentsOf: url) {
-                // we're OK to parse!
-                let decoder = JSONDecoder()
-                if let data = try? decoder.decode(DataResponse.self, from: d) {
-                    counties = data.message
-                    top10 = data.message
-                }
-            }
-        }
-    }
     func loadNews() {
         let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=I6_B_W8rEFe9iX7zxWF2La-Nc50WGQWLZWrU0hogorm-66le"
 
@@ -135,18 +105,6 @@ class getAll : ObservableObject {
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode(Results.self, from: d) {
                     news = data.news
-                }
-            }
-        }
-    }
-    func loadTimeline() {
-        let urlString = "https://covid19-api.org/api/timeline"
-        if let url = URL(string: urlString) {
-            if let d = try? Data(contentsOf: url) {
-                // we're OK to parse!
-                let decoder = JSONDecoder()
-                if let data = try? decoder.decode([Timeline].self, from: d) {
-                    timeline = data
                 }
             }
         }
