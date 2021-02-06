@@ -12,7 +12,6 @@
 		EB21BE4C251018D70039E430 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21BE4B251018D70039E430 /* TabBar.swift */; };
 		EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21BE4D251018ED0039E430 /* UIDevice.swift */; };
 		EB33BD3E246F28B2009FED4B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BD3D246F28B2009FED4B /* Date.swift */; };
-		EB390AFB24529985003657D4 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB390AFA24529985003657D4 /* TestingView.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
 		EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB648CE925118AAA0078F37B /* UIFont.swift */; };
 		EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AA2448196C00BA0CF0 /* AppDelegate.swift */; };
@@ -46,7 +45,6 @@
 		EB21BE4B251018D70039E430 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		EB21BE4D251018ED0039E430 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		EB33BD3D246F28B2009FED4B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		EB390AFA24529985003657D4 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		EB648CE925118AAA0078F37B /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		EB77BF5E245A6CD7003BC5D7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +159,6 @@
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
 				EBEAF58A2511523800403142 /* StatesDetailView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
-				EB390AFA24529985003657D4 /* TestingView.swift */,
 				EBEAF58F251152F100403142 /* WebView.swift */,
 				EB21BE4B251018D70039E430 /* TabBar.swift */,
 				EBE87B852512806200A02F8E /* NavigationBarModifier.swift */,
@@ -314,7 +311,6 @@
 				EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */,
 				EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */,
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
-				EB390AFB24529985003657D4 /* TestingView.swift in Sources */,
 				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
@@ -485,7 +481,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -509,7 +505,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;

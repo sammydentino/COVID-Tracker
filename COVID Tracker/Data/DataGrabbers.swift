@@ -16,9 +16,6 @@ class getAll : ObservableObject {
     @Published var usa: Country!
     @Published var states : [States]!
     @Published var news: [News]!
-    @Published var cases = [Double]()
-    @Published var deaths = [Double]()
-    @Published var recovered = [Double]()
     
     init() {
         loadAll()
@@ -35,12 +32,12 @@ class getAll : ObservableObject {
         self.usa!.country = "United States"
         self.countries!.append(self.usa!)
         self.countries! = self.countries!.sorted(by: {
-            $0.cases > $1.cases
+            $0.active > $1.active
         })
         DispatchQueue.main.async {
             self.loadStates()
             self.states = self.states.sorted(by: {
-                $0.cases > $1.cases
+                $0.active > $1.active
             })
             self.loadNews()
         }

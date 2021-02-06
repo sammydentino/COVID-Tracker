@@ -17,18 +17,18 @@ struct CountryView: View {
 		VStack(alignment: .leading, spacing: 0) {
             SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -10).padding(.bottom, 5)
 			List {
-				Section(header: Text(" Sorted by Most Cases").font(.subheadline).bold().padding(.vertical, 10).fixCase()) {
+				Section(header: Text("Sorted by Most Active Cases").font(.subheadline).bold().padding(.vertical, 5).padding(.top, 10).fixCase()) {
                     ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
 						}) {
                             HStack {
-                                Text(" \(item.country)")
+                                Text("\(item.country)")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(.primary)
                                 Spacer()
-                                Text("→ ")
+                                Text("→")
                                     .font(.subheadline)
                                     .bold()
                                     .foregroundColor(.secondary)
@@ -40,7 +40,7 @@ struct CountryView: View {
 						}
 					}
 				}
-			}
+			}.listStyle(GroupedListStyle()).environment(\.horizontalSizeClass, .regular)
 		}
 	}
 }

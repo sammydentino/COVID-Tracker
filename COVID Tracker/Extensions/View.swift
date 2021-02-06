@@ -111,6 +111,44 @@ extension View {
     }
     
     //list section builders
+    @ViewBuilder func makeColoredSection(str: String, color: Color) -> some View {
+        if #available(iOS 14.0, *) {
+            Section(header: Text("   \(str)")
+                .font(.subheadline)
+                .foregroundColor(color)
+                .bold()
+                .fixCase()) {
+                self
+            }
+        } else {
+            Section(header: Text("\(str)")
+                .font(.subheadline)
+                .foregroundColor(color)
+                        .bold()
+                .fixCase()) {
+                self
+            }
+        }
+    }
+    @ViewBuilder func makeNewLineColoredSection(str: String, color: Color) -> some View {
+        if #available(iOS 14.0, *) {
+            Section(header: Text("\n   \(str)")
+                .font(.subheadline)
+                .foregroundColor(color)
+                        .bold()
+                .fixCase()) {
+                self
+            }
+        } else {
+            Section(header: Text("\n\(str)")
+                .font(.subheadline)
+                .foregroundColor(color)
+                        .bold()
+                .fixCase()) {
+                self
+            }
+        }
+    }
     @ViewBuilder func makeSection(str: String) -> some View {
         if #available(iOS 14.0, *) {
             Section(header: Text("   \(str)").subhead()) {

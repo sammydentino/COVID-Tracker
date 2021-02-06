@@ -15,9 +15,7 @@ struct StatesDetailView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("\nCases")
-                    .font(.headline)
-                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882)).fixCase()) {
+                Group {
                     VStack {
                         Spacer()
                         HStack {
@@ -56,10 +54,8 @@ struct StatesDetailView: View {
                             Spacer()
                         }
                     }
-                }
-                Section(header: Text("Deaths")
-                    .font(.headline)
-                    .foregroundColor(.red).fixCase()) {
+                }.makeNewLineColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
+                Group {
                     VStack {
                         Spacer()
                         HStack {
@@ -87,10 +83,8 @@ struct StatesDetailView: View {
                             Spacer()
                         }
                     }
-                }
-                Section(header: Text("Recovered")
-                    .font(.headline)
-                    .foregroundColor(.orange).fixCase()) {
+                }.makeColoredSection(str: "Deaths", color: .red)
+                Group {
                     VStack {
                         Spacer()
                         HStack {
@@ -105,10 +99,8 @@ struct StatesDetailView: View {
                         }
                         Spacer()
                     }
-                }
-                Section(header: Text("Tests")
-                    .font(.headline)
-                    .foregroundColor(.green).fixCase()) {
+                }.makeColoredSection(str: "Recovered", color: .green)
+                Group {
                     VStack {
                         Spacer()
                         HStack {
@@ -123,10 +115,8 @@ struct StatesDetailView: View {
                         }
                         Spacer()
                     }
-                }
-                Section(header: Text("Statistics")
-                    .font(.headline)
-                    .foregroundColor(.purple).fixCase()) {
+                }.makeColoredSection(str: "Tests", color: .orange)
+                Group {
                     VStack {
                         Spacer()
                         HStack {
@@ -152,7 +142,7 @@ struct StatesDetailView: View {
                         }
                         Spacer()
                         HStack {
-                            Text("Currently Active")
+                            Text("Active Cases")
                                 .font(.subheadline)
                                 .bold()
                             Spacer()
@@ -163,9 +153,8 @@ struct StatesDetailView: View {
                         }
                         Spacer()
                     }
-                }
-            }.listStyle(GroupedListStyle())
-                .environment(\.horizontalSizeClass, .compact)
+                }.makeColoredSection(str: "Statistics", color: .purple)
+            }.fixList()
         }
     }
 }
