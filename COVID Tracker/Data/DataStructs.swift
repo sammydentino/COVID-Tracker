@@ -1,9 +1,9 @@
 //
-//  JSONStructs.swift
+//  DataStructs.swift
 //  COVID Tracker
 //
-//  Created by Sammy Dentino on 9/15/20.
-//  Copyright © 2020 Sammy Dentino. All rights reserved.
+//  Created by Sammy Dentino on 2/6/21.
+//  Copyright © 2021 Sammy Dentino. All rights reserved.
 //
 
 import SwiftUI
@@ -231,63 +231,6 @@ struct States : Codable, Identifiable {
     }
 }
 
-struct DataResponse : Codable {
-    let success : Bool!
-    let message : [County]!
-
-    enum CodingKeys: String, CodingKey {
-        case success = "success"
-        case message = "message"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        success = try values.decodeIfPresent(Bool.self, forKey: .success)
-        message = try values.decodeIfPresent([County].self, forKey: .message)
-    }
-}
-
-struct County : Codable, Identifiable {
-    let id = UUID()
-    let countyName : String!
-    let stateName : String!
-    let confirmed : Int!
-    let new : Int!
-    let deaths : Int!
-    let newDeaths : Int!
-    let fatalityRate : String!
-    let latitude : Double!
-    let longitude : Double!
-    let update : String!
-
-    enum CodingKeys: String, CodingKey {
-        case countyName = "county_name"
-        case stateName = "state_name"
-        case confirmed = "confirmed"
-        case new = "new"
-        case deaths = "death"
-        case newDeaths = "new_death"
-        case fatalityRate = "fatality_rate"
-        case latitude = "latitude"
-        case longitude = "longitude"
-        case update = "last_update"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        countyName = try values.decodeIfPresent(String.self, forKey: .countyName) ?? "N/A"
-        stateName = try values.decodeIfPresent(String.self, forKey: .stateName) ?? "N/A"
-        confirmed = try values.decodeIfPresent(Int.self, forKey: .confirmed) ?? 0
-        new = try values.decodeIfPresent(Int.self, forKey: .new) ?? 0
-        deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
-        newDeaths = try values.decodeIfPresent(Int.self, forKey: .newDeaths) ?? 0
-        fatalityRate = try values.decodeIfPresent(String.self, forKey: .fatalityRate) ?? "N/A"
-        latitude = try values.decodeIfPresent(Double.self, forKey: .latitude) ?? 0.0
-        longitude = try values.decodeIfPresent(Double.self, forKey: .longitude) ?? 0.0
-        update = try values.decodeIfPresent(String.self, forKey: .update) ?? "N/A"
-    }
-}
-
 struct Results : Codable {
     let status : String?
     let news : [News]!
@@ -380,44 +323,6 @@ struct CaseAttributes : Codable {
     }
 }
 
-struct Timeline : Codable, Identifiable {
-    let id = UUID()
-    var update : String!
-    let totalCases : Int!
-    let totalDeaths : Int!
-    let totalRecovered : Int!
-    var cases: Double!
-    var deaths: Double!
-    var recovered: Double!
-    var dateFormatter = DateFormatter()
-    var dateFormatterPrint = DateFormatter()
-    var datein: Date!
-    var dateout: String!
-
-    enum CodingKeys: String, CodingKey {
-        case update = "last_update"
-        case totalCases = "total_cases"
-        case totalDeaths = "total_deaths"
-        case totalRecovered = "total_recovered"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        update = try values.decodeIfPresent(String.self, forKey: .update)
-        totalCases = try values.decodeIfPresent(Int.self, forKey: .totalCases) ?? 0
-        totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths) ?? 0
-        totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered) ?? 0
-        cases = Double(totalCases)
-        deaths = Double(totalDeaths)
-        recovered = Double(totalRecovered)
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatterPrint.dateFormat = "MMMM dd"
-        datein = dateFormatter.date(from: update)
-        dateout = dateFormatterPrint.string(from: datein ?? Date())
-        //date = dateFormatter.string(from: Date(timeIntervalSince1970: update))
-    }
-}
-
 struct Country: Codable, Identifiable {
     let id = UUID()
     var updated: Int
@@ -443,17 +348,6 @@ enum Continent: String, Codable {
     case southAmerica = "South America"
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.countryInfoTask(with: url) { countryInfo, response, error in
-//     if let countryInfo = countryInfo {
-//       ...
-//     }
-//   }
-//   task.resume()
-
-// MARK: - CountryInfo
 struct CountryInfo: Codable {
     var id: Int?
     var iso2, iso3: String?

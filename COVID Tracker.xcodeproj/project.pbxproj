@@ -28,10 +28,10 @@
 		EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE9F42244A724F00EA286F /* StatesView.swift */; };
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
+		EBE1646F25CF20D600029603 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1646E25CF20D600029603 /* DataStructs.swift */; };
 		EBE18443245DF830000E85C3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE18442245DF830000E85C3 /* MapView.swift */; };
 		EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B852512806200A02F8E /* NavigationBarModifier.swift */; };
 		EBE87B882512807600A02F8E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B872512807600A02F8E /* View.swift */; };
-		EBEAF58525112FE900403142 /* JSONStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58425112FE900403142 /* JSONStructs.swift */; };
 		EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF586251130BE00403142 /* DataGrabbers.swift */; };
 		EBEAF5892511520C00403142 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF5882511520C00403142 /* CountryDetailView.swift */; };
 		EBEAF58B2511523800403142 /* StatesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58A2511523800403142 /* StatesDetailView.swift */; };
@@ -73,10 +73,10 @@
 		EBDD6F14244939A000372189 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		EBE1646E25CF20D600029603 /* DataStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructs.swift; sourceTree = "<group>"; };
 		EBE18442245DF830000E85C3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EBE87B852512806200A02F8E /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		EBE87B872512807600A02F8E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		EBEAF58425112FE900403142 /* JSONStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructs.swift; sourceTree = "<group>"; };
 		EBEAF586251130BE00403142 /* DataGrabbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGrabbers.swift; sourceTree = "<group>"; };
 		EBEAF5882511520C00403142 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 		EBEAF58A2511523800403142 /* StatesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesDetailView.swift; sourceTree = "<group>"; };
@@ -218,9 +218,9 @@
 		EBEAF58E251152B600403142 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				EBEAF58425112FE900403142 /* JSONStructs.swift */,
 				EBEAF586251130BE00403142 /* DataGrabbers.swift */,
 				EBEAF58C251152A300403142 /* CaseAnnotations.swift */,
+				EBE1646E25CF20D600029603 /* DataStructs.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -307,7 +307,6 @@
 				EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */,
 				EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */,
 				EBFA701E25129A85003DF015 /* UIColor.swift in Sources */,
-				EBEAF58525112FE900403142 /* JSONStructs.swift in Sources */,
 				EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */,
 				EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */,
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
@@ -328,6 +327,7 @@
 				EBEAF590251152F100403142 /* WebView.swift in Sources */,
 				EBDD6F1924493C8500372189 /* TotalView.swift in Sources */,
 				EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */,
+				EBE1646F25CF20D600029603 /* DataStructs.swift in Sources */,
 				EB8504AF2448196C00BA0CF0 /* Coronavirus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
