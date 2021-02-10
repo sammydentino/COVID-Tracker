@@ -34,13 +34,11 @@ class getAll : ObservableObject {
         self.countries! = self.countries!.sorted(by: {
             $0.active > $1.active
         })
-        DispatchQueue.main.async {
-            self.loadStates()
-            self.states = self.states.sorted(by: {
-                $0.active > $1.active
-            })
-            self.loadNews()
-        }
+        self.loadStates()
+        self.states = self.states.sorted(by: {
+            $0.active > $1.active
+        })
+        self.loadNews()
     }
     func loadAll(){
         let urlString = "https://disease.sh/v2/all"

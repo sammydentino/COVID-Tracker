@@ -114,7 +114,7 @@ extension View {
     @ViewBuilder func makeColoredSection(str: String, color: Color) -> some View {
         if #available(iOS 14.0, *) {
             Section(header: Text("   \(str)")
-                .font(.subheadline)
+                .font(.headline)
                 .foregroundColor(color)
                 .bold()
                 .fixCase()) {
@@ -122,9 +122,9 @@ extension View {
             }
         } else {
             Section(header: Text("\(str)")
-                .font(.subheadline)
+                .font(.headline)
                 .foregroundColor(color)
-                        .bold()
+                .bold()
                 .fixCase()) {
                 self
             }
@@ -133,17 +133,17 @@ extension View {
     @ViewBuilder func makeNewLineColoredSection(str: String, color: Color) -> some View {
         if #available(iOS 14.0, *) {
             Section(header: Text("\n   \(str)")
-                .font(.subheadline)
+                .font(.headline)
                 .foregroundColor(color)
-                        .bold()
+                .bold()
                 .fixCase()) {
                 self
             }
         } else {
             Section(header: Text("\n\(str)")
-                .font(.subheadline)
+                .font(.headline)
                 .foregroundColor(color)
-                        .bold()
+                .bold()
                 .fixCase()) {
                 self
             }
