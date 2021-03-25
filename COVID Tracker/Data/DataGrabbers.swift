@@ -35,29 +35,25 @@ class getAll : ObservableObject {
             $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
         })
         self.worldvaccinations = self.vaccinations.first
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.loadCountries()
-            self.loadStates()
-            self.loadNews()
-            DispatchQueue.main.async {
-                for item in self.countries! {
-                    if item.country == "USA" {
-                        self.usa = item
-                    }
-                }
-                self.countries! = self.countries!.filter({
-                    $0.country != "USA"
-                })
-                self.usa!.country = "United States"
-                self.countries!.append(self.usa!)
-                self.countries! = self.countries!.sorted(by: {
-                    $0.active > $1.active
-                })
-                self.states = self.states.sorted(by: {
-                    $0.active > $1.active
-                })
+        self.loadCountries()
+        self.loadStates()
+        self.loadNews()
+        for item in self.countries! {
+            if item.country == "USA" {
+                self.usa = item
             }
         }
+        self.countries! = self.countries!.filter({
+            $0.country != "USA"
+        })
+        self.usa!.country = "United States"
+        self.countries!.append(self.usa!)
+        self.countries! = self.countries!.sorted(by: {
+            $0.active > $1.active
+        })
+        self.states = self.states.sorted(by: {
+            $0.active > $1.active
+        })
     }
     
     func loadAll(){
@@ -97,9 +93,7 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode([Country].self, from: d) {
-                    DispatchQueue.main.async {
-                        self.countries = data
-                    }
+                    self.countries = data
                 }
             }
         }
@@ -113,9 +107,7 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode([States].self, from: d) {
-                    DispatchQueue.main.async {
-                        self.states = data
-                    }
+                    self.states = data
                 }
             }
         }
@@ -129,9 +121,7 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode(Results.self, from: d) {
-                    DispatchQueue.main.async {
-                        self.news = data.news
-                    }
+                    self.news = data.news
                 }
             }
         }
