@@ -75,7 +75,7 @@ struct VaccinationView: View {
                                                     .foregroundColor(.orange)
                                             }
                                             Spacer()
-                                        }.makeNewLineColoredSection(str: "Statistics", color: Color.orange)
+                                        }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
                                     }.fixList()
                                 }.navigationBarTitle(item.country)
                             }
