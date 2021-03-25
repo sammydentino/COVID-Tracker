@@ -30,6 +30,8 @@
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 		EBE1646F25CF20D600029603 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1646E25CF20D600029603 /* DataStructs.swift */; };
+		EBE2F5F9260CF51E006981A1 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = EBE2F5F8260CF51E006981A1 /* PartialSheet */; };
+		EBE2F5FC260D13DB006981A1 /* VaccinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2F5FB260D13DB006981A1 /* VaccinationDetailView.swift */; };
 		EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B852512806200A02F8E /* NavigationBarModifier.swift */; };
 		EBE87B882512807600A02F8E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B872512807600A02F8E /* View.swift */; };
 		EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF586251130BE00403142 /* DataGrabbers.swift */; };
@@ -77,6 +79,7 @@
 		EBDD6F1624493C7D00372189 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		EBDD6F1824493C8500372189 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		EBE1646E25CF20D600029603 /* DataStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructs.swift; sourceTree = "<group>"; };
+		EBE2F5FB260D13DB006981A1 /* VaccinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationDetailView.swift; sourceTree = "<group>"; };
 		EBE87B852512806200A02F8E /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		EBE87B872512807600A02F8E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		EBEAF586251130BE00403142 /* DataGrabbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGrabbers.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 			files = (
 				EB216C43260C0D4C00ED65E3 /* SwiftUIRefresh in Frameworks */,
 				EB00D64F2510646E00D5A6FB /* URLImage in Frameworks */,
+				EBE2F5F9260CF51E006981A1 /* PartialSheet in Frameworks */,
 				F6EFD1DB62E15389E97C42EF /* Pods_COVID_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +178,7 @@
 				EBEAF58A2511523800403142 /* StatesDetailView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
 				EB216C45260C195600ED65E3 /* VaccinationView.swift */,
+				EBE2F5FB260D13DB006981A1 /* VaccinationDetailView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			packageProductDependencies = (
 				EB00D64E2510646E00D5A6FB /* URLImage */,
 				EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */,
+				EBE2F5F8260CF51E006981A1 /* PartialSheet */,
 			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
@@ -293,6 +299,7 @@
 			packageReferences = (
 				EB00D64D2510646E00D5A6FB /* XCRemoteSwiftPackageReference "url-image" */,
 				EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
@@ -372,6 +379,7 @@
 				EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */,
 				EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */,
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
+				EBE2F5FC260D13DB006981A1 /* VaccinationDetailView.swift in Sources */,
 				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
@@ -542,7 +550,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -567,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0;
+				MARKETING_VERSION = 4.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -615,6 +623,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.11;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -627,6 +643,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
 			productName = SwiftUIRefresh;
+		};
+		EBE2F5F8260CF51E006981A1 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

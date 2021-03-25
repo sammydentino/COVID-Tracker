@@ -12,6 +12,7 @@ struct CountryView: View {
 	@State private var searchQuery: String = ""
     let fetch: getAll!
 	@State private var showingDetail = false
+    //@State private var vaccinations: Vaccination?
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -21,6 +22,10 @@ struct CountryView: View {
                     ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
 						Button(action: {
 							self.showingDetail.toggle()
+                            /*vaccinations = fetch.vaccinations.filter({
+                                $0.country.lowercased() == item.country.lowercased()
+                            })[0]
+                            print(vaccinations?.country ?? "N/A")*/
 						}) {
                             HStack {
                                 Text("\(item.country)")

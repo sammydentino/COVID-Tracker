@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 import SwiftUIRefresh
 
 struct Coronavirus: View {
@@ -43,18 +44,22 @@ struct Coronavirus: View {
                     if selected != 1 {
                         EmptyView()
                     } else {
-                        NewsView(fetch: fetch)
+                        VaccinationView(fetch: fetch)
                     }
-                }.navigationBarTitle(Text("News"), displayMode: .large).animation(.default)
+                }.navigationBarTitle("Vaccinations").animation(.default)
                 .pullToRefresh(isShowing: $loading) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        fetch.loadNews()
+                        fetch.loadVaccinations()
+                        fetch.vaccinations = fetch.vaccinations.sorted(by: {
+                            $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
+                        })
+                        fetch.worldvaccinations = fetch.vaccinations.first
                         loading = false
                     }
                 }
             }.tag(1)
                 .tabItem {
-                    Label("News", systemImage: "filemenu.and.selection")
+                    Label("Vaccinations", systemImage: "checkmark.shield")
                 }
             NavigationView {
                 ZStack {
@@ -92,28 +97,6 @@ struct Coronavirus: View {
                     if selected != 3 {
                         EmptyView()
                     } else {
-                        VaccinationView(fetch: fetch)
-                    }
-                }.navigationBarTitle("Vaccinations").animation(.default)
-                .pullToRefresh(isShowing: $loading) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        fetch.loadVaccinations()
-                        fetch.vaccinations = fetch.vaccinations.sorted(by: {
-                            $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
-                        })
-                        fetch.worldvaccinations = fetch.vaccinations.first
-                        loading = false
-                    }
-                }
-            }.tag(3)
-                .tabItem {
-                    Label("Vaccinations", systemImage: "person.crop.square.fill.and.at.rectangle")
-                }
-            NavigationView {
-                ZStack {
-                    if selected != 4 {
-                        EmptyView()
-                    } else {
                         StatesView(fetch: fetch)
                     }
                 }.navigationBarTitle("States").animation(.default)
@@ -126,11 +109,37 @@ struct Coronavirus: View {
                         loading = false
                     }
                 }
-            }.tag(4)
+            }.tag(3)
                 .tabItem {
                     Label("States", systemImage: "map")
                 }
+            NavigationView {
+                ZStack {
+                    if selected != 4 {
+                        EmptyView()
+                    } else {
+                        NewsView(fetch: fetch)
+                    }
+                }.navigationBarTitle(Text("News"), displayMode: .large).animation(.default)
+                .pullToRefresh(isShowing: $loading) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        fetch.loadNews()
+                        loading = false
+                    }
+                }
+            }.tag(4)
+                .tabItem {
+                    Label("News", systemImage: "filemenu.and.selection")
+                }
         }.navigationBarColor(UIColor.myControlBackground).navigationViewStyle(StackNavigationViewStyle())
+        .addPartialSheet(style: PartialSheetStyle(background: .solid(Color(UIColor.tertiarySystemBackground)),
+                                                  handlerBarColor: Color(UIColor.systemGray2),
+                                                  enableCover: true,
+                                                  coverColor: Color.black.opacity(0.4),
+                                                  blurEffectStyle: nil,
+                                                  cornerRadius: 10,
+                                                  minTopDistance: 500
+                         ))
     }
 }
 

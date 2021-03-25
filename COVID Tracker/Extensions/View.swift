@@ -9,6 +9,10 @@
 import SwiftUI
 
 extension View {
+    func combine<T>(_ arrays: Array<T>?...) -> Set<T> {
+        return arrays.compactMap{$0}.compactMap{Set($0)}.reduce(Set<T>()){$0.union($1)}
+    }
+    
     //dismiss keyboard
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

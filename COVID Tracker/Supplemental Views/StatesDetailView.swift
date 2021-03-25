@@ -93,7 +93,7 @@ struct StatesDetailView: View {
                                 .bold()
                             Spacer()
                             Text("\(state.recovered.withCommas())")
-                                .foregroundColor(.orange)
+                                .foregroundColor(.green)
                                 .font(.subheadline)
                                 .bold()
                         }
@@ -109,7 +109,7 @@ struct StatesDetailView: View {
                                 .bold()
                             Spacer()
                             Text("\(state.tests.withCommas())")
-                                .foregroundColor(.green)
+                                .foregroundColor(.orange)
                                 .font(.subheadline)
                                 .bold()
                         }

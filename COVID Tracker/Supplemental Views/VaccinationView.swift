@@ -7,19 +7,23 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct VaccinationView: View {
     @State private var searchQuery: String = ""
     let fetch: getAll!
     @State private var showingDetail = false
+    @EnvironmentObject var partialSheet : PartialSheetManager
+    @State private var selected: Vaccination?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -10).padding(.bottom, 5)
             List {
-                Section(header: Text("Sorted by Most Vaccinations").font(.subheadline).bold().padding(.vertical, 5).fixCase()) {
+                Section(header: Text("Sorted by Most Vaccinations").font(.subheadline).bold().padding(.vertical, 5).padding(.top, 10).fixCase()) {
                     ForEach(fetch.vaccinations.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
                         Button(action: {
+                            self.selected = item
                             self.showingDetail = true
                         }) {
                             HStack {
@@ -33,52 +37,8 @@ struct VaccinationView: View {
                                     .bold()
                                     .foregroundColor(.secondary)
                             }
-                        }.sheet(isPresented: self.$showingDetail) {
-                            NavigationView {
-                                VStack {
-                                    List {
-                                        VStack {
-                                            Spacer()
-                                            HStack {
-                                                Text("Total Vaccinations")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.primary)
-                                                Spacer()
-                                                Text("\(item.data.last?.totalVaccinations ?? 0)")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.orange)
-                                            }
-                                            Spacer()
-                                            HStack {
-                                                Text("People Vaccinated")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.primary)
-                                                Spacer()
-                                                Text("\(item.data.last?.peopleVaccinated ?? 0)")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.orange)
-                                            }
-                                            Spacer()
-                                            HStack {
-                                                Text("People Fully Vaccinated")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.primary)
-                                                Spacer()
-                                                Text("\(item.data.last?.peopleFullyVaccinated ?? 0)")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                    .foregroundColor(.orange)
-                                            }
-                                            Spacer()
-                                        }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
-                                    }.fixList()
-                                }.navigationBarTitle(item.country)
-                            }
+                        }.partialSheet(isPresented: self.$showingDetail) {
+                            VaccinationDetailView(item: self.selected ?? item)
                         }
                     }
                 }
