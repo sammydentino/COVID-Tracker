@@ -48,7 +48,7 @@ struct VaccinationView: View {
                                                 Text("\(item.data.last?.totalVaccinations ?? 0)")
                                                     .font(.subheadline)
                                                     .bold()
-                                                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+                                                    .foregroundColor(.orange)
                                             }
                                             Spacer()
                                             HStack {
@@ -60,7 +60,7 @@ struct VaccinationView: View {
                                                 Text("\(item.data.last?.peopleVaccinated ?? 0)")
                                                     .font(.subheadline)
                                                     .bold()
-                                                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+                                                    .foregroundColor(.orange)
                                             }
                                             Spacer()
                                             HStack {
@@ -72,10 +72,10 @@ struct VaccinationView: View {
                                                 Text("\(item.data.last?.peopleFullyVaccinated ?? 0)")
                                                     .font(.subheadline)
                                                     .bold()
-                                                    .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+                                                    .foregroundColor(.orange)
                                             }
                                             Spacer()
-                                        }.makeNewLineColoredSection(str: "Statistics", color: Color(red: 0, green: 0.6588, blue: 0.9882))
+                                        }.makeNewLineColoredSection(str: "Statistics", color: Color.orange)
                                     }.fixList()
                                 }.navigationBarTitle(item.country)
                             }
