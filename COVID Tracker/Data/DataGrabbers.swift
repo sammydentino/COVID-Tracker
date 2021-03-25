@@ -16,30 +16,50 @@ class getAll : ObservableObject {
     @Published var usa: Country!
     @Published var states : [States]!
     @Published var news: [News]!
+    @Published var vaccinations: [Vaccination]!
+    @Published var worldvaccinations: Vaccination!
     
     init() {
-        loadAll()
-        loadExtras()
-        self.loadCountries()
-        for item in self.countries! {
-            if item.country == "USA" {
-                usa = item
+        if let globaltemp = Global.read(forKey: "global") {
+            global = globaltemp
+        } else {
+            loadAll()
+        }
+        if let extrastemp = Welcome.read(forKey: "extras") {
+            extras = extrastemp
+        } else {
+            loadExtras()
+        }
+        self.loadVaccinations()
+        self.vaccinations = self.vaccinations.sorted(by: {
+            $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
+        })
+        self.worldvaccinations = self.vaccinations.first
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.loadCountries()
+            self.loadStates()
+            self.loadNews()
+            DispatchQueue.main.async {
+                for item in self.countries! {
+                    if item.country == "USA" {
+                        self.usa = item
+                    }
+                }
+                self.countries! = self.countries!.filter({
+                    $0.country != "USA"
+                })
+                self.usa!.country = "United States"
+                self.countries!.append(self.usa!)
+                self.countries! = self.countries!.sorted(by: {
+                    $0.active > $1.active
+                })
+                self.states = self.states.sorted(by: {
+                    $0.active > $1.active
+                })
             }
         }
-        self.countries! = self.countries!.filter({
-            $0.country != "USA"
-        })
-        self.usa!.country = "United States"
-        self.countries!.append(self.usa!)
-        self.countries! = self.countries!.sorted(by: {
-            $0.active > $1.active
-        })
-        self.loadStates()
-        self.states = self.states.sorted(by: {
-            $0.active > $1.active
-        })
-        self.loadNews()
     }
+    
     func loadAll(){
         let urlString = "https://disease.sh/v2/all"
         
@@ -49,10 +69,12 @@ class getAll : ObservableObject {
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode(Global.self, from: d) {
                     global = data
+                    global.write(withKey: "global")
                 }
             }
         }
     }
+    
     func loadExtras() {
         let urlString = "https://api.covid19api.com/summary"
         
@@ -62,10 +84,12 @@ class getAll : ObservableObject {
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode(Welcome.self, from: d) {
                     extras = data
+                    extras.write(withKey: "extras")
                 }
             }
         }
     }
+    
     func loadCountries() {
         let urlString = "https://disease.sh/v2/countries"
         if let url = URL(string: urlString) {
@@ -73,11 +97,14 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode([Country].self, from: d) {
-                    countries = data
+                    DispatchQueue.main.async {
+                        self.countries = data
+                    }
                 }
             }
         }
     }
+    
     func loadStates() {
         let statesString = "https://disease.sh/v2/states"
         
@@ -86,11 +113,14 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode([States].self, from: d) {
-                    states = data
+                    DispatchQueue.main.async {
+                        self.states = data
+                    }
                 }
             }
         }
     }
+    
     func loadNews() {
         let urlString = "https://api.currentsapi.services/v1/search?keywords=Coronavirus&apiKey=I6_B_W8rEFe9iX7zxWF2La-Nc50WGQWLZWrU0hogorm-66le"
 
@@ -99,68 +129,25 @@ class getAll : ObservableObject {
                 // we're OK to parse!
                 let decoder = JSONDecoder()
                 if let data = try? decoder.decode(Results.self, from: d) {
-                    news = data.news
+                    DispatchQueue.main.async {
+                        self.news = data.news
+                    }
                 }
             }
         }
     }
-}
-
-class CoronaObservable : ObservableObject {
-    @Published var caseAnnotations = [CaseAnnotations]()
-    @Published var coronaOutbreak = (totalCases: 0, totalRecovered: 0, totalDeaths: 0)
-
-    var url = "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer/1/query"
-    var cancellable : Set<AnyCancellable> = Set()
     
-    init() {
-        DispatchQueue.main.async {
-            self.fetchCoronaCases()
-        }
-    }
-    
-    func fetchCoronaCases() {
-        var urlComponents = URLComponents(string: url)!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "f", value: "json"),
-            URLQueryItem(name: "where", value: "Confirmed > 0"),
-            URLQueryItem(name: "geometryType", value: "esriGeometryEnvelope"),
-            URLQueryItem(name: "spatialRef", value: "esriSpatialRelIntersects"),
-            URLQueryItem(name: "outFields", value: "*"),
-            URLQueryItem(name: "orderByFields", value: "Confirmed desc"),
-            URLQueryItem(name: "resultOffset", value: "0"),
-            URLQueryItem(name: "cacheHint", value: "true")
-        ]
-        URLSession.shared.dataTaskPublisher(for: urlComponents.url!)
-            .map{$0.data}
-            .decode(type: CoronaResponse.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-        }) { response in
-            self.casesByProvince(response: response)
-        }
-        .store(in: &cancellable)
-    }
-    
-    func casesByProvince(response: CoronaResponse) {
-        var caseAnnotations : [CaseAnnotations] = []
-        var totalCases = 0
-        var totalDeaths = 0
-        var totalRecovered = 0
+    func loadVaccinations() {
+        let urlString = "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json"
 
-        for cases in response.features {
-            let confirmed = cases.attributes.confirmed ?? 0
-
-            caseAnnotations.append(CaseAnnotations(title: cases.attributes.provinceState ?? cases.attributes.countryRegion ?? "", subtitle: confirmed.withCommas(), coordinate: .init(latitude: cases.attributes.lat ?? 0.0, longitude: cases.attributes.longField ?? 0.0)))
-
-            totalCases += confirmed
-            totalDeaths += cases.attributes.deaths ?? 0
-            totalRecovered += cases.attributes.recovered ?? 0
+        if let url = URL(string: urlString) {
+            if let d = try? Data(contentsOf: url) {
+                // we're OK to parse!
+                let decoder = JSONDecoder()
+                if let data = try? decoder.decode([Vaccination].self, from: d) {
+                    vaccinations = data
+                }
+            }
         }
-        self.coronaOutbreak.totalCases = totalCases
-        self.coronaOutbreak.totalDeaths = totalDeaths
-        self.coronaOutbreak.totalRecovered = totalRecovered
-        self.caseAnnotations = caseAnnotations
     }
 }

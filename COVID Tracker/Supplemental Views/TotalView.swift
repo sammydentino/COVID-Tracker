@@ -11,6 +11,7 @@ import SwiftUI
 struct TotalView: View {
     let fetch: getAll!
     @State private var showingDetail = false
+    @State private var showingInfo = false
     
     var body: some View {
         List {
@@ -136,7 +137,61 @@ struct TotalView: View {
                     Spacer()
                 }
             }.makeColoredSection(str: "Recovered", color: .green)
-            Group {
+            VStack {
+                Spacer()
+                HStack {
+                    Text("Doses Adminstered")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("\(fetch.worldvaccinations.data.last?.totalVaccinations ?? 0)")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.orange)
+                }
+                Spacer()
+                HStack {
+                    Text("People Vaccinated")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("\(fetch.worldvaccinations.data.last?.peopleVaccinated ?? 0)")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.orange)
+                }
+                Spacer()
+                HStack {
+                    Text("People Fully Vaccinated")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("\(fetch.worldvaccinations.data.last?.peopleFullyVaccinated ?? 0)")
+                        .font(.subheadline)
+                        .bold()
+                        .foregroundColor(.orange)
+                }
+                Divider().padding(.vertical, 5)
+                Button(action: {
+                    self.showingInfo = true
+                }) {
+                    HStack {
+                        Text("Getting Vaccinated in the United States?").font(.subheadline).bold().foregroundColor(.orange)
+                        Spacer()
+                        Image(systemName: "info.circle").font(.system(size: 15, weight: .bold)).foregroundColor(.orange)
+                    }
+                }.buttonStyle(PlainButtonStyle())
+                .sheet(isPresented: $showingInfo) {
+                    NavigationView {
+                        WebView(request: URLRequest(url: URL(string: "https://www.wsj.com/articles/how-to-get-a-covid-19-vaccine-a-state-by-state-guide-11611703769")!)).edgesIgnoringSafeArea(.bottom).navigationBarTitle(Text("How to Get a COVID-19 Vaccine — WSJ"), displayMode: .inline)
+                    }.edgesIgnoringSafeArea(.bottom)
+                }
+                Spacer()
+            }.makeColoredSection(str: "Vaccinations", color: Color(.orange))
+            /*Group {
                 VStack {
                     Spacer()
                     HStack {
@@ -151,8 +206,8 @@ struct TotalView: View {
                     }
                     Spacer()
                 }
-            }.makeColoredSection(str: "Tests", color: .orange)
-            Group {
+            }.makeColoredSection(str: "Tests", color: .orange)*/
+            /*Group {
                 VStack {
                     Spacer()
                     /*HStack {
@@ -200,7 +255,7 @@ struct TotalView: View {
                     }
                     Spacer()
                 }
-            }.makeColoredSection(str: "Statistics", color: .purple)
+            }.makeColoredSection(str: "Statistics", color: .purple)*/
         }.fixList()
     }
 }

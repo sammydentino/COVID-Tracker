@@ -7,8 +7,9 @@
 //
 
 import SwiftUI
+import Default
 
-struct Global : Codable {
+struct Global : Codable, DefaultStorable {
     let updated : Int?
     let cases : Int!
     let todayCases : Int!
@@ -35,7 +36,6 @@ struct Global : Codable {
     let activeVsConf: Double!
 
     enum CodingKeys: String, CodingKey {
-
         case updated = "updated"
         case cases = "cases"
         case todayCases = "todayCases"
@@ -89,7 +89,7 @@ struct Global : Codable {
 }
 
 // Welcome & GlobalExtras
-struct Welcome : Codable {
+struct Welcome : Codable, DefaultStorable {
     let global : GlobalExtras!
 
     enum CodingKeys: String, CodingKey {
@@ -102,7 +102,7 @@ struct Welcome : Codable {
     }
 }
 
-struct GlobalExtras : Codable {
+struct GlobalExtras : Codable, DefaultStorable {
     let newConfirmed : Int?
     let totalConfirmed : Int?
     let newDeaths : Int?
@@ -127,60 +127,6 @@ struct GlobalExtras : Codable {
         totalDeaths = try values.decodeIfPresent(Int.self, forKey: .totalDeaths)
         newRecovered = try values.decodeIfPresent(Int.self, forKey: .newRecovered) ?? 0
         totalRecovered = try values.decodeIfPresent(Int.self, forKey: .totalRecovered)
-    }
-}
-
-struct CountriesIn : Codable {
-    let data : [CountriesList]!
-    let dt : String?
-    let ts : Int?
-
-    enum CodingKeys: String, CodingKey {
-        case data = "data"
-        case dt = "dt"
-        case ts = "ts"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        data = try values.decodeIfPresent([CountriesList].self, forKey: .data)
-        dt = try values.decodeIfPresent(String.self, forKey: .dt)
-        ts = try values.decodeIfPresent(Int.self, forKey: .ts)
-    }
-}
-
-struct CountriesList : Codable, Identifiable {
-    let id = UUID()
-    var location : String!
-    let confirmed : Int!
-    let deaths : Int!
-    let recovered : Int!
-    let active : Int!
-    let deathRate: Double!
-    let recoveredRate: Double!
-    let activeVsConf: Double!
-
-    enum CodingKeys: String, CodingKey {
-        case location = "location"
-        case confirmed = "confirmed"
-        case deaths = "deaths"
-        case recovered = "recovered"
-        case active = "active"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        location = try values.decodeIfPresent(String.self, forKey: .location) ?? "N/A"
-        confirmed = try values.decodeIfPresent(Int.self, forKey: .confirmed) ?? 0
-        deaths = try values.decodeIfPresent(Int.self, forKey: .deaths) ?? 0
-        recovered = try values.decodeIfPresent(Int.self, forKey: .recovered) ?? 0
-        active = try values.decodeIfPresent(Int.self, forKey: .active) ?? 0
-        deathRate = ((Double(deaths)) / (Double(confirmed))) * 100
-        recoveredRate = ((Double(recovered) / Double(confirmed))) * 100
-        activeVsConf = ((Double(active) / Double(confirmed))) * 100
-        if location == "US" {
-            location = "United States"
-        }
     }
 }
 
@@ -287,42 +233,6 @@ struct News : Codable, Identifiable {
     }
 }
 
-struct CoronaResponse : Codable {
-    public var features: [CoronaCases]
-        
-    private enum CodingKeys: String, CodingKey {
-        case features
-    }
-}
-
-struct CoronaCases : Codable {
-    public var attributes: CaseAttributes
-
-    private enum CodingKeys: String, CodingKey {
-        case attributes
-    }
-}
-
-struct CaseAttributes : Codable {
-    let confirmed : Int?
-    let countryRegion : String?
-    let deaths : Int?
-    let lat : Double?
-    let longField : Double?
-    let provinceState : String?
-    let recovered : Int?
-
-    enum CodingKeys: String, CodingKey {
-        case confirmed = "Confirmed"
-        case countryRegion = "Country_Region"
-        case deaths = "Deaths"
-        case lat = "Lat"
-        case longField = "Long_"
-        case provinceState = "Province_State"
-        case recovered = "Recovered"
-    }
-}
-
 struct Country: Codable, Identifiable {
     let id = UUID()
     var updated: Int
@@ -357,5 +267,39 @@ struct CountryInfo: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case iso2, iso3, lat, long, flag
+    }
+}
+
+struct Vaccination: Codable, Identifiable {
+    let id = UUID()
+    let country, isoCode: String
+    let data: [VaccinationData]
+
+    enum CodingKeys: String, CodingKey {
+        case country
+        case isoCode = "iso_code"
+        case data
+    }
+}
+
+struct VaccinationData: Codable, Identifiable {
+    let id = UUID()
+    let date: String
+    let totalVaccinations, peopleVaccinated: Int?
+    let totalVaccinationsPerHundred, peopleVaccinatedPerHundred: Double?
+    let dailyVaccinations, dailyVaccinationsPerMillion, dailyVaccinationsRaw, peopleFullyVaccinated: Int?
+    let peopleFullyVaccinatedPerHundred: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case date
+        case totalVaccinations = "total_vaccinations"
+        case peopleVaccinated = "people_vaccinated"
+        case totalVaccinationsPerHundred = "total_vaccinations_per_hundred"
+        case peopleVaccinatedPerHundred = "people_vaccinated_per_hundred"
+        case dailyVaccinations = "daily_vaccinations"
+        case dailyVaccinationsPerMillion = "daily_vaccinations_per_million"
+        case dailyVaccinationsRaw = "daily_vaccinations_raw"
+        case peopleFullyVaccinated = "people_fully_vaccinated"
+        case peopleFullyVaccinatedPerHundred = "people_fully_vaccinated_per_hundred"
     }
 }
