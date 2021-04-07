@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import BetterSafariView
 
 struct TotalView: View {
     let fetch: getAll!
@@ -185,9 +186,16 @@ struct TotalView: View {
                     }
                 }.buttonStyle(PlainButtonStyle())
                 .sheet(isPresented: $showingInfo) {
-                    NavigationView {
-                        WebView(request: URLRequest(url: URL(string: "https://www.wsj.com/articles/how-to-get-a-covid-19-vaccine-a-state-by-state-guide-11611703769")!)).edgesIgnoringSafeArea(.bottom).navigationBarTitle(Text("How to Get a COVID-19 Vaccine — WSJ"), displayMode: .inline)
-                    }.edgesIgnoringSafeArea(.bottom)
+                    SafariView(
+                        url: URL(string: "https://www.wsj.com/articles/how-to-get-a-covid-19-vaccine-a-state-by-state-guide-11611703769")!,
+                        configuration: SafariView.Configuration(
+                            entersReaderIfAvailable: true,
+                            barCollapsingEnabled: false
+                        )
+                    )
+                    .preferredBarAccentColor(.white)
+                    .preferredControlAccentColor(.accentColor)
+                    .dismissButtonStyle(.close)
                 }
                 Spacer()
             }.makeColoredSection(str: "Vaccinations", color: Color(.orange))

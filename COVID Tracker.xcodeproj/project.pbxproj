@@ -14,6 +14,7 @@
 		EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21BE4D251018ED0039E430 /* UIDevice.swift */; };
 		EB33BD3E246F28B2009FED4B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BD3D246F28B2009FED4B /* Date.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
+		EB58C29D261CED780023CD12 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = EB58C29C261CED780023CD12 /* BetterSafariView */; };
 		EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB648CE925118AAA0078F37B /* UIFont.swift */; };
 		EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AA2448196C00BA0CF0 /* AppDelegate.swift */; };
 		EB8504AD2448196C00BA0CF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504AC2448196C00BA0CF0 /* SceneDelegate.swift */; };
@@ -102,6 +103,7 @@
 				EB00D64F2510646E00D5A6FB /* URLImage in Frameworks */,
 				EBE2F5F9260CF51E006981A1 /* PartialSheet in Frameworks */,
 				F6EFD1DB62E15389E97C42EF /* Pods_COVID_Tracker.framework in Frameworks */,
+				EB58C29D261CED780023CD12 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +272,7 @@
 				EB00D64E2510646E00D5A6FB /* URLImage */,
 				EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */,
 				EBE2F5F8260CF51E006981A1 /* PartialSheet */,
+				EB58C29C261CED780023CD12 /* BetterSafariView */,
 			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
@@ -303,6 +306,7 @@
 				EB00D64D2510646E00D5A6FB /* XCRemoteSwiftPackageReference "url-image" */,
 				EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
@@ -554,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -579,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -627,6 +631,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
 		EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
@@ -647,6 +659,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
 			productName = SwiftUIRefresh;
+		};
+		EB58C29C261CED780023CD12 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
 		};
 		EBE2F5F8260CF51E006981A1 /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
