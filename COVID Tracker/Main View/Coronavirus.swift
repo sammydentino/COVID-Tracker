@@ -17,8 +17,98 @@ struct Coronavirus: View {
     @ObservedObject private var fetch = getAll()
     @State var loading = false
     
+    private var tabitems: [BottomBarItem] = [
+            BottomBarItem(icon: "antenna.radiowaves.left.and.right", color: .systemTeal, color2: .systemTeal),
+            BottomBarItem(icon: "checkmark.shield", color: .systemTeal, color2: .systemTeal),
+            BottomBarItem(icon: "globe", color: .systemTeal, color2: .systemTeal),
+            BottomBarItem(icon: "map", color: .systemTeal, color2: .systemTeal),
+            BottomBarItem(icon: "filemenu.and.selection", color: .systemTeal, color2: .systemTeal)
+        ]
+    
+    
 	//tab controller -> navigation controller -> each tab's views
-	var body: some View {
+    
+    var body: some View {
+        NavigationView {
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
+                if selected == 0 {
+                    TotalView(fetch: fetch).navigationBarTitle(Text("COVID-19 Tracker"), displayMode: .large).navigationBarColor(.myControlBackground).animation(.default)
+                        .pullToRefresh(isShowing: $loading) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                fetch.loadAll()
+                                fetch.loadExtras()
+                                loading = false
+                            }
+                        }
+                } else if selected == 1 {
+                    VaccinationView(fetch: fetch).navigationBarTitle("Vaccinations").animation(.default)
+                        .pullToRefresh(isShowing: $loading) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                fetch.loadVaccinations()
+                                fetch.vaccinations = fetch.vaccinations.sorted(by: {
+                                    $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
+                                })
+                                fetch.worldvaccinations = fetch.vaccinations.first
+                                loading = false
+                            }
+                        }
+                } else if selected == 2 {
+                    CountryView(fetch: fetch).navigationBarTitle(Text("Countries"), displayMode: .large).animation(.default)
+                        .pullToRefresh(isShowing: $loading) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                fetch.loadCountries()
+                                for item in fetch.countries! {
+                                    if item.country == "USA" {
+                                        fetch.usa = item
+                                    }
+                                }
+                                fetch.countries! = fetch.countries!.filter({
+                                    $0.country != "USA"
+                                })
+                                fetch.usa!.country = "United States"
+                                fetch.countries!.append(fetch.usa!)
+                                fetch.countries! = fetch.countries!.sorted(by: {
+                                    $0.active > $1.active
+                                })
+                                loading = false
+                            }
+                        }
+                } else if selected == 3 {
+                    StatesView(fetch: fetch).navigationBarTitle("States").animation(.default)
+                        .pullToRefresh(isShowing: $loading) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                fetch.loadStates()
+                                fetch.states = fetch.states.sorted(by: {
+                                    $0.active > $1.active
+                                })
+                                loading = false
+                            }
+                        }
+                } else if selected == 4 {
+                    NewsView(fetch: fetch).navigationBarTitle(Text("News"), displayMode: .large).navigationBarColor(.myControlBackground).animation(.default)
+                        .pullToRefresh(isShowing: $loading) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                fetch.loadNews()
+                                loading = false
+                            }
+                        }
+                }
+                BottomBar(selectedIndex: $selected, items: tabitems)
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+                    .padding(.top)
+            }.addPartialSheet(style: PartialSheetStyle(background: .solid(Color(UIColor.tertiarySystemBackground)),
+                                                       handlerBarColor: Color(UIColor.systemGray2),
+                                                       enableCover: true,
+                                                       coverColor: Color.black.opacity(0.4),
+                                                       blurEffectStyle: nil,
+                                                       cornerRadius: 10,
+                                                       minTopDistance: 500
+                              ))
+        }
+    }
+	
+    /*var body2: some View {
         TabView(selection: $selected) {
             NavigationView {
                 ZStack {
@@ -140,7 +230,7 @@ struct Coronavirus: View {
                                                   cornerRadius: 10,
                                                   minTopDistance: 500
                          ))
-    }
+    }*/
 }
 
 struct ContentView_Previews: PreviewProvider {

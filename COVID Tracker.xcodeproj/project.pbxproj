@@ -23,6 +23,7 @@
 		EB8504B42448196D00BA0CF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B32448196D00BA0CF0 /* Preview Assets.xcassets */; };
 		EB8504B72448196D00BA0CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */; };
 		EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
+		EB94CF4C2620B8F70015515D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF4B2620B8F70015515D /* BottomBar.swift */; };
 		EBB95AFB246C91FE006A373E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95AFA246C91FE006A373E /* Array.swift */; };
 		EBB95B02246CD019006A373E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B01246CD019006A373E /* SearchBar.swift */; };
 		EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */; };
@@ -69,6 +70,7 @@
 		EB8504B62448196D00BA0CF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB8504B82448196D00BA0CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8504C0244828EE00BA0CF0 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		EB94CF4B2620B8F70015515D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		EBB95AFA246C91FE006A373E /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		EBB95B01246CD019006A373E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGestureOrganizer.swift; sourceTree = "<group>"; };
@@ -216,8 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */,
-				EBB95B01246CD019006A373E /* SearchBar.swift */,
+				EB94CF4B2620B8F70015515D /* BottomBar.swift */,
 				EBE87B852512806200A02F8E /* NavigationBarModifier.swift */,
+				EBB95B01246CD019006A373E /* SearchBar.swift */,
 				EBEAF58F251152F100403142 /* WebView.swift */,
 			);
 			path = Utilities;
@@ -388,6 +391,7 @@
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
 				EBE2F600260D14AF006981A1 /* Color.swift in Sources */,
 				EBE2F5FC260D13DB006981A1 /* VaccinationDetailView.swift in Sources */,
+				EB94CF4C2620B8F70015515D /* BottomBar.swift in Sources */,
 				EBB95B02246CD019006A373E /* SearchBar.swift in Sources */,
 				EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
@@ -558,7 +562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -583,7 +587,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;

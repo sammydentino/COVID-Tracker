@@ -61,6 +61,6 @@ struct NewsView: View {
                     .dismissButtonStyle(.done)
                 }
             }
-        }
+        }.listStyle(PlainListStyle())
 	}
 }
