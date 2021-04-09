@@ -134,6 +134,27 @@ extension View {
             }
         }
     }
+    
+    @ViewBuilder func makeColoredSectionBoth(str: String, color: Color) -> some View {
+        if #available(iOS 14.0, *) {
+            Section(header: Text("   \(str)")
+                .font(.headline)
+                .foregroundColor(color)
+                .bold()
+                .fixCase(), footer: Text("\n\n")) {
+                self
+            }
+        } else {
+            Section(header: Text("\(str)")
+                .font(.headline)
+                .foregroundColor(color)
+                .bold()
+                .fixCase()) {
+                self
+            }
+        }
+    }
+    
     @ViewBuilder func makeNewLineColoredSection(str: String, color: Color) -> some View {
         if #available(iOS 14.0, *) {
             Section(header: Text("\n   \(str)")
@@ -182,6 +203,17 @@ extension View {
             }
         } else {
             Section(header: Text("\n\(str)").subhead(), footer: Text("\(str2)").caption()) {
+                self
+            }
+        }
+    }
+    @ViewBuilder func makeNewLineSectionBoth2(str: String, str2: String) -> some View {
+        if #available(iOS 14.0, *) {
+            Section(header: Text("\n   \(str)").subhead(), footer: Text("\n\n").caption()) {
+                self
+            }
+        } else {
+            Section(header: Text("\n\(str)").subhead(), footer: Text("\n\n").caption()) {
                 self
             }
         }

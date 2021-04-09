@@ -46,14 +46,9 @@ public struct BottomBar : View {
 
 public struct BottomBarItem {
     public let icon: String
-    public let color: Color
-    public let color2: Color
     
-    public init(icon: String,
-                color: Color, color2: Color) {
+    public init(icon: String) {
         self.icon = icon
-        self.color = color
-        self.color2 = color2
     }
 }
 
@@ -65,12 +60,12 @@ public struct BottomBarItemView: View {
         HStack {
             Image(systemName: item.icon)
                 .imageScale(.large)
-                .foregroundColor(isSelected ? Color.white : item.color2)
+                .foregroundColor(isSelected ? Color.white : .primary)
                 
         }
         .padding(10)
         .background(
-            (isSelected ? item.color2 :  item.color.opacity(0.0)).cornerRadius(20)
+            (Color.primary.opacity(isSelected ? 1.0 : 0)).cornerRadius(20)
         )
     }
 }

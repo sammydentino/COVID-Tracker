@@ -18,11 +18,11 @@ struct Coronavirus: View {
     @State var loading = false
     
     private var tabitems: [BottomBarItem] = [
-            BottomBarItem(icon: "antenna.radiowaves.left.and.right", color: .primary, color2: .primary),
-            BottomBarItem(icon: "checkmark.shield", color: .primary, color2: .primary),
-            BottomBarItem(icon: "globe", color: .primary, color2: .primary),
-            BottomBarItem(icon: "map", color: .primary, color2: .primary),
-            BottomBarItem(icon: "filemenu.and.selection", color: .primary, color2: .primary)
+            BottomBarItem(icon: "antenna.radiowaves.left.and.right"),
+            BottomBarItem(icon: "checkmark.shield"),
+            BottomBarItem(icon: "globe"),
+            BottomBarItem(icon: "map"),
+            BottomBarItem(icon: "filemenu.and.selection")
         ]
     
     
@@ -95,7 +95,7 @@ struct Coronavirus: View {
                 }
                 BottomBar(selectedIndex: $selected, items: tabitems)
                     .cornerRadius(20)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 40)
                     .padding(.top)
             }
         }

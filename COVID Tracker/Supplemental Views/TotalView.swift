@@ -138,6 +138,55 @@ struct TotalView: View {
                     Spacer()
                 }
             }.makeColoredSection(str: "Recovered", color: .green)
+            Group {
+                VStack {
+                    Spacer()
+                    /*HStack {
+                        Text("Affected Areas")
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                        Text("\(fetch.global.affectedCountries.withCommas())")
+                            .foregroundColor(.purple)
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    Spacer()*/
+                    HStack {
+                        Text("Fatality Rate")
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                        Text("\(fetch.global.deathRate, specifier: "%.2f")%")
+                            .foregroundColor(.purple)
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    Spacer()
+                    HStack {
+                        Text("Active Cases")
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                        Text("\(fetch.global.activeVsConf, specifier: "%.2f")%")
+                            .foregroundColor(.purple)
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    Spacer()
+                    HStack {
+                        Text("Recovered Cases")
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                        Text("\((100 - fetch.global.activeVsConf), specifier: "%.2f")%")
+                            .foregroundColor(.purple)
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    Spacer()
+                }
+            }.makeColoredSection(str: "Statistics", color: .purple)
             VStack {
                 Spacer()
                 HStack {
@@ -198,7 +247,7 @@ struct TotalView: View {
                     .dismissButtonStyle(.close)
                 }
                 Spacer()
-            }.makeColoredSection(str: "Vaccinations", color: Color(.orange))
+            }.makeColoredSectionBoth(str: "Vaccinations", color: Color(.orange))
             /*Group {
                 VStack {
                     Spacer()
@@ -215,55 +264,6 @@ struct TotalView: View {
                     Spacer()
                 }
             }.makeColoredSection(str: "Tests", color: .orange)*/
-            /*Group {
-                VStack {
-                    Spacer()
-                    /*HStack {
-                        Text("Affected Areas")
-                            .font(.subheadline)
-                            .bold()
-                        Spacer()
-                        Text("\(fetch.global.affectedCountries.withCommas())")
-                            .foregroundColor(.purple)
-                            .font(.subheadline)
-                            .bold()
-                    }
-                    Spacer()*/
-                    HStack {
-                        Text("Fatality Rate")
-                            .font(.subheadline)
-                            .bold()
-                        Spacer()
-                        Text("\(fetch.global.deathRate, specifier: "%.2f")%")
-                            .foregroundColor(.purple)
-                            .font(.subheadline)
-                            .bold()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("Active Cases")
-                            .font(.subheadline)
-                            .bold()
-                        Spacer()
-                        Text("\(fetch.global.activeVsConf, specifier: "%.2f")%")
-                            .foregroundColor(.purple)
-                            .font(.subheadline)
-                            .bold()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("Recovered Cases")
-                            .font(.subheadline)
-                            .bold()
-                        Spacer()
-                        Text("\((100 - fetch.global.activeVsConf), specifier: "%.2f")%")
-                            .foregroundColor(.purple)
-                            .font(.subheadline)
-                            .bold()
-                    }
-                    Spacer()
-                }
-            }.makeColoredSection(str: "Statistics", color: .purple)*/
         }.fixList()
     }
 }
