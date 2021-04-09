@@ -13,7 +13,6 @@ struct VaccinationView: View {
     @State private var searchQuery: String = ""
     let fetch: getAll!
     @State private var showingDetail = false
-    @EnvironmentObject var partialSheet : PartialSheetManager
     @State private var selected: Vaccination?
     
     var body: some View {
@@ -37,7 +36,7 @@ struct VaccinationView: View {
                                     .bold()
                                     .foregroundColor(.secondary)
                             }
-                        }.partialSheet(isPresented: self.$showingDetail) {
+                        }.sheet(isPresented: self.$showingDetail) {
                             VaccinationDetailView(item: self.selected ?? item)
                         }
                     }

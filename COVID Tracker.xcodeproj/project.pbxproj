@@ -24,6 +24,8 @@
 		EB8504B72448196D00BA0CF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB8504B52448196D00BA0CF0 /* LaunchScreen.storyboard */; };
 		EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8504C0244828EE00BA0CF0 /* Int.swift */; };
 		EB94CF4C2620B8F70015515D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF4B2620B8F70015515D /* BottomBar.swift */; };
+		EB94CF572620BC530015515D /* HalfModalViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF562620BC530015515D /* HalfModalViews.swift */; };
+		EB94CF5A2620BC750015515D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF592620BC750015515D /* UIScreen.swift */; };
 		EBB95AFB246C91FE006A373E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95AFA246C91FE006A373E /* Array.swift */; };
 		EBB95B02246CD019006A373E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B01246CD019006A373E /* SearchBar.swift */; };
 		EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */; };
@@ -71,6 +73,8 @@
 		EB8504B82448196D00BA0CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB8504C0244828EE00BA0CF0 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		EB94CF4B2620B8F70015515D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		EB94CF562620BC530015515D /* HalfModalViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalViews.swift; sourceTree = "<group>"; };
+		EB94CF592620BC750015515D /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		EBB95AFA246C91FE006A373E /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		EBB95B01246CD019006A373E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGestureOrganizer.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				EBE87B872512807600A02F8E /* View.swift */,
 				EBFA701D25129A85003DF015 /* UIColor.swift */,
 				EBE2F5FF260D14AF006981A1 /* Color.swift */,
+				EB94CF592620BC750015515D /* UIScreen.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			children = (
 				EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */,
 				EB94CF4B2620B8F70015515D /* BottomBar.swift */,
+				EB94CF562620BC530015515D /* HalfModalViews.swift */,
 				EBE87B852512806200A02F8E /* NavigationBarModifier.swift */,
 				EBB95B01246CD019006A373E /* SearchBar.swift */,
 				EBEAF58F251152F100403142 /* WebView.swift */,
@@ -389,6 +395,7 @@
 				EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */,
 				EB648CEA25118AAA0078F37B /* UIFont.swift in Sources */,
 				EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */,
+				EB94CF572620BC530015515D /* HalfModalViews.swift in Sources */,
 				EBE2F600260D14AF006981A1 /* Color.swift in Sources */,
 				EBE2F5FC260D13DB006981A1 /* VaccinationDetailView.swift in Sources */,
 				EB94CF4C2620B8F70015515D /* BottomBar.swift in Sources */,
@@ -396,6 +403,7 @@
 				EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */,
 				EB4C777B245207150072B8AF /* NewsView.swift in Sources */,
 				EBEAF5892511520C00403142 /* CountryDetailView.swift in Sources */,
+				EB94CF5A2620BC750015515D /* UIScreen.swift in Sources */,
 				EB8504C1244828EE00BA0CF0 /* Int.swift in Sources */,
 				EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */,
 				EBB9D9462450095300620ACE /* SourcesView.swift in Sources */,
@@ -562,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -587,7 +595,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;

@@ -18,11 +18,11 @@ struct Coronavirus: View {
     @State var loading = false
     
     private var tabitems: [BottomBarItem] = [
-            BottomBarItem(icon: "antenna.radiowaves.left.and.right", color: .systemTeal, color2: .systemTeal),
-            BottomBarItem(icon: "checkmark.shield", color: .systemTeal, color2: .systemTeal),
-            BottomBarItem(icon: "globe", color: .systemTeal, color2: .systemTeal),
-            BottomBarItem(icon: "map", color: .systemTeal, color2: .systemTeal),
-            BottomBarItem(icon: "filemenu.and.selection", color: .systemTeal, color2: .systemTeal)
+            BottomBarItem(icon: "antenna.radiowaves.left.and.right", color: .primary, color2: .primary),
+            BottomBarItem(icon: "checkmark.shield", color: .primary, color2: .primary),
+            BottomBarItem(icon: "globe", color: .primary, color2: .primary),
+            BottomBarItem(icon: "map", color: .primary, color2: .primary),
+            BottomBarItem(icon: "filemenu.and.selection", color: .primary, color2: .primary)
         ]
     
     
@@ -97,14 +97,7 @@ struct Coronavirus: View {
                     .cornerRadius(20)
                     .padding(.horizontal)
                     .padding(.top)
-            }.addPartialSheet(style: PartialSheetStyle(background: .solid(Color(UIColor.tertiarySystemBackground)),
-                                                       handlerBarColor: Color(UIColor.systemGray2),
-                                                       enableCover: true,
-                                                       coverColor: Color.black.opacity(0.4),
-                                                       blurEffectStyle: nil,
-                                                       cornerRadius: 10,
-                                                       minTopDistance: 500
-                              ))
+            }
         }
     }
 	
