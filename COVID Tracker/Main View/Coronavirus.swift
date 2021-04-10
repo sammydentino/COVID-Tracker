@@ -99,6 +99,9 @@ struct Coronavirus: View {
                     .padding(.horizontal, 40)
                     .padding(.top)
                     .shadow(radius: 10)
+                    .onChange(of: selected, perform: { value in
+                        taptic()
+                    })
             }
         }
     }
@@ -226,10 +229,4 @@ struct Coronavirus: View {
                                                   minTopDistance: 500
                          ))
     }*/
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-        Coronavirus()
-    }
 }

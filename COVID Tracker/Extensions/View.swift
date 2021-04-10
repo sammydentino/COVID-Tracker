@@ -9,6 +9,11 @@
 import SwiftUI
 
 extension View {
+    func taptic() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
     func combine<T>(_ arrays: Array<T>?...) -> Set<T> {
         return arrays.compactMap{$0}.compactMap{Set($0)}.reduce(Set<T>()){$0.union($1)}
     }
