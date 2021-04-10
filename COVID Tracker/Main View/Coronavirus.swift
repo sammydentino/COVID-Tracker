@@ -49,6 +49,7 @@ struct Coronavirus: View {
                                     $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
                                 })
                                 fetch.worldvaccinations = fetch.vaccinations.first
+                                fetch.vaccinations = Array(fetch.vaccinations.dropFirst())
                                 loading = false
                             }
                         }
@@ -97,6 +98,7 @@ struct Coronavirus: View {
                     .cornerRadius(20)
                     .padding(.horizontal, 40)
                     .padding(.top)
+                    .shadow(radius: 10)
             }
         }
     }

@@ -35,6 +35,7 @@ class getAll : ObservableObject {
             $0.data.last!.peopleFullyVaccinated ?? 0 > $1.data.last!.peopleFullyVaccinated ?? 0
         })
         self.worldvaccinations = self.vaccinations.first
+        self.vaccinations = Array(self.vaccinations.dropFirst())
         self.loadCountries()
         self.loadStates()
         self.loadNews()
