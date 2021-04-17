@@ -7,11 +7,10 @@
 //
 
 import SwiftUI
-import PartialSheet
 import SwiftUIRefresh
 
 struct Coronavirus: View {
-	@State var selected = 0
+    @State var selected = 0
 	@State public var searchQuery : String = ""
     @State var maintab = 0
     @ObservedObject private var fetch = getAll()

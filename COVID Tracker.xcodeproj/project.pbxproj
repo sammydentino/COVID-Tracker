@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB00D64F2510646E00D5A6FB /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB00D64E2510646E00D5A6FB /* URLImage */; };
 		EB00D6512510696F00D5A6FB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00D6502510696F00D5A6FB /* UIApplication.swift */; };
 		EB216C43260C0D4C00ED65E3 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */; };
 		EB216C46260C195600ED65E3 /* VaccinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB216C45260C195600ED65E3 /* VaccinationView.swift */; };
@@ -26,6 +25,7 @@
 		EB94CF4C2620B8F70015515D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF4B2620B8F70015515D /* BottomBar.swift */; };
 		EB94CF572620BC530015515D /* HalfModalViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF562620BC530015515D /* HalfModalViews.swift */; };
 		EB94CF5A2620BC750015515D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94CF592620BC750015515D /* UIScreen.swift */; };
+		EBAE11E5262B8A3100D7863F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBAE11E4262B8A3100D7863F /* Kingfisher */; };
 		EBB95AFB246C91FE006A373E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95AFA246C91FE006A373E /* Array.swift */; };
 		EBB95B02246CD019006A373E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B01246CD019006A373E /* SearchBar.swift */; };
 		EBB95B08246CD0D8006A373E /* AnyGestureOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB95B07246CD0D8006A373E /* AnyGestureOrganizer.swift */; };
@@ -34,7 +34,6 @@
 		EBDD6F1724493C7D00372189 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1624493C7D00372189 /* CountryView.swift */; };
 		EBDD6F1924493C8500372189 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDD6F1824493C8500372189 /* TotalView.swift */; };
 		EBE1646F25CF20D600029603 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1646E25CF20D600029603 /* DataStructs.swift */; };
-		EBE2F5F9260CF51E006981A1 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = EBE2F5F8260CF51E006981A1 /* PartialSheet */; };
 		EBE2F5FC260D13DB006981A1 /* VaccinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2F5FB260D13DB006981A1 /* VaccinationDetailView.swift */; };
 		EBE2F600260D14AF006981A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE2F5FF260D14AF006981A1 /* Color.swift */; };
 		EBE87B862512806200A02F8E /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE87B852512806200A02F8E /* NavigationBarModifier.swift */; };
@@ -106,10 +105,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB216C43260C0D4C00ED65E3 /* SwiftUIRefresh in Frameworks */,
-				EB00D64F2510646E00D5A6FB /* URLImage in Frameworks */,
-				EBE2F5F9260CF51E006981A1 /* PartialSheet in Frameworks */,
 				F6EFD1DB62E15389E97C42EF /* Pods_COVID_Tracker.framework in Frameworks */,
 				EB58C29D261CED780023CD12 /* BetterSafariView in Frameworks */,
+				EBAE11E5262B8A3100D7863F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +276,9 @@
 			);
 			name = "COVID Tracker";
 			packageProductDependencies = (
-				EB00D64E2510646E00D5A6FB /* URLImage */,
 				EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */,
-				EBE2F5F8260CF51E006981A1 /* PartialSheet */,
 				EB58C29C261CED780023CD12 /* BetterSafariView */,
+				EBAE11E4262B8A3100D7863F /* Kingfisher */,
 			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
@@ -312,10 +309,9 @@
 			);
 			mainGroup = EB85049E2448196C00BA0CF0;
 			packageReferences = (
-				EB00D64D2510646E00D5A6FB /* XCRemoteSwiftPackageReference "url-image" */,
 				EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
-				EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				EBAE11E3262B8A3100D7863F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
@@ -570,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.8;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -595,7 +591,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.8;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -627,14 +623,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EB00D64D2510646E00D5A6FB /* XCRemoteSwiftPackageReference "url-image" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.19;
-			};
-		};
 		EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUIRefresh.git";
@@ -651,22 +639,17 @@
 				minimumVersion = 2.3.1;
 			};
 		};
-		EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+		EBAE11E3262B8A3100D7863F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.11;
+				minimumVersion = 6.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EB00D64E2510646E00D5A6FB /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB00D64D2510646E00D5A6FB /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
-		};
 		EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
@@ -677,10 +660,10 @@
 			package = EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
 		};
-		EBE2F5F8260CF51E006981A1 /* PartialSheet */ = {
+		EBAE11E4262B8A3100D7863F /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EBE2F5F7260CF51E006981A1 /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
+			package = EBAE11E3262B8A3100D7863F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

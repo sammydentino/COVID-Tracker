@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import PartialSheet
 
 struct VaccinationView: View {
     @State private var searchQuery: String = ""

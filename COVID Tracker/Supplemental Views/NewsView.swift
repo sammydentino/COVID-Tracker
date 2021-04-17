@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import Kingfisher
 import BetterSafariView
 
 struct NewsView: View {
@@ -25,15 +25,13 @@ struct NewsView: View {
                     }) {
                         VStack (alignment: .leading){
                             HStack {
-                                URLImage(URLRequest(url: URL(string: item.image)!), delay: 0.25) { proxy in
-                                    proxy.image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipped()
-                                        .clipShape(Circle())
-                                }
-                                .frame(width: 55, height: 55)
-                                .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 0, trailing: 5))
+                                KFImage(URL(string: item.image)!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipped()
+                                    .clipShape(Circle())
+                                    .frame(width: 55, height: 55)
+                                    .padding(EdgeInsets(top: 7.5, leading: 0, bottom: 0, trailing: 5))
                                 Text(item.title)
                                     .font(.subheadline)
                                     .bold()
