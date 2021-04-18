@@ -208,12 +208,37 @@ public struct AboutAppView: View {
                 HeaderView(app: app)
                     .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
+            
+            Section(header: Text("   Contact Me").subhead().fixCase()) {
+                Button(action: sendMail) {
+                    HStack(spacing: 15) {
+                        Image(systemName: "envelope")
+                            .resizable()
+                            .frame(width: 40, height: 30.0)
+                            .padding(.horizontal, 7.5)
+                            .padding(.trailing, 2.5)
+                        Text("Email")
+                            .font(.headline)
+                        Spacer(minLength: 1)
+                        Text("Send")
+                            .font(.headline)
+                            .lineLimit(1)
+                            .foregroundColor(.accentColor)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .background(Color(UIColor.systemGroupedBackground))
+                            .clipShape(Capsule())
+                            .contentShape(Capsule())
+                            .hoverEffect(.lift)
+                            .layoutPriority(1)
+                    }.padding(.vertical)
+                }.buttonStyle(PlainButtonStyle())
+            }
 
             if otherApps.isEmpty == false {
                 Section(header: Text("   App Store Apps").subhead().fixCase()) {
                     ForEach(otherApps, content: OtherAppRowView.init)
-
-                    Link("View All", destination: URL(string: developerURL)!)
+                    //Link("View All", destination: URL(string: developerURL)!)
                 }
             }
         }
