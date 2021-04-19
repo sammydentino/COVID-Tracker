@@ -55,12 +55,13 @@ public struct BottomBarItem {
 public struct BottomBarItemView: View {
     public let isSelected: Bool
     public let item: BottomBarItem
+    @Environment(\.colorScheme) var colorScheme
     
     public var body: some View {
         HStack {
             Image(systemName: item.icon)
                 .imageScale(.large)
-                .foregroundColor(isSelected ? Color.white : .primary)
+                .foregroundColor(isSelected ? (colorScheme == .dark ? Color.black : Color.white) : .primary)
                 
         }
         .padding(10)
