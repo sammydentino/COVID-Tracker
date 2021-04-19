@@ -220,7 +220,7 @@ public struct AboutAppView: View {
                         Text("Email")
                             .font(.headline)
                         Spacer(minLength: 1)
-                        Text("Send")
+                        Text("SEND")
                             .font(.headline)
                             .lineLimit(1)
                             .foregroundColor(.accentColor)
@@ -577,12 +577,12 @@ struct OtherAppRowView: View {
     }
 
     private var appURL: String {
-        "https://apps.apple.com/app/id\(otherApp.id)"
+        "https://apps.apple.com/us/app/id\(otherApp.id)"
     }
 
     private var viewOnAppStoreButton: some View {
         Link(destination: URL(string: appURL)!) {
-            Text("View")
+            Text("VIEW")
                 .font(.headline)
                 .lineLimit(1)
                 .foregroundColor(.accentColor)
