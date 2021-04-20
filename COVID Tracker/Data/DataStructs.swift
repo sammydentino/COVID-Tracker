@@ -270,7 +270,41 @@ struct CountryInfo: Codable {
     }
 }
 
+struct Vaccine: Codable, Identifiable {
+    let id = UUID()
+    let location, isoCode, vaccines, lastObservationDate: String?
+    let sourceName: String?
+    let sourceWebsite: String?
+
+    enum CodingKeys: String, CodingKey {
+        case location
+        case isoCode = "iso_code"
+        case vaccines
+        case lastObservationDate = "last_observation_date"
+        case sourceName = "source_name"
+        case sourceWebsite = "source_website"
+    }
+}
+
 struct Vaccination: Codable, Identifiable {
+    let id: String
+    let population: Int?
+    var name: String
+    let dosesAdministered: Int
+    let peopleVaccinated, completedVaccination, completedOneDoseVaccination: Int?
+}
+
+struct StateVaccination: Codable, Identifiable {
+    let id: String
+    let population: Int?
+    let name: String
+    let dosesAdministered, peopleVaccinated, completedVaccination: Int
+    let completedOneDoseVaccination, cdcDosesDistributed: Int?
+}
+
+
+
+struct GlobalVaccination: Codable, Identifiable {
     let id = UUID()
     let country, isoCode: String
     let data: [VaccinationData]

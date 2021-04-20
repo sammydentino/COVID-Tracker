@@ -1,15 +1,15 @@
 //
-//  VaccinationDetailView.swift
+//  VaccinationView.swift
 //  COVID Tracker
 //
-//  Created by Sammy Dentino on 3/25/21.
+//  Created by Sammy Dentino on 3/24/21.
 //  Copyright © 2021 Sammy Dentino. All rights reserved.
 //
 
 import SwiftUI
 
-struct VaccinationDetailView: View {
-    let item: Vaccination!
+struct StateVaccinationDetailView: View {
+    let item: StateVaccination!
     
     var body: some View {
         NavigationView {
@@ -35,7 +35,7 @@ struct VaccinationDetailView: View {
                                 .bold()
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text("\(item.peopleVaccinated ?? 0)")
+                            Text("\(item.peopleVaccinated)")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.orange)
@@ -47,7 +47,7 @@ struct VaccinationDetailView: View {
                                 .bold()
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text("\(item.completedVaccination ?? 0)")
+                            Text("\(item.completedVaccination)")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.orange)
@@ -65,10 +65,23 @@ struct VaccinationDetailView: View {
                                 .foregroundColor(.orange)
                         }
                         Spacer()
+                        Group {
+                            HStack {
+                                Text("Doses Distributed by CDC")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("\(item.cdcDosesDistributed ?? 0)")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.orange)
+                            }
+                            Spacer()
+                        }
                     }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
                 }.fixList()
             }.navigationBarTitle(item.name)
         }
     }
 }
-

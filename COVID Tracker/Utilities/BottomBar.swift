@@ -37,8 +37,6 @@ public struct BottomBar : View {
                 self.itemView(at: 2)
                 Spacer()
                 self.itemView(at: 3)
-                Spacer()
-                self.itemView(at: 4)
             }.padding([.horizontal]).animation(.default).padding(.bottom,0).padding(.top,0)
         }
     }

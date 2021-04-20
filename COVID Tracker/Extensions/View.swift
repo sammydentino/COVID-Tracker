@@ -146,7 +146,7 @@ extension View {
                 .font(.headline)
                 .foregroundColor(color)
                 .bold()
-                .fixCase(), footer: Text("\n\n")) {
+                .fixCase(), footer: Text("\n\n\n")) {
                 self
             }
         } else {

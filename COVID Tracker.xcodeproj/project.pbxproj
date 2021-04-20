@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB00D6512510696F00D5A6FB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB00D6502510696F00D5A6FB /* UIApplication.swift */; };
 		EB216C43260C0D4C00ED65E3 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */; };
-		EB216C46260C195600ED65E3 /* VaccinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB216C45260C195600ED65E3 /* VaccinationView.swift */; };
+		EB216C46260C195600ED65E3 /* StateVaccinationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB216C45260C195600ED65E3 /* StateVaccinationDetailView.swift */; };
 		EB21BE4E251018ED0039E430 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21BE4D251018ED0039E430 /* UIDevice.swift */; };
 		EB33BD3E246F28B2009FED4B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BD3D246F28B2009FED4B /* Date.swift */; };
 		EB4C777B245207150072B8AF /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C777A245207150072B8AF /* NewsView.swift */; };
@@ -45,6 +45,7 @@
 		EBEAF58D251152A300403142 /* CaseAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58C251152A300403142 /* CaseAnnotations.swift */; };
 		EBEAF590251152F100403142 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEAF58F251152F100403142 /* WebView.swift */; };
 		EBFA701E25129A85003DF015 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFA701D25129A85003DF015 /* UIColor.swift */; };
+		EBFCE65B262F489A00B97D23 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = EBFCE65A262F489A00B97D23 /* CodableCSV */; };
 		F6EFD1DB62E15389E97C42EF /* Pods_COVID_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD9BFFC591A856E8CDC54231 /* Pods_COVID_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +53,7 @@
 		4F3558FA382E43D0D9BC5FA4 /* Pods-COVID Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.debug.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		A75F23EB9F23F8E77CA1DF2F /* Pods-COVID Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVID Tracker.release.xcconfig"; path = "Target Support Files/Pods-COVID Tracker/Pods-COVID Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		EB00D6502510696F00D5A6FB /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		EB216C45260C195600ED65E3 /* VaccinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationView.swift; sourceTree = "<group>"; };
+		EB216C45260C195600ED65E3 /* StateVaccinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateVaccinationDetailView.swift; sourceTree = "<group>"; };
 		EB21BE4D251018ED0039E430 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		EB33BD3D246F28B2009FED4B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		EB4C777A245207150072B8AF /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 				F6EFD1DB62E15389E97C42EF /* Pods_COVID_Tracker.framework in Frameworks */,
 				EB58C29D261CED780023CD12 /* BetterSafariView in Frameworks */,
 				EBAE11E5262B8A3100D7863F /* Kingfisher in Frameworks */,
+				EBFCE65B262F489A00B97D23 /* CodableCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +189,7 @@
 				EBBE9F42244A724F00EA286F /* StatesView.swift */,
 				EBEAF58A2511523800403142 /* StatesDetailView.swift */,
 				EB4C777A245207150072B8AF /* NewsView.swift */,
-				EB216C45260C195600ED65E3 /* VaccinationView.swift */,
+				EB216C45260C195600ED65E3 /* StateVaccinationDetailView.swift */,
 				EBE2F5FB260D13DB006981A1 /* VaccinationDetailView.swift */,
 			);
 			path = "Supplemental Views";
@@ -282,6 +284,7 @@
 				EB216C42260C0D4C00ED65E3 /* SwiftUIRefresh */,
 				EB58C29C261CED780023CD12 /* BetterSafariView */,
 				EBAE11E4262B8A3100D7863F /* Kingfisher */,
+				EBFCE65A262F489A00B97D23 /* CodableCSV */,
 			);
 			productName = "COVID-19 Data";
 			productReference = EB8504A72448196C00BA0CF0 /* COVID Tracker.app */;
@@ -319,6 +322,7 @@
 				EB216C41260C0D4C00ED65E3 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				EB58C29B261CED780023CD12 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				EBAE11E3262B8A3100D7863F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EBFCE659262F489A00B97D23 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = EB8504A82448196C00BA0CF0 /* Products */;
 			projectDirPath = "";
@@ -391,7 +395,7 @@
 			files = (
 				EBE87B882512807600A02F8E /* View.swift in Sources */,
 				EB8504AB2448196C00BA0CF0 /* AppDelegate.swift in Sources */,
-				EB216C46260C195600ED65E3 /* VaccinationView.swift in Sources */,
+				EB216C46260C195600ED65E3 /* StateVaccinationDetailView.swift in Sources */,
 				EBBE9F43244A724F00EA286F /* StatesView.swift in Sources */,
 				EBEAF587251130BE00403142 /* DataGrabbers.swift in Sources */,
 				EBFA701E25129A85003DF015 /* UIColor.swift in Sources */,
@@ -574,7 +578,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.6;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -599,7 +603,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1.6;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sammydentino.COVID-Tracker";
 				PRODUCT_NAME = "COVID Tracker";
 				SWIFT_VERSION = 5.0;
@@ -655,6 +659,14 @@
 				minimumVersion = 6.2.1;
 			};
 		};
+		EBFCE659262F489A00B97D23 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -672,6 +684,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EBAE11E3262B8A3100D7863F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		EBFCE65A262F489A00B97D23 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBFCE659262F489A00B97D23 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
