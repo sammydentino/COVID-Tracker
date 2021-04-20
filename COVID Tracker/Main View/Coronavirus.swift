@@ -147,7 +147,7 @@ struct Coronavirus: View {
                     .sheet(isPresented: $showingsettings) {
                         AboutAppWithNavigationView(app: app, otherApps: [clear, wordfinder, docket], titleDisplayMode: .large)
                     }
-            }
+            }.ignoresSafeArea(.keyboard)
         }
     }
 }
