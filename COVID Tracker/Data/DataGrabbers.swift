@@ -73,29 +73,7 @@ class getAll : ObservableObject {
             $0.active > $1.active
         })
         self.loadVaccinations()
-        for item in self.vaccinations {
-            if item.name == "U.S." {
-                self.editing = item
-            }
-        }
-        self.vaccinations! = self.vaccinations!.filter({
-            $0.name != "U.S."
-        })
-        self.editing!.name = "United States"
-        self.vaccinations!.append(self.editing!)
-        for item in self.vaccinations {
-            if item.name == "U.K." {
-                self.editing = item
-            }
-        }
-        self.vaccinations! = self.vaccinations!.filter({
-            $0.name != "U.K."
-        })
-        self.editing!.name = "United Kingdom"
-        self.vaccinations!.append(self.editing!)
-        self.vaccinations = self.vaccinations.sorted(by: {
-            $0.peopleVaccinated ?? 0 > $1.peopleVaccinated ?? 0
-        })
+        
     }
     
     func initStates() {
@@ -202,6 +180,29 @@ class getAll : ObservableObject {
                 let decoder = CSVDecoder { $0.headerStrategy = .firstLine }
                 if let data = try? decoder.decode([Vaccination].self, from: d) {
                     vaccinations = data
+                    for item in self.vaccinations {
+                        if item.name == "U.S." {
+                            self.editing = item
+                        }
+                    }
+                    self.vaccinations! = self.vaccinations!.filter({
+                        $0.name != "U.S."
+                    })
+                    self.editing!.name = "United States"
+                    self.vaccinations!.append(self.editing!)
+                    for item in self.vaccinations {
+                        if item.name == "U.K." {
+                            self.editing = item
+                        }
+                    }
+                    self.vaccinations! = self.vaccinations!.filter({
+                        $0.name != "U.K."
+                    })
+                    self.editing!.name = "United Kingdom"
+                    self.vaccinations!.append(self.editing!)
+                    self.vaccinations = self.vaccinations.sorted(by: {
+                        $0.peopleVaccinated ?? 0 > $1.peopleVaccinated ?? 0
+                    })
                 }
             }
         }

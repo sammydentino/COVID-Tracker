@@ -56,13 +56,13 @@ struct CountryView: View {
                 } else {
                     List {
                         Section(header: Text("   Sorted by Most Vaccinations").font(.headline).bold().padding(.vertical, 5).padding(.top, 10).fixCase(), footer: Text("\n\n\n")) {
-                            ForEach(fetch.vaccinations.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { item in
+                            ForEach(fetch.vaccinations.filter({ searchQuery.isEmpty ? true : $0.name!.lowercased().contains(searchQuery.lowercased()) })) { item in
                                 Button(action: {
                                     self.selected = item
                                     self.showingDetail = true
                                 }) {
                                     HStack {
-                                        Text("\(item.name)")
+                                        Text("\(item.name!)")
                                             .font(.subheadline)
                                             .bold()
                                             .foregroundColor(.primary)

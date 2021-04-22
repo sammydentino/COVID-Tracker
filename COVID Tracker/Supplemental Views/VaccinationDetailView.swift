@@ -23,7 +23,7 @@ struct VaccinationDetailView: View {
                                 .bold()
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text("\(item.dosesAdministered)")
+                            Text("\(item.dosesAdministered ?? 0)")
                                 .font(.subheadline)
                                 .bold()
                                 .foregroundColor(.orange)
@@ -67,7 +67,7 @@ struct VaccinationDetailView: View {
                         Spacer()
                     }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
                 }.fixList()
-            }.navigationBarTitle(item.name)
+            }.navigationBarTitle(item.name ?? "N/A")
         }
     }
 }

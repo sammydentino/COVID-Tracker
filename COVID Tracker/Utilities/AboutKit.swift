@@ -222,6 +222,7 @@ public struct AboutAppView: View {
                         Spacer(minLength: 1)
                         Text("SEND")
                             .font(.headline)
+                            .fontWeight(.bold)
                             .lineLimit(1)
                             .foregroundColor(.accentColor)
                             .padding(.vertical, 5)
@@ -584,6 +585,7 @@ struct OtherAppRowView: View {
         Link(destination: URL(string: appURL)!) {
             Text("VIEW")
                 .font(.headline)
+                .fontWeight(.bold)
                 .lineLimit(1)
                 .foregroundColor(.accentColor)
                 .padding(.vertical, 5)

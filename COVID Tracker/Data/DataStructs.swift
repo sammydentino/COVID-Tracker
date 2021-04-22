@@ -289,8 +289,8 @@ struct Vaccine: Codable, Identifiable {
 struct Vaccination: Codable, Identifiable {
     let id: String
     let population: Int?
-    var name: String
-    let dosesAdministered: Int
+    var name: String?
+    let dosesAdministered: Int?
     let peopleVaccinated, completedVaccination, completedOneDoseVaccination: Int?
 }
 
