@@ -65,7 +65,25 @@ struct StateVaccinationDetailView: View {
                                 .foregroundColor(.orange)
                         }
                         Spacer()
-                        Group {
+                    }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
+                    if item.cdcDosesDistributed != nil {
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Text("Doses Not Administered")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("\((item.cdcDosesDistributed ?? 0) - item.dosesAdministered)")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.green)
+                            }
+                            Spacer()
+                        }.makeColoredSection(str: "Availability", color: Color.green)
+                        VStack {
+                            Spacer()
                             HStack {
                                 Text("Doses Distributed by CDC")
                                     .font(.subheadline)
@@ -75,11 +93,11 @@ struct StateVaccinationDetailView: View {
                                 Text("\(item.cdcDosesDistributed ?? 0)")
                                     .font(.subheadline)
                                     .bold()
-                                    .foregroundColor(.orange)
+                                    .foregroundColor(.purple)
                             }
                             Spacer()
-                        }
-                    }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
+                        }.makeColoredSection(str: "Distribution", color: Color.purple)
+                    }
                 }.fixList()
             }.navigationBarTitle(item.name)
         }
