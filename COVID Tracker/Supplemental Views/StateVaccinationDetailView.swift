@@ -70,21 +70,6 @@ struct StateVaccinationDetailView: View {
                         VStack {
                             Spacer()
                             HStack {
-                                Text("Doses Not Administered")
-                                    .font(.subheadline)
-                                    .bold()
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Text("\((item.cdcDosesDistributed ?? 0) - item.dosesAdministered)")
-                                    .font(.subheadline)
-                                    .bold()
-                                    .foregroundColor(.green)
-                            }
-                            Spacer()
-                        }.makeColoredSection(str: "Availability", color: Color.green)
-                        VStack {
-                            Spacer()
-                            HStack {
                                 Text("Doses Distributed by CDC")
                                     .font(.subheadline)
                                     .bold()
@@ -97,6 +82,21 @@ struct StateVaccinationDetailView: View {
                             }
                             Spacer()
                         }.makeColoredSection(str: "Distribution", color: Color.purple)
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Text("Doses Not Administered")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("\((item.cdcDosesDistributed ?? 0) - item.dosesAdministered)")
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(.green)
+                            }
+                            Spacer()
+                        }.makeColoredSection(str: "Availability", color: Color.green)
                     }
                 }.fixList()
             }.navigationBarTitle(item.name)
