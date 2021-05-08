@@ -6,7 +6,7 @@
 //  Copyright © 2020 Sammy Dentino. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

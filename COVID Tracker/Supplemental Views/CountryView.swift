@@ -17,11 +17,11 @@ struct CountryView: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
-            SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -10).padding(.bottom, 5)
+            SearchBar(text: self.$searchQuery).padding(.horizontal, 5).padding(.top, -10).padding(.bottom, 5).background(Color.white)
             Picker("", selection: $tab) {
                 Text("Cases").tag(0)
                 Text("Vaccinations").tag(1)
-            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal).padding(.bottom)
+            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal).padding(.bottom).background(Color.white)
             ZStack {
                 if tab == 0 {
                     List {
