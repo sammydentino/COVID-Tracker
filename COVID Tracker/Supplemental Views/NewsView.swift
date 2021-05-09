@@ -19,6 +19,7 @@ struct NewsView: View {
 	var body: some View {
         List {
             Section(header: Text("\n").padding(.top, -30), footer: Text("\n\n\n")) {
+                MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
                 ForEach(fetch.news, id: \.id) { item in
                     Button(action: {
                         presentingSafariView = true

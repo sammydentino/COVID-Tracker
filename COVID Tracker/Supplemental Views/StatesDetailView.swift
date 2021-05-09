@@ -51,8 +51,8 @@ struct StatesDetailView: View {
                                     .font(.subheadline)
                                     .bold()
                             }
-                            Spacer()
                         }
+                        Spacer()
                     }
                 }.makeNewLineColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
                 Group {

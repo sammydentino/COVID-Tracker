@@ -26,6 +26,7 @@ struct CountryView: View {
                 if tab == 0 {
                     List {
                         Section(header: Text("   Sorted by Most Active Cases").font(.headline).bold().padding(.vertical, 5).padding(.top, 10).fixCase(), footer: Text("\n\n\n")) {
+                            MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
                             ForEach(fetch.countries.filter({ searchQuery.isEmpty ? true : $0.country.lowercased().contains(searchQuery.lowercased()) })) { item in
                                 Button(action: {
                                     self.showingDetail.toggle()

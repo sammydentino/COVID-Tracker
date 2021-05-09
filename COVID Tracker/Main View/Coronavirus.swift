@@ -22,7 +22,6 @@ struct Coronavirus: View {
     let clear = AKOtherApp(id: "1514988096", name: "Clear Weather")
     let wordfinder = AKOtherApp(id: "1516219007", name: "Word Finder")
     let docket = AKOtherApp(id: "1546403649", name: "Docket")
-    let banner = MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
     
     private var tabitems: [BottomBarItem] = [
             BottomBarItem(icon: "antenna.radiowaves.left.and.right"),
@@ -106,41 +105,32 @@ struct Coronavirus: View {
                         .sheet(isPresented: $showingsettings) {
                             AboutAppWithNavigationView(app: app, otherApps: [clear, wordfinder, docket], titleDisplayMode: .large)
                         }
-                }.background(Color.systemGroupedBackground.edgesIgnoringSafeArea(.bottom)).ignoresSafeArea(.keyboard)
-                banner.background(Color.systemGroupedBackground.edgesIgnoringSafeArea(.bottom))
+                }.ignoresSafeArea(.keyboard)
             }
-        }.onAppear {
-            let sdkConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: "6e01b35977dc4214b8f8cf847493a17a")
-            sdkConfig.loggingLevel = .info
-            MoPub.sharedInstance().initializeSdk(with: sdkConfig)
-            requestATT()
-            didLoad = true
         }
     }
     
     func requestATT() {
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                    // Tracking authorization dialog was shown
-                    // and we are authorized
-                    print("Authorized")
-                    
-                    // Now that we are authorized we can get the IDFA
-                    print(ASIdentifierManager.shared().advertisingIdentifier)
-                case .denied:
-                    // Tracking authorization dialog was
-                    // shown and permission is denied
-                    print("Denied")
-                case .notDetermined:
-                    // Tracking authorization dialog has not been shown
-                    print("Not Determined")
-                case .restricted:
-                    print("Restricted")
-                @unknown default:
-                    print("Unknown")
-                }
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                // Tracking authorization dialog was shown
+                // and we are authorized
+                print("Authorized")
+                
+                // Now that we are authorized we can get the IDFA
+                print(ASIdentifierManager.shared().advertisingIdentifier)
+            case .denied:
+                // Tracking authorization dialog was
+                // shown and permission is denied
+                print("Denied")
+            case .notDetermined:
+                // Tracking authorization dialog has not been shown
+                print("Not Determined")
+            case .restricted:
+                print("Restricted")
+            @unknown default:
+                print("Unknown")
             }
         }
     }

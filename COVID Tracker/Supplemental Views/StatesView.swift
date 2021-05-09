@@ -26,6 +26,7 @@ struct StatesView: View {
                 if tab == 0 {
                     List {
                         Section(header: Text("   Sorted by Most Active Cases").font(.headline).bold().padding(.vertical, 5).padding(.top, 10).fixCase(), footer: Text("\n\n\n")) {
+                            MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
                             ForEach(fetch.states.filter {
                                 self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
                             }) { item in
