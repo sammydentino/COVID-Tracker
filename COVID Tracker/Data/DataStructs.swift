@@ -237,37 +237,13 @@ struct Country: Codable, Identifiable {
     let id = UUID()
     var updated: Int
     var country: String
-    var countryInfo: CountryInfo
     var cases, todayCases, deaths, todayDeaths: Int
     var recovered, todayRecovered, active, critical: Int
     var casesPerOneMillion: Int
     var deathsPerOneMillion: Double
     var tests, testsPerOneMillion, population: Int
-    var continent: Continent
     var oneCasePerPeople, oneDeathPerPeople, oneTestPerPeople: Int
     var activePerOneMillion, recoveredPerOneMillion, criticalPerOneMillion: Double
-}
-
-enum Continent: String, Codable {
-    case africa = "Africa"
-    case asia = "Asia"
-    case australiaOceania = "Australia/Oceania"
-    case empty = ""
-    case europe = "Europe"
-    case northAmerica = "North America"
-    case southAmerica = "South America"
-}
-
-struct CountryInfo: Codable {
-    var id: Int?
-    var iso2, iso3: String?
-    var lat, long: Double
-    var flag: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case iso2, iso3, lat, long, flag
-    }
 }
 
 struct Vaccine: Codable, Identifiable {

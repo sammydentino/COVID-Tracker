@@ -30,7 +30,7 @@ class getAll : ObservableObject {
         
         initStates()
         
-        self.loadNews()
+        loadNews()
     }
     
     func initAll() {
@@ -49,27 +49,27 @@ class getAll : ObservableObject {
     
     func initCountries() {
         self.loadCountries()
-        for item in self.countries! {
+        for item in self.countries {
             if item.country == "USA" {
                 self.usa = item
             }
         }
-        self.countries! = self.countries!.filter({
+        self.countries = self.countries.filter({
             $0.country != "USA"
         })
-        self.usa!.country = "United States"
-        self.countries!.append(self.usa!)
-        for item in self.countries! {
+        self.usa.country = "United States"
+        self.countries.append(self.usa)
+        for item in self.countries {
             if item.country == "UK" {
                 self.usa = item
             }
         }
-        self.countries! = self.countries!.filter({
+        self.countries = self.countries.filter({
             $0.country != "UK"
         })
-        self.usa!.country = "United Kingdom"
-        self.countries!.append(self.usa!)
-        self.countries! = self.countries!.sorted(by: {
+        self.usa.country = "United Kingdom"
+        self.countries.append(self.usa)
+        self.countries = self.countries.sorted(by: {
             $0.active > $1.active
         })
         self.loadVaccinations()
