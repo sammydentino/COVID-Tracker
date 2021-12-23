@@ -83,7 +83,7 @@ struct TotalView: View {
                  SourcesView().navigationBarTitle("Sources")
                  }
                  }*/
-            }.makeNewLineColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
+            }.makeColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
             Group {
                 VStack {
                     Spacer()
@@ -187,7 +187,7 @@ struct TotalView: View {
                     Spacer()
                 }
             }.makeColoredSection(str: "Statistics", color: .purple)
-            MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
+            //MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
             VStack {
                 Spacer()
                 HStack {

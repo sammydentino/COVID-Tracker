@@ -53,7 +53,7 @@ struct CountryDetailView: View {
                         }
                         Spacer()
                     }
-                }.makeNewLineColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
+                }.makeColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
                 Group {
                     VStack {
                         Spacer()

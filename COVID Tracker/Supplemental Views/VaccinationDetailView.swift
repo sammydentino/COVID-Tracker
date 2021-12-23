@@ -65,7 +65,7 @@ struct VaccinationDetailView: View {
                                 .foregroundColor(.orange)
                         }
                         Spacer()
-                    }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
+                    }.makeColoredSection(str: "Vaccinations", color: Color.orange)
                 }.fixList()
             }.navigationBarTitle(item.name ?? "N/A")
         }

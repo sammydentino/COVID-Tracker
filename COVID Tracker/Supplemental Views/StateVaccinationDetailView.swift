@@ -65,7 +65,7 @@ struct StateVaccinationDetailView: View {
                                 .foregroundColor(.orange)
                         }
                         Spacer()
-                    }.makeNewLineColoredSection(str: "Vaccinations", color: Color.orange)
+                    }.makeColoredSection(str: "Vaccinations", color: Color.orange)
                     if item.cdcDosesDistributed != nil {
                         VStack {
                             Spacer()

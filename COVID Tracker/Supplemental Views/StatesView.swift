@@ -25,58 +25,63 @@ struct StatesView: View {
             ZStack {
                 if tab == 0 {
                     List {
-                        Section(header: Text("   Sorted by Most Active Cases").font(.headline).bold().padding(.vertical, 5).padding(.top, 10).fixCase(), footer: Text("\n\n\n")) {
-                            MoPubBannerView(adUnitID: "6e01b35977dc4214b8f8cf847493a17a", adSize: CGSize(width: 320, height: 50))
-                            ForEach(fetch.states.filter {
-                                self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
-                            }) { item in
-                                Button(action: {
-                                    self.showingDetail.toggle()
-                                }) {
-                                    HStack {
-                                        Text("\(item.state)")
-                                            .font(.subheadline)
-                                            .bold()
-                                            .foregroundColor(.primary)
-                                        Spacer()
-                                        Text("→")
-                                            .font(.subheadline)
-                                            .bold()
-                                            .foregroundColor(.secondary)
-                                    }
-                                }.sheet(isPresented: self.$showingDetail) {
-                                    NavigationView {
-                                         StatesDetailView(state: item).navigationBarTitle(item.state)
-                                    }
+                        ForEach(Array(zip(fetch.states.filter {
+                            self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
+                        }.indices, fetch.states.filter {
+                            self.searchQuery.isEmpty ? true : "\($0)".lowercased().contains(self.searchQuery.lowercased())
+                        })), id: \.0) { index, item in
+                            Button(action: {
+                                self.showingDetail.toggle()
+                            }) {
+                                HStack {
+                                    Text("#\(index + 1) ")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.secondary)
+                                    Text("\(item.state)")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    Text("→")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.secondary)
+                                }
+                            }.sheet(isPresented: self.$showingDetail) {
+                                NavigationView {
+                                     StatesDetailView(state: item).navigationBarTitle(item.state)
                                 }
                             }
                         }
-                    }.fixList()
+                    }.listStyle(PlainListStyle())
                 } else {
                     List {
-                        Section(header: Text("   Sorted by Most Vaccinations").font(.headline).bold().padding(.vertical, 5).padding(.top, 10).fixCase(), footer: Text("\n\n\n")) {
-                            ForEach(fetch.statevaccinations.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) })) { item in
-                                Button(action: {
-                                    self.selectedstate = item
-                                    self.showingDetail = true
-                                }) {
-                                    HStack {
-                                        Text("\(item.name)")
-                                            .font(.subheadline)
-                                            .bold()
-                                            .foregroundColor(.primary)
-                                        Spacer()
-                                        Text("→")
-                                            .font(.subheadline)
-                                            .bold()
-                                            .foregroundColor(.secondary)
-                                    }
-                                }.sheet(isPresented: self.$showingDetail) {
-                                    StateVaccinationDetailView(item: self.selectedstate ?? item)
+                        ForEach(Array(zip(fetch.statevaccinations.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) }).indices, fetch.statevaccinations.filter({ searchQuery.isEmpty ? true : $0.name.lowercased().contains(searchQuery.lowercased()) }))), id: \.0) { index, item in
+                            Button(action: {
+                                self.selectedstate = item
+                                self.showingDetail = true
+                            }) {
+                                HStack {
+                                    Text("#\(index + 1) ")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.secondary)
+                                    Text("\(item.name)")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    Text("→")
+                                        .font(.subheadline)
+                                        .bold()
+                                        .foregroundColor(.secondary)
                                 }
+                            }.sheet(isPresented: self.$showingDetail) {
+                                StateVaccinationDetailView(item: self.selectedstate ?? item)
                             }
                         }
-                    }.fixList()
+                    }.listStyle(PlainListStyle())
                 }
             }
 		}
