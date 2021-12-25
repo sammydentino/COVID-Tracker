@@ -201,7 +201,7 @@ class getAll : ObservableObject {
                     self.editing!.name = "United Kingdom"
                     self.vaccinations!.append(self.editing!)
                     self.vaccinations = self.vaccinations.sorted(by: {
-                        $0.peopleVaccinated ?? 0 > $1.peopleVaccinated ?? 0
+                        $0.completedVaccination ?? 0 > $1.completedVaccination ?? 0
                     })
                 }
             }
@@ -235,6 +235,9 @@ class getAll : ObservableObject {
                 if let data = try? decoder.decode([StateVaccination].self, from: d) {
                     
                     statevaccinations = data
+                    self.statevaccinations = self.statevaccinations.sorted(by: {
+                        $0.completedVaccination > $1.completedVaccination
+                    })
                 }
             }
         }

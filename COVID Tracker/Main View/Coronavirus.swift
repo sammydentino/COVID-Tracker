@@ -103,7 +103,7 @@ struct Coronavirus: View {
                             taptic()
                         })
                         .sheet(isPresented: $showingsettings) {
-                            AboutAppWithNavigationView(app: app, otherApps: [clear, wordfinder, docket], titleDisplayMode: .large)
+                            AboutAppWithNavigationView(app: app, otherApps: [wordfinder, docket], titleDisplayMode: .large)
                         }
                 }.ignoresSafeArea(.keyboard)
             }
