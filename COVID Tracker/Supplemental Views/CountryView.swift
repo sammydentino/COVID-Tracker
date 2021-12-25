@@ -79,7 +79,7 @@ struct CountryView: View {
                                     Text("\((item.completedVaccination ?? 0).withCommas())")
                                         .font(.subheadline)
                                         .bold()
-                                        .foregroundColor(Color(red: 0, green: 0.6588, blue: 0.9882))
+                                        .foregroundColor(.orange)
                                     Text("→")
                                         .font(.subheadline)
                                         .bold()

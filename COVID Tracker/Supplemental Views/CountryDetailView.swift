@@ -50,8 +50,8 @@ struct CountryDetailView: View {
                                     .font(.subheadline)
                                     .bold()
                             }
+                            Spacer()
                         }
-                        Spacer()
                     }
                 }.makeColoredSection(str: "Cases", color: Color(red: 0, green: 0.6588, blue: 0.9882))
                 Group {

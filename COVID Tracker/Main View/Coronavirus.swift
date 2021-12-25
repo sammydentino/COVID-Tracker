@@ -41,7 +41,7 @@ struct Coronavirus: View {
                                     Button(action: {
                                         showingsettings = true
                                     }) {
-                                        Image(systemName: "info.circle.fill").foregroundColor(.primary).font(.title2)
+                                        Image(systemName: "info.circle.fill").foregroundColor(.secondary).font(.title3)
                                     }
                                 ).animation(.default)
                                 .pullToRefresh(isShowing: $loading) {

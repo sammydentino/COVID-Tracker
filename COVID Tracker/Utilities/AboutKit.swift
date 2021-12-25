@@ -209,7 +209,7 @@ public struct AboutAppView: View {
                     .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
             
-            Section(header: Text("   Contact Me").subhead().fixCase()) {
+            Section(header: Text("Contact Me").bold().subhead().fixCase()) {
                 Button(action: sendMail) {
                     HStack(spacing: 15) {
                         Image(systemName: "envelope")
@@ -237,7 +237,7 @@ public struct AboutAppView: View {
             }
 
             if otherApps.isEmpty == false {
-                Section(header: Text("   App Store Apps").subhead().fixCase()) {
+                Section(header: Text("App Store Apps").bold().subhead().fixCase()) {
                     ForEach(otherApps, content: OtherAppRowView.init)
                     //Link("View All", destination: URL(string: developerURL)!)
                 }
@@ -380,14 +380,9 @@ struct HeaderView: View {
         ZStack {
             Color.systemGroupedBackground
 
-            if let appIcon = app.appIcon {
-                Image(uiImage: appIcon)
-                    .resizable()
-                    .scaledToFit()
-
-            } else if let appIconURL = appIconURL {
-                RemoteImageView(url: appIconURL)
-            }
+            Image(uiImage: UIImage(imageLiteralResourceName: "icon"))
+                .resizable()
+                .scaledToFit()
         }
         .frame(width: 100, height: 100)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
